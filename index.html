@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akash Bora | DevOps Engineer &amp; Cloud Architect Portfolio</title>
+  <meta name="description" content="Portfolio of Akash Bora - DevOps Engineer with 2+ years of experience specializing in AWS, Kubernetes (EKS), Terraform, Argo CD GitOps, CI/CD pipelines, and Prometheus/Grafana observability.">
+  <meta name="keywords" content="Akash Bora, DevOps Engineer, AWS Certified Solutions Architect, Kubernetes, Docker, Terraform, ArgoCD, GitOps, CI/CD, Prometheus, Grafana, Pune">
+  <meta name="author" content="Akash Bora">
+
+  <!-- Open Graph / Social Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Akash Bora | Cloud &amp; DevOps Engineer Portfolio">
+  <meta property="og:description" content="Explore production Kubernetes architectures, GitOps workflows, automated CI/CD pipelines, and AWS cloud solutions built by Akash Bora.">
+  <meta property="og:image" content="assets/images/logo.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Devicon for Tech Badges -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Particle Background Network Canvas -->
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="navbar-pill-container d-flex align-items-center justify-content-between w-100">
+      <a class="navbar-brand" href="#hero">
+        <img src="assets/images/logo.jpg" alt="Akash Bora Logo" class="brand-logo-img">
+        <span class="brand-name d-none d-sm-inline">Akash <span style="color: var(--accent-cyan);">Bora</span></span>
+      </a>
+
+      <button class="navbar-toggler border-0 text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars-staggered" style="color: var(--accent-cyan); font-size: 1.3rem;"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarContent">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pipeline">CI/CD Flow</a></li>
+          <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#certifications">Certifications</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="d-none d-md-flex align-items-center gap-2">
+        <a href="#contact" class="btn-nav-action">
+          <i class="fa-solid fa-paper-plane"></i> Let's Connect
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================================================
+       HERO SECTION
+       ========================================================================== -->
+  <section id="hero" class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        
+        <!-- Left: Hero Introduction -->
+        <div class="col-lg-6">
+          <div class="hero-status-badge">
+            <span class="status-dot"></span>
+            <span>Available for DevOps &amp; Cloud Opportunities</span>
+          </div>
+
+          <h1 class="hero-title mb-2">
+            Hi, I'm <span class="hero-gradient-text">Akash Bora</span>
+          </h1>
+
+          <!-- Stable Fixed-Height Typing Container (Zero Layout Shift) -->
+          <div class="hero-typing-box">
+            <span class="typing-prefix">&gt;</span>
+            <span id="typing-text" class="typing-text-content"></span>
+            <span class="typed-cursor">_</span>
+          </div>
+
+          <p class="hero-subtitle">
+            Results-driven DevOps Engineer with <strong>2+ years of experience</strong> in Linux systems, cloud-native architecture, Kubernetes workloads (EKS), automated CI/CD pipelines, GitOps with Argo CD, and Infrastructure as Code with Terraform.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn-primary-glow">
+              <i class="fa-solid fa-cubes"></i> Explore Architecture
+            </a>
+            <a href="#contact" class="btn-secondary-glass">
+              <i class="fa-solid fa-envelope"></i> Get In Touch
+            </a>
+            <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" rel="noopener noreferrer" class="btn-secondary-glass">
+              <i class="fa-brands fa-linkedin" style="color: #0077b5;"></i> LinkedIn
+            </a>
+          </div>
+
+          <!-- Social Links Strip -->
+          <div class="hero-social-links">
+            <span class="text-secondary small fw-bold me-2 mono">FIND ME ON:</span>
+            <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Akashbora02" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="GitHub Profile">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:akashbora0082@gmail.com" class="social-icon-btn" title="Direct Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="tel:+917057100082" class="social-icon-btn" title="Phone Call">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=917057100082" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="WhatsApp Chat">
+              <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Cloud Shell Terminal -->
+        <div class="col-lg-6">
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <div class="terminal-buttons">
+                <span class="terminal-btn close"></span>
+                <span class="terminal-btn minimize"></span>
+                <span class="terminal-btn maximize"></span>
+              </div>
+              <div class="terminal-title">
+                <i class="fa-solid fa-terminal" style="color: var(--accent-cyan);"></i> akash@cloud-shell ~ (aws: us-east-1)
+              </div>
+              <div>
+                <span class="badge bg-dark text-cyan border border-cyan-subtle" style="font-size: 0.7rem;">K8s: v1.28</span>
+              </div>
+            </div>
+            
+            <div class="terminal-body" id="terminal-body">
+              <!-- Terminal content dynamically populated by terminal.js -->
+            </div>
+
+            <div class="p-3 bg-dark-subtle border-top border-secondary-subtle">
+              <div class="terminal-input-row">
+                <span class="terminal-prompt">akash@devops-node</span>:<span class="terminal-path">~/infra</span>$&nbsp;
+                <input type="text" id="terminal-input" class="terminal-input" placeholder="type 'help', 'skills', 'cert', 'experience'..." autocomplete="off">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Metrics Strip -->
+      <div class="hero-stats-strip">
+        <div class="row text-center g-4">
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <span class="stat-number" data-target="2" data-suffix="+">0</span>
+              <span class="stat-label">Years DevOps Exp</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <span class="stat-number" data-target="40" data-suffix="%">0</span>
+              <span class="stat-label">Faster Deployments</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <span class="stat-number" data-target="30" data-suffix="%">0</span>
+              <span class="stat-label">Reduced MTTR</span>
+            </div>
+          </div>
+          <div class="col-6 col-md-3">
+            <div class="stat-item">
+              <span class="stat-number" data-target="60" data-suffix="%">0</span>
+              <span class="stat-label">Toil Automated (Bash/Python)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       ABOUT ME SECTION
+       ========================================================================== -->
+  <section id="about" class="section-wrapper">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-user-astronaut"></i> Profile Overview</span>
+        <h2 class="section-title">Architecting Resilient Cloud Systems</h2>
+        <p class="section-subtitle mx-auto">Bridging software development and high-availability cloud infrastructure with automation, security, and GitOps precision.</p>
+      </div>
+
+      <div class="row g-4 align-items-stretch">
+        
+        <!-- Left: Summary Card -->
+        <div class="col-lg-5">
+          <div class="glass-card h-100 d-flex flex-column justify-content-between">
+            <div>
+              <div class="about-card-badge">
+                <i class="fa-solid fa-code-branch"></i> ENGINEERING IDENTITY
+              </div>
+              <h3 class="fw-bold mb-3 text-white">Akash Bora</h3>
+              <p class="text-info fw-semibold mb-3 mono">DevOps Engineer • AWS Certified Solutions Architect</p>
+              
+              <p class="about-summary-text">
+                I am a results-driven DevOps Engineer with 2+ years of professional experience managing Kubernetes workloads, provisioning cloud infrastructure via Terraform, and engineering automated CI/CD pipelines.
+              </p>
+
+              <div class="about-highlight-box">
+                <i class="fa-solid fa-quote-left text-cyan me-2"></i>
+                "I specialize in transforming complex manual deployments into repeatable, secure, and declarative GitOps delivery pipelines with zero downtime."
+              </div>
+
+              <div class="row g-2 mb-3">
+                <div class="col-sm-6">
+                  <div class="p-2 rounded bg-dark border border-secondary-subtle">
+                    <small class="text-muted d-block">Location</small>
+                    <span class="fw-semibold text-light small"><i class="fa-solid fa-location-dot text-danger me-1"></i> Pune, India</span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="p-2 rounded bg-dark border border-secondary-subtle">
+                    <small class="text-muted d-block">Education</small>
+                    <span class="fw-semibold text-light small"><i class="fa-solid fa-graduation-cap text-info me-1"></i> M.Sc. &amp; B.Sc. in CS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-3 border-top border-secondary-subtle d-flex gap-2">
+              <a href="#contact" class="btn btn-sm btn-primary-glow flex-grow-1 text-center">Contact Akash</a>
+              <a href="https://github.com/Akashbora02" target="_blank" class="btn btn-sm btn-secondary-glass"><i class="fa-brands fa-github"></i> GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: 4 Engineering Pillars -->
+        <div class="col-lg-7">
+          <div class="row g-3 h-100">
+            
+            <div class="col-md-6">
+              <div class="pillar-card">
+                <div class="pillar-icon cyan">
+                  <i class="fa-solid fa-cubes"></i>
+                </div>
+                <h4 class="pillar-title">Cloud &amp; Kubernetes</h4>
+                <p class="pillar-desc">
+                  Designing multi-AZ AWS environments (EKS, EC2, RDS, VPC, ALB, IAM) with auto-scaling nodes, HPA, and NGINX Ingress controllers for thousands of daily requests.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="pillar-card">
+                <div class="pillar-icon orange">
+                  <i class="fa-solid fa-code-merge"></i>
+                </div>
+                <h4 class="pillar-title">GitOps &amp; CI/CD</h4>
+                <p class="pillar-desc">
+                  Building declarative deployment workflows using Argo CD, Jenkins, and GitHub Actions to eliminate drift, accelerate releases by 40%, and allow 1-click rollbacks.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="pillar-card">
+                <div class="pillar-icon purple">
+                  <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h4 class="pillar-title">DevSecOps &amp; Quality</h4>
+                <p class="pillar-desc">
+                  Enforcing security gates with SonarQube SAST, Trivy container vulnerability scanning, AWS IAM least-privilege policies, and Kubernetes RBAC hardening.
+                </p>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="pillar-card">
+                <div class="pillar-icon green">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <h4 class="pillar-title">Observability &amp; SRE</h4>
+                <p class="pillar-desc">
+                  Full-stack monitoring with Prometheus, Alertmanager, Grafana real-time SLO dashboards, and CloudWatch — achieving a 30% reduction in MTTR.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       TECHNICAL SKILLS MATRIX
+       ========================================================================== -->
+  <section id="skills" class="section-wrapper" style="background: rgba(13, 21, 39, 0.4);">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-microchip"></i> Tech Stack &amp; Arsenal</span>
+        <h2 class="section-title">Tools &amp; Technologies I Master</h2>
+        <p class="section-subtitle mx-auto">A comprehensive view of the tools, cloud platforms, and methodologies I leverage daily to engineer production reliability.</p>
+      </div>
+
+      <!-- Skill Filter Tabs -->
+      <div class="skill-filter-nav">
+        <button class="skill-tab-btn active" data-filter="all">All Skills</button>
+        <button class="skill-tab-btn" data-filter="containers">Containers &amp; Cloud</button>
+        <button class="skill-tab-btn" data-filter="cicd">CI/CD &amp; GitOps</button>
+        <button class="skill-tab-btn" data-filter="iac">IaC &amp; Automation</button>
+        <button class="skill-tab-btn" data-filter="observability">Observability &amp; Security</button>
+        <button class="skill-tab-btn" data-filter="systems">Systems &amp; DB</button>
+      </div>
+
+      <!-- Skill Categories Grid -->
+      <div class="skill-card-grid">
+
+        <!-- 1. Containers & Orchestration -->
+        <div class="skill-category-card" data-category="containers">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="devicon-kubernetes-plain"></i></div>
+            <h3 class="skill-cat-title">Containers &amp; Orchestration</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="devicon-kubernetes-plain"></i> Kubernetes (EKS, GKE)</span>
+            <span class="skill-badge"><i class="devicon-docker-plain"></i> Docker (Multi-stage)</span>
+            <span class="skill-badge"><i class="fa-solid fa-dharmachakra"></i> Helm Charts</span>
+            <span class="skill-badge"><i class="fa-solid fa-arrows-up-down-left-right"></i> HPA (Auto Scaling)</span>
+            <span class="skill-badge"><i class="fa-brands fa-aws"></i> AWS ECR</span>
+            <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> NGINX Ingress &amp; Istio</span>
+          </div>
+        </div>
+
+        <!-- 2. CI/CD & GitOps -->
+        <div class="skill-category-card" data-category="cicd">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="devicon-argocd-plain"></i></div>
+            <h3 class="skill-cat-title">CI/CD &amp; GitOps</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="devicon-argocd-plain"></i> Argo CD (GitOps)</span>
+            <span class="skill-badge"><i class="devicon-azuredevops-plain"></i> Azure DevOps Server</span>
+            <span class="skill-badge"><i class="devicon-jenkins-line"></i> Jenkins Pipelines</span>
+            <span class="skill-badge"><i class="devicon-githubactions-plain"></i> GitHub Actions</span>
+            <span class="skill-badge"><i class="devicon-gitlab-plain"></i> GitLab CI/CD</span>
+            <span class="skill-badge"><i class="fa-solid fa-robot"></i> Agentic AI for DevOps</span>
+            <span class="skill-badge"><i class="fa-solid fa-bolt"></i> Zero-Downtime Releases</span>
+          </div>
+        </div>
+
+        <!-- 3. Cloud Platforms (AWS & GCP) -->
+        <div class="skill-category-card" data-category="containers">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="fa-brands fa-aws" style="color: var(--accent-aws);"></i></div>
+            <h3 class="skill-cat-title">Cloud Platforms</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="fa-brands fa-aws"></i> AWS EC2, EKS, ECS</span>
+            <span class="skill-badge"><i class="fa-solid fa-server"></i> AWS RDS &amp; Aurora</span>
+            <span class="skill-badge"><i class="fa-solid fa-network-wired"></i> AWS VPC &amp; ALB</span>
+            <span class="skill-badge"><i class="fa-solid fa-bolt"></i> AWS Lambda</span>
+            <span class="skill-badge"><i class="fa-solid fa-bucket"></i> AWS S3 &amp; CloudFront</span>
+            <span class="skill-badge"><i class="fa-solid fa-key"></i> AWS IAM &amp; KMS</span>
+            <span class="skill-badge"><i class="devicon-googlecloud-plain"></i> GCP (Exposure)</span>
+          </div>
+        </div>
+
+        <!-- 4. Infrastructure as Code & Automation -->
+        <div class="skill-category-card" data-category="iac">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="devicon-terraform-plain"></i></div>
+            <h3 class="skill-cat-title">IaC &amp; Automation</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="devicon-terraform-plain"></i> Terraform (Modules &amp; State)</span>
+            <span class="skill-badge"><i class="fa-solid fa-file-code"></i> CloudFormation</span>
+            <span class="skill-badge"><i class="devicon-ansible-plain"></i> Ansible</span>
+            <span class="skill-badge"><i class="devicon-bash-plain"></i> Bash Shell Scripting</span>
+            <span class="skill-badge"><i class="devicon-python-plain"></i> Python Automation</span>
+          </div>
+        </div>
+
+        <!-- 5. Monitoring & Observability -->
+        <div class="skill-category-card" data-category="observability">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="devicon-prometheus-origial"></i></div>
+            <h3 class="skill-cat-title">Monitoring &amp; Observability</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="devicon-prometheus-origial"></i> Prometheus Metrics</span>
+            <span class="skill-badge"><i class="devicon-grafana-plain"></i> Grafana Dashboards</span>
+            <span class="skill-badge"><i class="fa-solid fa-bell"></i> Alertmanager (PagerDuty/Slack)</span>
+            <span class="skill-badge"><i class="fa-brands fa-aws"></i> AWS CloudWatch</span>
+            <span class="skill-badge"><i class="fa-solid fa-gauge-high"></i> SLO / SLA Tracking</span>
+          </div>
+        </div>
+
+        <!-- 6. DevSecOps & Governance -->
+        <div class="skill-category-card" data-category="observability">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="fa-solid fa-shield-virus"></i></div>
+            <h3 class="skill-cat-title">Security &amp; DevSecOps</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="fa-solid fa-bug-slash"></i> Trivy Container Scan</span>
+            <span class="skill-badge"><i class="devicon-sonarqube-plain"></i> SonarQube (SAST)</span>
+            <span class="skill-badge"><i class="fa-solid fa-user-shield"></i> Kubernetes RBAC</span>
+            <span class="skill-badge"><i class="fa-solid fa-lock"></i> SSL / TLS Certificates</span>
+            <span class="skill-badge"><i class="fa-solid fa-fingerprint"></i> IAM Least Privilege</span>
+          </div>
+        </div>
+
+        <!-- 7. Operating Systems & Administration -->
+        <div class="skill-category-card" data-category="systems">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="devicon-linux-plain"></i></div>
+            <h3 class="skill-cat-title">Linux Administration</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="devicon-redhat-plain"></i> Red Hat Enterprise (RHEL)</span>
+            <span class="skill-badge"><i class="devicon-ubuntu-plain"></i> Ubuntu Server</span>
+            <span class="skill-badge"><i class="devicon-centos-plain"></i> CentOS</span>
+            <span class="skill-badge"><i class="devicon-debian-plain"></i> Debian</span>
+            <span class="skill-badge"><i class="fa-solid fa-terminal"></i> System Troubleshooting</span>
+          </div>
+        </div>
+
+        <!-- 8. Databases & Version Control -->
+        <div class="skill-category-card" data-category="systems">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="devicon-git-plain"></i></div>
+            <h3 class="skill-cat-title">Databases &amp; VCS</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="devicon-mysql-plain"></i> MySQL</span>
+            <span class="skill-badge"><i class="devicon-postgresql-plain"></i> PostgreSQL</span>
+            <span class="skill-badge"><i class="devicon-mongodb-plain"></i> MongoDB</span>
+            <span class="skill-badge"><i class="devicon-git-plain"></i> Git &amp; Branching Strategies</span>
+            <span class="skill-badge"><i class="devicon-github-original"></i> GitHub &amp; GitLab</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       INTERACTIVE CI/CD & GITOPS PIPELINE VISUALIZER
+       ========================================================================== -->
+  <section id="pipeline" class="section-wrapper">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-diagram-project"></i> Pipeline Architecture</span>
+        <h2 class="section-title">Production CI/CD &amp; GitOps Flow</h2>
+        <p class="section-subtitle mx-auto">Click on any pipeline stage to inspect the automated quality gates, security scans, and deployment mechanisms.</p>
+      </div>
+
+      <div class="pipeline-visualizer-card">
+        
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-light fw-bold small mono"><i class="fa-solid fa-circle-play text-cyan me-1"></i> Interactive Pipeline Simulator</span>
+          <span class="badge bg-success-subtle text-success border border-success-subtle mono">Auto-Trigger Active</span>
+        </div>
+
+        <!-- Interactive Steps Nodes -->
+        <div class="pipeline-steps-wrapper">
+          <div class="pipeline-connector-line">
+            <div class="pipeline-connector-progress"></div>
+          </div>
+
+          <div class="pipeline-step-node active" data-step="step-code">
+            <div class="step-node-icon"><i class="devicon-git-plain"></i></div>
+            <span class="step-node-title">1. Code &amp; Lint</span>
+            <span class="step-node-tool">GitHub / Actions</span>
+          </div>
+
+          <div class="pipeline-step-node" data-step="step-sast">
+            <div class="step-node-icon"><i class="devicon-sonarqube-plain"></i></div>
+            <span class="step-node-title">2. SAST Scan</span>
+            <span class="step-node-tool">SonarQube Gate</span>
+          </div>
+
+          <div class="pipeline-step-node" data-step="step-build">
+            <div class="step-node-icon"><i class="devicon-docker-plain"></i></div>
+            <span class="step-node-title">3. Build &amp; Trivy</span>
+            <span class="step-node-tool">Docker + ECR</span>
+          </div>
+
+          <div class="pipeline-step-node" data-step="step-gitops">
+            <div class="step-node-icon"><i class="devicon-argocd-plain"></i></div>
+            <span class="step-node-title">4. GitOps Sync</span>
+            <span class="step-node-tool">Argo CD &rarr; EKS</span>
+          </div>
+
+          <div class="pipeline-step-node" data-step="step-monitor">
+            <div class="step-node-icon"><i class="devicon-grafana-plain"></i></div>
+            <span class="step-node-title">5. Observability</span>
+            <span class="step-node-tool">Prometheus/Grafana</span>
+          </div>
+        </div>
+
+        <!-- Live Step Console Output -->
+        <div class="pipeline-live-console" id="pipeline-console-output">
+[00:01] <span style="color:#3B82F6">GIT REPO:</span> Commit triggered by Akash Bora on branch <span style="color:#00E5FF">main</span>
+[00:03] Webhook dispatched to GitHub Actions / GitLab CI
+[00:04] Syntax checking &amp; YAML linter completed: <span style="color:#10B981">PASSED (0 errors)</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       PROFESSIONAL EXPERIENCE TIMELINE
+       ========================================================================== -->
+  <section id="experience" class="section-wrapper" style="background: rgba(13, 21, 39, 0.4);">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-briefcase"></i> Work History</span>
+        <h2 class="section-title">Professional Experience</h2>
+        <p class="section-subtitle mx-auto">Track record of building, optimizing, and maintaining mission-critical cloud infrastructure and automation systems.</p>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="timeline-container">
+
+            <!-- Experience 1: Groots Software Technologies -->
+            <div class="timeline-item">
+              <div class="timeline-dot">
+                <div class="timeline-dot-inner"></div>
+              </div>
+              <div class="experience-card">
+                <div class="exp-header">
+                  <div>
+                    <h3 class="exp-role">Cloud Engineer</h3>
+                    <div class="exp-company"><i class="fa-solid fa-building me-1"></i> Groots Software Technologies Pvt Ltd <span class="badge bg-dark text-info border border-info-subtle ms-2">Full-time · On-site</span></div>
+                  </div>
+                  <div class="text-end">
+                    <span class="exp-duration-badge mb-1 d-inline-block">Jun 2026 – Present</span>
+                    <div class="exp-location"><i class="fa-solid fa-location-dot"></i> Pune District, Maharashtra, India</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <span class="badge bg-info-subtle text-info border border-info-subtle mb-2">AWS Infrastructure, Software Infrastructure &amp; Azure DevOps</span>
+                  <ul class="exp-bullet-list">
+                    <li>Spearheading cloud infrastructure architecture on <strong>AWS</strong> (EKS, EC2, VPC, ALB, RDS, S3, IAM) for scalable client and product ecosystems.</li>
+                    <li>Administering enterprise <strong>Linux production servers</strong> (RHEL, Ubuntu, CentOS) ensuring optimal performance, uptime, and security hardening.</li>
+                    <li>Designing and automating deployment workflows with <strong>Azure DevOps Server</strong>, GitHub Actions, and containerized Docker environments.</li>
+                    <li>Implementing <strong>Terraform Infrastructure as Code (IaC)</strong> for repeatable, drift-free multi-environment provisioning and continuous cloud cost optimization.</li>
+                  </ul>
+                </div>
+
+                <div class="exp-tech-tags mt-3 pt-3 border-top border-secondary-subtle">
+                  <span class="tech-tag">AWS Infrastructure</span>
+                  <span class="tech-tag">Linux Administration</span>
+                  <span class="tech-tag">Azure DevOps Server</span>
+                  <span class="tech-tag">Software Infrastructure</span>
+                  <span class="tech-tag">Terraform</span>
+                  <span class="tech-tag">Docker</span>
+                  <span class="tech-tag">Kubernetes</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience 2: Hisan Labs -->
+            <div class="timeline-item">
+              <div class="timeline-dot">
+                <div class="timeline-dot-inner"></div>
+              </div>
+              <div class="experience-card">
+                <div class="exp-header">
+                  <div>
+                    <h3 class="exp-role">DevOps Engineer</h3>
+                    <div class="exp-company"><i class="fa-solid fa-building me-1"></i> Hisan Labs Pvt Ltd <span class="badge bg-dark text-warning border border-warning-subtle ms-2">Full-time · On-site</span></div>
+                  </div>
+                  <div class="text-end">
+                    <span class="exp-duration-badge mb-1 d-inline-block">May 2025 – May 2026 · 1 yr 1 mo</span>
+                    <div class="exp-location"><i class="fa-solid fa-location-dot"></i> Pune, India</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <span class="badge bg-warning-subtle text-warning border border-warning-subtle mb-2">End-to-End Microservices DevOps Lifecycle &amp; Kubernetes</span>
+                  <ul class="exp-bullet-list">
+                    <li>Managed end-to-end DevOps lifecycle for microservices-based applications in production environments.</li>
+                    <li>Deployed and managed <strong>5–10 microservices on Kubernetes (EKS / GKE)</strong> with high availability, Horizontal Pod Autoscaler (HPA), and NGINX Ingress controllers.</li>
+                    <li>Designed and optimized enterprise CI/CD pipelines (Jenkins, GitHub Actions, GitLab CI/CD) — <strong>reducing average deployment time by 40%</strong> and enabling zero-downtime releases.</li>
+                    <li>Implemented <strong>GitOps with Argo CD</strong> for declarative Kubernetes deployments with automated drift detection and 1-click rollback.</li>
+                    <li>Integrated DevSecOps automated gates (<strong>SonarQube SAST + Trivy container scanning</strong>) into every pipeline stage; built observability with <strong>Prometheus &amp; Grafana</strong> reducing MTTR by 30%.</li>
+                  </ul>
+                </div>
+
+                <div class="exp-tech-tags mt-3 pt-3 border-top border-secondary-subtle">
+                  <span class="tech-tag">Kubernetes (EKS/GKE)</span>
+                  <span class="tech-tag">Jenkins</span>
+                  <span class="tech-tag">Argo CD (GitOps)</span>
+                  <span class="tech-tag">Terraform</span>
+                  <span class="tech-tag">SonarQube &amp; Trivy</span>
+                  <span class="tech-tag">Prometheus &amp; Grafana</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Experience 3: Tradetron -->
+            <div class="timeline-item">
+              <div class="timeline-dot">
+                <div class="timeline-dot-inner"></div>
+              </div>
+              <div class="experience-card">
+                <div class="exp-header">
+                  <div>
+                    <h3 class="exp-role">Linux Engineer</h3>
+                    <div class="exp-company"><i class="fa-solid fa-building me-1"></i> Tradetron <span class="badge bg-dark text-success border border-success-subtle ms-2">Full-time · Remote</span></div>
+                  </div>
+                  <div class="text-end">
+                    <span class="exp-duration-badge mb-1 d-inline-block">Jan 2023 – Dec 2023 · 1 yr</span>
+                    <div class="exp-location"><i class="fa-solid fa-location-dot"></i> Mumbai, Maharashtra, India</div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <span class="badge bg-success-subtle text-success border border-success-subtle mb-2">Linux Production Systems, AWS &amp; Shell Scripting</span>
+                  <ul class="exp-bullet-list">
+                    <li>Managed and administered mission-critical Linux production servers (<strong>RHEL, Ubuntu, CentOS</strong>) maintaining high uptime and system performance.</li>
+                    <li>Diagnosed system, network, and performance issues; authored comprehensive operational runbooks and standardized incident response procedures.</li>
+                    <li>Automated administrative and operational workflows using <strong>Bash shell scripting</strong>, reducing manual toil by 60% and human error during deployment cycles.</li>
+                    <li>Supported AWS cloud services and collaborating with development and DevOps teams for smooth releases.</li>
+                  </ul>
+                </div>
+
+                <div class="exp-tech-tags mt-3 pt-3 border-top border-secondary-subtle">
+                  <span class="tech-tag">Linux (RHEL / Ubuntu / CentOS)</span>
+                  <span class="tech-tag">Amazon Web Services (AWS)</span>
+                  <span class="tech-tag">Shell Scripting (Bash)</span>
+                  <span class="tech-tag">System Troubleshooting</span>
+                  <span class="tech-tag">Incident Runbooks</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       FEATURED PROJECTS & IMPLEMENTATIONS
+       ========================================================================== -->
+  <section id="projects" class="section-wrapper">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-laptop-code"></i> Engineering Showcase</span>
+        <h2 class="section-title">Key Implementations &amp; Projects</h2>
+        <p class="section-subtitle mx-auto">Explore high-impact DevOps architectures designed for enterprise scale, zero downtime, and robust security.</p>
+      </div>
+
+      <div class="row g-4">
+
+        <!-- Project 1: GitOps Kubernetes Platform -->
+        <div class="col-lg-6">
+          <div class="project-card">
+            <div class="project-thumb-wrapper">
+              <img src="assets/images/projects/gitops-arch.svg" alt="GitOps Kubernetes Platform Architecture" class="project-thumb-img">
+              <span class="project-overlay-badge"><i class="fa-solid fa-code-branch me-1"></i> GitOps &amp; K8s</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">GitOps-Based Production Kubernetes Platform</h3>
+              <p class="project-desc">
+                Architected a declarative deployment engine utilizing Argo CD and AWS EKS. Synchronizes infrastructure manifests directly from Git, enabling automatic drift correction, zero-downtime blue/green releases, and instant one-click rollback.
+              </p>
+
+              <div class="project-metrics-box">
+                <i class="fa-solid fa-chart-line text-cyan"></i>
+                <span><strong>Impact:</strong> 40% faster release cycle, zero production downtime, 100% auditable deployments.</span>
+              </div>
+
+              <div class="exp-tech-tags mb-3">
+                <span class="tech-tag">Argo CD</span>
+                <span class="tech-tag">AWS EKS</span>
+                <span class="tech-tag">Helm</span>
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">HPA</span>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal1">
+                  <i class="fa-solid fa-circle-info"></i> Architecture Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: DevSecOps Pipeline -->
+        <div class="col-lg-6">
+          <div class="project-card">
+            <div class="project-thumb-wrapper">
+              <img src="assets/images/projects/devsecops-pipeline.svg" alt="Automated DevSecOps Pipeline" class="project-thumb-img">
+              <span class="project-overlay-badge"><i class="fa-solid fa-shield-halved me-1"></i> DevSecOps</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Automated DevSecOps Pipeline with SAST &amp; Trivy</h3>
+              <p class="project-desc">
+                Engineered a comprehensive continuous integration and security pipeline combining SonarQube static code analysis, Trivy container image scanning, and automated multi-environment promotion gates.
+              </p>
+
+              <div class="project-metrics-box">
+                <i class="fa-solid fa-shield-check text-cyan"></i>
+                <span><strong>Impact:</strong> Prevented high/critical CVEs from reaching production; automated 100% of image vulnerability audits.</span>
+              </div>
+
+              <div class="exp-tech-tags mb-3">
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">SonarQube</span>
+                <span class="tech-tag">Trivy</span>
+                <span class="tech-tag">AWS ECR</span>
+                <span class="tech-tag">Docker</span>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal2">
+                  <i class="fa-solid fa-circle-info"></i> Architecture Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Full-Stack Observability -->
+        <div class="col-lg-6">
+          <div class="project-card">
+            <div class="project-thumb-wrapper">
+              <img src="assets/images/projects/observability-stack.svg" alt="Full Stack Observability" class="project-thumb-img">
+              <span class="project-overlay-badge"><i class="fa-solid fa-chart-pie me-1"></i> SRE &amp; Observability</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Full-Stack Observability &amp; Incident SRE Suite</h3>
+              <p class="project-desc">
+                Constructed an end-to-end monitoring ecosystem with Prometheus metric scrapers, Alertmanager rules routing to PagerDuty/Slack, and dynamic Grafana dashboards for microservice SLOs and cluster resource health.
+              </p>
+
+              <div class="project-metrics-box">
+                <i class="fa-solid fa-clock text-cyan"></i>
+                <span><strong>Impact:</strong> 30% reduction in Mean Time To Resolution (MTTR) with proactive alerting.</span>
+              </div>
+
+              <div class="exp-tech-tags mb-3">
+                <span class="tech-tag">Prometheus</span>
+                <span class="tech-tag">Grafana</span>
+                <span class="tech-tag">Alertmanager</span>
+                <span class="tech-tag">CloudWatch</span>
+                <span class="tech-tag">Node Exporter</span>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal3">
+                  <i class="fa-solid fa-circle-info"></i> Architecture Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Terraform Multi-Tier Cloud -->
+        <div class="col-lg-6">
+          <div class="project-card">
+            <div class="project-thumb-wrapper">
+              <img src="assets/images/projects/terraform-cloud.svg" alt="Terraform Cloud Infrastructure" class="project-thumb-img">
+              <span class="project-overlay-badge"><i class="fa-solid fa-cloud me-1"></i> IaC &amp; Cloud</span>
+            </div>
+            <div class="project-body">
+              <h3 class="project-title">Multi-Tier Scalable Cloud Infra with Terraform</h3>
+              <p class="project-desc">
+                Designed modular Infrastructure as Code blueprints for multi-AZ VPCs, public/private subnets, Application Load Balancers, Multi-AZ RDS MySQL, and strict IAM least-privilege policies.
+              </p>
+
+              <div class="project-metrics-box">
+                <i class="fa-solid fa-code text-cyan"></i>
+                <span><strong>Impact:</strong> 100% version-controlled infrastructure; reduced environment setup time from days to under 15 minutes.</span>
+              </div>
+
+              <div class="exp-tech-tags mb-3">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">AWS VPC</span>
+                <span class="tech-tag">AWS RDS</span>
+                <span class="tech-tag">ALB</span>
+                <span class="tech-tag">IAM / KMS</span>
+              </div>
+
+              <div class="project-footer">
+                <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal4">
+                  <i class="fa-solid fa-circle-info"></i> Architecture Details
+                </button>
+                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       CERTIFICATIONS & EDUCATION
+       ========================================================================== -->
+  <section id="certifications" class="section-wrapper" style="background: rgba(13, 21, 39, 0.4);">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-award"></i> Credentials &amp; Academics</span>
+        <h2 class="section-title">Certifications &amp; Education</h2>
+        <p class="section-subtitle mx-auto">Industry-recognized professional cloud certification and higher academic qualifications in Computer Science.</p>
+      </div>
+
+      <div class="row g-4 mb-5">
+        
+        <!-- AWS Certification Feature Card -->
+        <div class="col-lg-6">
+          <div class="cert-card h-100">
+            <div class="row align-items-center g-4">
+              <div class="col-md-4 text-center">
+                <img src="assets/images/aws-sap-cert.png" alt="AWS Certified Solutions Architect Professional" class="cert-badge-img">
+              </div>
+              <div class="col-md-8">
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                  <span class="badge bg-warning text-dark fw-bold">PRO LEVEL</span>
+                  <span class="badge bg-success-subtle text-success border border-success-subtle">Verified Credential</span>
+                </div>
+                <h3 class="cert-title fs-4">AWS Certified Solutions Architect – Professional</h3>
+                <div class="cert-org mb-2"><i class="fa-brands fa-aws me-1"></i> Amazon Web Services (AWS)</div>
+                
+                <p class="text-light-subtle small mb-3">
+                  Validates advanced technical skills in designing distributed applications, multi-AZ high availability, cost optimization, multi-account security, and disaster recovery.
+                </p>
+
+                <div class="pt-2 border-top border-secondary-subtle">
+                  <div class="cert-meta-item small">
+                    <i class="fa-solid fa-shield-check text-warning"></i>
+                    <span><strong>Domain:</strong> Cloud Architecture &amp; DevSecOps</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TrainWithShubham Agentic AI for DevOps Certification Card -->
+        <div class="col-lg-6">
+          <div class="cert-card h-100" style="border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.12);">
+            <div class="row align-items-center g-4">
+              <div class="col-md-4 text-center">
+                <div class="p-3 rounded-circle bg-dark border border-info-subtle d-inline-flex align-items-center justify-content-center" style="width: 120px; height: 120px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
+                  <i class="fa-solid fa-robot" style="font-size: 3.2rem; color: var(--accent-cyan);"></i>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                  <span class="badge bg-info text-dark fw-bold">MASTERCLASS</span>
+                  <span class="badge bg-success-subtle text-success border border-success-subtle">Credential ID: 46XYO2NV</span>
+                </div>
+                <h3 class="cert-title fs-4">Agentic AI for DevOps - Masterclass</h3>
+                <div class="cert-org mb-2" style="color: var(--accent-cyan);"><i class="fa-solid fa-graduation-cap me-1"></i> TrainWithShubham</div>
+                
+                <p class="text-light-subtle small mb-3">
+                  Comprehensive mastery in leveraging Autonomous AI Agents, LLM-powered CI/CD automation, AI-driven SRE troubleshooting, prompt engineering for DevOps, and intelligent cloud operations.
+                </p>
+
+                <div class="pt-2 border-top border-secondary-subtle">
+                  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 small">
+                    <div class="cert-meta-item">
+                      <i class="fa-solid fa-calendar-check text-cyan"></i>
+                      <span><strong>Issued:</strong> May 2026</span>
+                    </div>
+                    <div class="cert-meta-item">
+                      <i class="fa-solid fa-circle-check text-success"></i>
+                      <span><strong>Verified:</strong> TrainWithShubham</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Education Cards -->
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="edu-card">
+            <div class="edu-year"><i class="fa-solid fa-calendar-check me-1"></i> Graduated 2022</div>
+            <h4 class="edu-degree">Master of Science (M.Sc.) in Computer Science</h4>
+            <div class="edu-field">Advanced computing, distributed systems, operating system internals, and networking.</div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="edu-card">
+            <div class="edu-year"><i class="fa-solid fa-calendar-check me-1"></i> Graduated 2020</div>
+            <h4 class="edu-degree">Bachelor of Science (B.Sc.) in Computer Science</h4>
+            <div class="edu-field">Core foundations in computer algorithms, databases, Linux systems, and software engineering.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ==========================================================================
+       CONTACT SECTION
+       ========================================================================== -->
+  <section id="contact" class="section-wrapper">
+    <div class="container">
+      <div class="text-center section-header">
+        <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Get In Touch</span>
+        <h2 class="section-title">Let's Build Something Resilient</h2>
+        <p class="section-subtitle mx-auto">Have a project, role opening, or infrastructure challenge? Feel free to reach out directly or drop a message below.</p>
+      </div>
+
+      <div class="row g-4">
+        
+        <!-- Left: Direct Contact Information -->
+        <div class="col-lg-5">
+          <div class="contact-info-card">
+            <h3 class="fw-bold text-white mb-2">Direct Contact</h3>
+            <p class="text-secondary small mb-4">I'm currently based in Pune, Maharashtra and open to both on-site and remote DevOps / Cloud engineering opportunities.</p>
+
+            <a href="mailto:akashbora0082@gmail.com" class="contact-channel-item d-flex">
+              <div class="contact-channel-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <div class="contact-channel-title">Email Address</div>
+                <div class="contact-channel-value text-break">akashbora0082@gmail.com</div>
+              </div>
+            </a>
+
+            <a href="tel:+917057100082" class="contact-channel-item d-flex">
+              <div class="contact-channel-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <div class="contact-channel-title">Phone Number</div>
+                <div class="contact-channel-value">+91-7057100082</div>
+              </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" rel="noopener noreferrer" class="contact-channel-item d-flex">
+              <div class="contact-channel-icon"><i class="fa-brands fa-linkedin-in"></i></div>
+              <div>
+                <div class="contact-channel-title">LinkedIn Profile</div>
+                <div class="contact-channel-value">linkedin.com/in/akash-bora</div>
+              </div>
+            </a>
+
+            <a href="https://github.com/Akashbora02" target="_blank" rel="noopener noreferrer" class="contact-channel-item d-flex">
+              <div class="contact-channel-icon"><i class="fa-brands fa-github"></i></div>
+              <div>
+                <div class="contact-channel-title">GitHub Profile</div>
+                <div class="contact-channel-value">github.com/Akashbora02</div>
+              </div>
+            </a>
+
+            <div class="contact-channel-item d-flex">
+              <div class="contact-channel-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <div class="contact-channel-title">Location</div>
+                <div class="contact-channel-value">Pune, Maharashtra, India</div>
+              </div>
+            </div>
+
+            <!-- WhatsApp Direct Action -->
+            <div class="mt-4 pt-2">
+              <a href="https://api.whatsapp.com/send?phone=917057100082&text=Hi%20Akash,%20I%20visited%20your%20DevOps%20portfolio!" target="_blank" rel="noopener noreferrer" class="btn btn-outline-success w-100 py-2 fw-bold">
+                <i class="fa-brands fa-whatsapp me-2"></i> Chat on WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Interactive Contact Form -->
+        <div class="col-lg-7">
+          <div class="contact-form-card">
+            <h3 class="fw-bold text-white mb-2">Send a Message</h3>
+            <p class="text-secondary small mb-4">Fill in the form below and I will respond to your inquiry within 24 hours.</p>
+
+            <form id="contact-form">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="contact-name" class="form-label-custom"><i class="fa-solid fa-user text-cyan"></i> Your Name *</label>
+                  <input type="text" id="contact-name" class="form-control form-control-custom" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="contact-email" class="form-label-custom"><i class="fa-solid fa-envelope text-cyan"></i> Your Email *</label>
+                  <input type="email" id="contact-email" class="form-control form-control-custom" placeholder="e.g. john@company.com" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="contact-subject" class="form-label-custom"><i class="fa-solid fa-tag text-cyan"></i> Subject</label>
+                  <input type="text" id="contact-subject" class="form-control form-control-custom" placeholder="e.g. DevOps Engineer Opportunity / Project Inquiry">
+                </div>
+                <div class="col-md-6">
+                  <label for="contact-project-type" class="form-label-custom"><i class="fa-solid fa-layer-group text-cyan"></i> Topic / Role</label>
+                  <select id="contact-project-type" class="form-control form-control-custom">
+                    <option value="Full-time DevOps Role" selected>Full-time DevOps / Cloud Role</option>
+                    <option value="Cloud Architecture Consulting">Cloud Architecture Consulting</option>
+                    <option value="Kubernetes / CI/CD Migration">Kubernetes / CI/CD Migration</option>
+                    <option value="General Inquiry">General Inquiry / Networking</option>
+                  </select>
+                </div>
+
+                <div class="col-12">
+                  <label for="contact-message" class="form-label-custom"><i class="fa-solid fa-message text-cyan"></i> Your Message *</label>
+                  <textarea id="contact-message" rows="5" class="form-control form-control-custom" placeholder="Tell me about your project, team requirements, or technical challenges..." required></textarea>
+                </div>
+
+                <div class="col-12 mt-4">
+                  <button type="submit" id="btn-submit-contact" class="btn-primary-glow w-100 justify-content-center py-3">
+                    <i class="fa-solid fa-paper-plane"></i> Send Message
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer-custom">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-md-4 text-center text-md-start">
+          <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-2">
+            <img src="assets/images/logo.jpg" alt="Akash Bora Logo" class="footer-brand-logo">
+            <span class="text-white fw-bold">Akash Bora</span>
+          </div>
+          <p class="text-muted small mb-0">DevOps Engineer &amp; AWS Solutions Architect.</p>
+        </div>
+
+        <div class="col-md-4 text-center">
+          <div class="d-flex justify-content-center gap-3">
+            <a href="#about" class="footer-nav-link">About</a>
+            <a href="#skills" class="footer-nav-link">Skills</a>
+            <a href="#experience" class="footer-nav-link">Experience</a>
+            <a href="#projects" class="footer-nav-link">Projects</a>
+            <a href="#contact" class="footer-nav-link">Contact</a>
+          </div>
+        </div>
+
+        <div class="col-md-4 text-center text-md-end">
+          <div class="d-flex justify-content-center justify-content-md-end gap-2 mb-2">
+            <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" class="social-icon-btn" style="width:36px; height:36px;"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Akashbora02" target="_blank" class="social-icon-btn" style="width:36px; height:36px;"><i class="fa-brands fa-github"></i></a>
+            <a href="mailto:akashbora0082@gmail.com" class="social-icon-btn" style="width:36px; height:36px;"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+          <p class="text-muted small mb-0">&copy; <span id="current-year">2026</span> Akash Bora. All rights reserved. <a href="admin/" class="text-muted text-decoration-none ms-1 opacity-25" title="Admin Access"><i class="fa-solid fa-shield-halved"></i></a></p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       PROJECT DETAIL MODALS (DEEP DIVE POPUPS)
+       ========================================================================== -->
+  <!-- Modal 1: GitOps EKS -->
+  <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="modalLabel1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold text-white" id="modalLabel1">
+            <i class="fa-solid fa-code-branch text-cyan me-2"></i> GitOps Production Deployment Architecture
+          </h5>
+          <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <img src="assets/images/projects/gitops-arch.svg" alt="GitOps Architecture" class="img-fluid rounded mb-4 border border-secondary-subtle">
+          <h6 class="text-cyan fw-bold mono mb-2">ARCHITECTURE OVERVIEW</h6>
+          <p class="text-light-subtle">
+            This production system utilizes Argo CD to establish an automated GitOps reconciliation loop for microservices on AWS EKS. Any merged pull request in the Git repository triggers declarative manifest updates. Argo CD detects the revision, compares live state with desired state, and executes zero-downtime rolling updates with automatic canary or blue/green patterns.
+          </p>
+          <h6 class="text-cyan fw-bold mono mb-2">KEY HIGHLIGHTS:</h6>
+          <ul class="text-light-subtle small">
+            <li><strong>Auto-Drift Correction:</strong> Reconciles manual cluster modifications back to the Git source of truth automatically.</li>
+            <li><strong>High-Availability Ingress:</strong> NGINX Ingress Controller terminating SSL/TLS with AWS ACM integration.</li>
+            <li><strong>Dynamic Scaling:</strong> Horizontal Pod Autoscaler (HPA) auto-scaling pods between 2–4 nodes based on CPU/memory load.</li>
+            <li><strong>Rollback Mechanism:</strong> Instant 1-click rollback to previous commit hashes if anomalies occur.</li>
+          </ul>
+        </div>
+        <div class="modal-footer modal-footer-custom">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="#contact" class="btn btn-primary-glow" data-bs-dismiss="modal">Inquire About This Architecture</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: DevSecOps -->
+  <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="modalLabel2" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold text-white" id="modalLabel2">
+            <i class="fa-solid fa-shield-halved text-cyan me-2"></i> Automated DevSecOps Pipeline Architecture
+          </h5>
+          <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <img src="assets/images/projects/devsecops-pipeline.svg" alt="DevSecOps Pipeline Architecture" class="img-fluid rounded mb-4 border border-secondary-subtle">
+          <h6 class="text-cyan fw-bold mono mb-2">SECURITY &amp; COMPLIANCE GATES</h6>
+          <p class="text-light-subtle">
+            Shifts security left into the developer workflow. Every code commit triggers automated SonarQube static code analysis (SAST) for bugs and code smells. Multi-stage Docker builds produce minimal container images which are scanned via Trivy for CVEs prior to publishing to AWS ECR.
+          </p>
+          <h6 class="text-cyan fw-bold mono mb-2">KEY HIGHLIGHTS:</h6>
+          <ul class="text-light-subtle small">
+            <li><strong>Zero Critical CVE Gate:</strong> Builds immediately fail if High or Critical vulnerabilities are discovered.</li>
+            <li><strong>Image Hygiene:</strong> Strips build-time compilers and extraneous binaries to minimize attack surfaces.</li>
+            <li><strong>Audit Traceability:</strong> Every container image is tagged with Git commit SHAs and cryptographic digests.</li>
+          </ul>
+        </div>
+        <div class="modal-footer modal-footer-custom">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a href="#contact" class="btn btn-primary-glow" data-bs-dismiss="modal">Discuss DevSecOps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Observability -->
+  <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="modalLabel3" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold text-white" id="modalLabel3">
+            <i class="fa-solid fa-chart-pie text-cyan me-2"></i> Observability &amp; Incident SRE Stack
+          </h5>
+          <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <img src="assets/images/projects/observability-stack.svg" alt="Observability Architecture" class="img-fluid rounded mb-4 border border-secondary-subtle">
+          <h6 class="text-cyan fw-bold mono mb-2">METRIC COLLECTION &amp; INCIDENT ROUTING</h6>
+          <p class="text-light-subtle">
+            Collects real-time metrics across Kubernetes nodes, AWS services (CloudWatch), and custom microservice endpoints. Prometheus serves as the high-performance time-series database with automated Alertmanager rules for instant notification routing.
+          </p>
+          <h6 class="text-cyan fw-bold mono mb-2">KEY HIGHLIGHTS:</h6>
+          <ul class="text-light-subtle small">
+            <li><strong>MTTR Reduction:</strong> 30% reduction in mean time to resolution via actionable runbook links in alert notifications.</li>
+            <li><strong>Unified Dashboards:</strong> Grafana dashboards tracking SLOs, request latency, pod memory pressure, and HTTP 5xx error rates.</li>
+          </ul>
+        </div>
+        <div class="modal-footer modal-footer-custom">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Terraform Cloud -->
+  <div class="modal fade" id="projectModal4" tabindex="-1" aria-labelledby="modalLabel4" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold text-white" id="modalLabel4">
+            <i class="fa-solid fa-cloud text-cyan me-2"></i> Terraform Multi-Tier AWS Infrastructure
+          </h5>
+          <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <img src="assets/images/projects/terraform-cloud.svg" alt="Terraform Infrastructure Architecture" class="img-fluid rounded mb-4 border border-secondary-subtle">
+          <h6 class="text-cyan fw-bold mono mb-2">MODULAR INFRASTRUCTURE AS CODE</h6>
+          <p class="text-light-subtle">
+            Architected clean, reusable Terraform modules for provisioning multi-AZ VPC topologies, auto-scaling compute groups, Application Load Balancers, and Multi-AZ RDS databases with encrypted state locking via AWS S3 and DynamoDB.
+          </p>
+        </div>
+        <div class="modal-footer modal-footer-custom">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
+    <div id="contactToast" class="toast toast-custom align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <i class="fa-solid fa-circle-check text-success me-2 fs-5"></i>
+          <strong>Message Sent!</strong> Thanks for reaching out. Akash Bora will get back to you shortly.
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+  <!-- Custom Scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/terminal.js"></script>
+</body>
+</html>

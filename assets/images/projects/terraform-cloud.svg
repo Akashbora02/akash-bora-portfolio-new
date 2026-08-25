@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120"/>
+      <stop offset="100%" stop-color="#1e1b4b"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad4)" rx="16"/>
+  <rect width="798" height="448" x="1" y="1" fill="none" stroke="#312e81" stroke-width="1.5" rx="16"/>
+
+  <!-- Terraform Core -->
+  <g transform="translate(60, 140)">
+    <rect width="180" height="200" rx="14" fill="#111827" stroke="#7C3AED" stroke-width="2"/>
+    <circle cx="90" cy="50" r="25" fill="#7C3AED" opacity="0.2"/>
+    <path d="M78 40 L90 32 L102 40 L90 48 Z M78 50 L90 58 L102 50" stroke="#A78BFA" stroke-width="2" fill="none"/>
+    <text x="90" y="105" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">Terraform IaC</text>
+    <text x="90" y="125" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">State Backend (S3 + DynamoDB)</text>
+    <rect x="25" y="145" width="130" height="30" rx="6" fill="#7C3AED" opacity="0.2"/>
+    <text x="90" y="165" fill="#DDD6FE" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Modular &amp; Versioned</text>
+  </g>
+
+  <!-- AWS Cloud Infrastructure Outline -->
+  <g transform="translate(290, 80)">
+    <rect width="450" height="310" rx="16" fill="#111827" stroke="#FF9900" stroke-width="2"/>
+    <text x="225" y="35" fill="#FF9900" font-family="system-ui, sans-serif" font-size="15" font-weight="700" text-anchor="middle">AWS Multi-AZ VPC Architecture</text>
+    
+    <!-- Public Subnet -->
+    <rect x="20" y="55" width="410" height="65" rx="8" fill="#1E293B" stroke="#38BDF8" stroke-width="1"/>
+    <text x="35" y="80" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Public Subnet (ALB + NAT Gateway + Route53)</text>
+    <text x="35" y="102" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Internet Ingress • SSL Offloading</text>
+
+    <!-- Private Subnet - Compute -->
+    <rect x="20" y="130" width="410" height="85" rx="8" fill="#1E293B" stroke="#6366F1" stroke-width="1"/>
+    <text x="35" y="155" fill="#A5B4FC" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Private Subnet (EKS / EC2 Microservices)</text>
+    <text x="35" y="177" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="11">Auto-Scaling Group • Multi-AZ Node Groups • Private IAM Roles</text>
+    <text x="35" y="198" fill="#10B981" font-family="system-ui, sans-serif" font-size="10">Secured via Security Groups &amp; Network ACLs</text>
+
+    <!-- Database Subnet -->
+    <rect x="20" y="225" width="410" height="65" rx="8" fill="#1E293B" stroke="#10B981" stroke-width="1"/>
+    <text x="35" y="250" fill="#34D399" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Data Subnet (RDS Multi-AZ MySQL / PostgreSQL)</text>
+    <text x="35" y="272" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11">Encrypted at Rest (KMS) • Automated Snapshots</text>
+  </g>
+
+  <!-- Arrow -->
+  <path d="M240 240 H290" stroke="#7C3AED" stroke-width="3" stroke-dasharray="6,6"/>
+
+  <text x="400" y="45" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Scalable Production Cloud Infrastructure via Terraform</text>
+</svg>

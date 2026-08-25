@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a101d"/>
+      <stop offset="100%" stop-color="#162238"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad3)" rx="16"/>
+  <rect width="798" height="448" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="1.5" rx="16"/>
+
+  <!-- Left: Metric Sources -->
+  <g transform="translate(50, 100)">
+    <rect width="180" height="260" rx="12" fill="#111827" stroke="#38BDF8" stroke-width="1.5"/>
+    <text x="90" y="35" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Data Sources</text>
+    
+    <rect x="20" y="55" width="140" height="50" rx="8" fill="#1E293B"/>
+    <text x="90" y="85" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Kubernetes (EKS)</text>
+    
+    <rect x="20" y="120" width="140" height="50" rx="8" fill="#1E293B"/>
+    <text x="90" y="150" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">AWS CloudWatch</text>
+    
+    <rect x="20" y="185" width="140" height="50" rx="8" fill="#1E293B"/>
+    <text x="90" y="215" fill="#F1F5F9" font-family="system-ui, sans-serif" font-size="12" font-weight="600" text-anchor="middle">Linux OS Exporters</text>
+  </g>
+
+  <!-- Middle: Collector & Storage -->
+  <g transform="translate(300, 90)">
+    <rect width="200" height="280" rx="14" fill="#111827" stroke="#F97316" stroke-width="2"/>
+    <circle cx="100" cy="50" r="24" fill="#F97316" opacity="0.2"/>
+    <circle cx="100" cy="50" r="12" fill="#F97316"/>
+    <text x="100" y="105" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="16" font-weight="700" text-anchor="middle">Prometheus Core</text>
+    <text x="100" y="125" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">TSDB + Scraping Engine</text>
+
+    <!-- Alertmanager box inside -->
+    <rect x="20" y="150" width="160" height="95" rx="8" fill="#1E293B" stroke="#EF4444" stroke-width="1.5"/>
+    <text x="100" y="178" fill="#EF4444" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">Alertmanager</text>
+    <text x="100" y="198" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Slack / PagerDuty / Email</text>
+    <text x="100" y="222" fill="#10B981" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">30% MTTR Reduction</text>
+  </g>
+
+  <!-- Right: Visualization -->
+  <g transform="translate(560, 100)">
+    <rect width="190" height="260" rx="12" fill="#111827" stroke="#F59E0B" stroke-width="2"/>
+    <text x="95" y="35" fill="#F59E0B" font-family="system-ui, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Grafana Dashboards</text>
+    
+    <!-- Mini chart simulation -->
+    <rect x="20" y="55" width="150" height="85" rx="6" fill="#0F172A"/>
+    <polyline points="30,120 50,105 70,110 90,80 110,95 130,70 155,75" fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+    <text x="95" y="155" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">SLO/SLA &amp; Pod Health</text>
+
+    <rect x="20" y="175" width="150" height="60" rx="6" fill="#0F172A"/>
+    <text x="95" y="200" fill="#E2E8F0" font-family="system-ui, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Node CPU &amp; Mem Spikes</text>
+    <text x="95" y="220" fill="#10B981" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Real-time Live Refresh</text>
+  </g>
+
+  <!-- Flow arrows -->
+  <path d="M230 230 H300 M500 230 H560" stroke="#00E5FF" stroke-width="2.5" stroke-dasharray="6,6"/>
+
+  <text x="400" y="45" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Enterprise Observability &amp; SRE Monitoring Architecture</text>
+</svg>

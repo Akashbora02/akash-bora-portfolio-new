@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#131e33"/>
+    </linearGradient>
+    <filter id="glowGreen" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad2)" rx="16"/>
+  <rect width="798" height="448" x="1" y="1" fill="none" stroke="#1e293b" stroke-width="1.5" rx="16"/>
+
+  <!-- Pipeline Flow Line -->
+  <path d="M120 225 H680" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+  <path d="M120 225 H680" stroke="#10B981" stroke-width="3" stroke-dasharray="12,12" opacity="0.9"/>
+
+  <!-- Step 1: Code & Lint -->
+  <g transform="translate(60, 160)">
+    <rect width="115" height="130" rx="12" fill="#111827" stroke="#3B82F6" stroke-width="2"/>
+    <circle cx="57" cy="40" r="20" fill="#3B82F6" opacity="0.2"/>
+    <path d="M48 40 L54 46 L68 32" stroke="#3B82F6" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="57" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">1. Git Commit</text>
+    <text x="57" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">GitHub Actions</text>
+    <text x="57" y="118" fill="#10B981" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">✓ Branch Trigger</text>
+  </g>
+
+  <!-- Step 2: SonarQube SAST -->
+  <g transform="translate(220, 145)">
+    <rect width="125" height="155" rx="12" fill="#111827" stroke="#8B5CF6" stroke-width="2"/>
+    <circle cx="62" cy="42" r="22" fill="#8B5CF6" opacity="0.2"/>
+    <path d="M52 42 Q62 28 72 42 Q62 56 52 42 Z" stroke="#8B5CF6" stroke-width="2.5" fill="none"/>
+    <text x="62" y="85" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">2. SAST Scan</text>
+    <text x="62" y="105" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">SonarQube Gate</text>
+    <rect x="15" y="120" width="95" height="22" rx="6" fill="#8B5CF6" opacity="0.2"/>
+    <text x="62" y="135" fill="#C4B5FD" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Quality Gate Passed</text>
+  </g>
+
+  <!-- Step 3: Docker Build & Trivy -->
+  <g transform="translate(390, 135)">
+    <rect width="135" height="175" rx="12" fill="#111827" stroke="#EC4899" stroke-width="2.5" filter="url(#glowGreen)" opacity="0.3"/>
+    <rect width="135" height="175" rx="12" fill="#111827" stroke="#EC4899" stroke-width="2"/>
+    <circle cx="67" cy="42" r="22" fill="#EC4899" opacity="0.2"/>
+    <rect x="52" y="32" width="30" height="20" rx="3" stroke="#EC4899" stroke-width="2" fill="none"/>
+    <text x="67" y="85" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">3. Container Scan</text>
+    <text x="67" y="105" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Trivy Vulnerabilities</text>
+    <rect x="15" y="122" width="105" height="20" rx="4" fill="#10B981" opacity="0.2"/>
+    <text x="67" y="136" fill="#10B981" font-family="system-ui, sans-serif" font-size="10" font-weight="600" text-anchor="middle">0 Critical / 0 High</text>
+    <text x="67" y="157" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">Push to AWS ECR</text>
+  </g>
+
+  <!-- Step 4: Secure Production Deploy -->
+  <g transform="translate(570, 150)">
+    <rect width="140" height="150" rx="12" fill="#111827" stroke="#10B981" stroke-width="2"/>
+    <circle cx="70" cy="40" r="20" fill="#10B981" opacity="0.2"/>
+    <path d="M58 40 L66 48 L82 30" stroke="#10B981" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <text x="70" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">4. Prod Deploy</text>
+    <text x="70" y="100" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">Argo CD GitOps</text>
+    <text x="70" y="122" fill="#38BDF8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">AWS EKS Cluster</text>
+  </g>
+
+  <!-- Top Title & Stats -->
+  <text x="400" y="55" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="20" font-weight="700" text-anchor="middle">Automated DevSecOps Pipeline Architecture</text>
+  <text x="400" y="80" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="13" text-anchor="middle">Zero-Vulnerability Policy • SAST + DAST + Image Hygiene Verification</text>
+</svg>
