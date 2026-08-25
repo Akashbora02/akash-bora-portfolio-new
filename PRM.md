@@ -92,7 +92,7 @@ git init
 git add .
 git commit -m "feat: complete responsive DevOps portfolio with Admin portal and Vercel config"
 git branch -M main
-git remote add origin https://github.com/Akashbora02/akash-bora-portfolio.git
+git remote add origin https://github.com/Akashbora02/akash-bora-portfolio-new.git
 git push -u origin main
 ```
 
