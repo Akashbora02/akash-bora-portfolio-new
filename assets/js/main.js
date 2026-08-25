@@ -382,7 +382,7 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   8. SMOOTH SCROLL FOR BUTTONS & ANCHORS
+   8. SMOOTH SCROLL FOR BUTTONS & ANCHORS + MOBILE AUTO-CLOSE
    ========================================================================== */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -393,7 +393,15 @@ function initSmoothScroll() {
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
-        const headerOffset = 80;
+        
+        // Auto-close mobile navbar collapse if open
+        const navCollapseEl = document.getElementById('navbarContent');
+        if (navCollapseEl && navCollapseEl.classList.contains('show') && window.bootstrap) {
+          const bsCollapse = bootstrap.Collapse.getInstance(navCollapseEl) || new bootstrap.Collapse(navCollapseEl, { toggle: false });
+          bsCollapse.hide();
+        }
+
+        const headerOffset = 75;
         const elementPosition = targetEl.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
