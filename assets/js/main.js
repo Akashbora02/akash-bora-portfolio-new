@@ -21,16 +21,15 @@ function initNavbarScroll() {
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
-  window.addEventListener('scroll', () => {
+  function updateActiveNav() {
     if (window.scrollY > 40) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
 
-    // Scroll spy
     let current = '';
-    const scrollPosition = window.pageYOffset + 200;
+    const scrollPosition = window.pageYOffset + 120;
 
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
@@ -40,13 +39,18 @@ function initNavbarScroll() {
       }
     });
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+    if (current) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 }
 
 /* ==========================================================================
@@ -382,9 +386,11 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   8. SMOOTH SCROLL FOR BUTTONS & ANCHORS + MOBILE AUTO-CLOSE
+   8. SMOOTH SCROLL FOR BUTTONS & ANCHORS + MOBILE AUTO-CLOSE & ACTIVE TOGGLE
    ========================================================================== */
 function initSmoothScroll() {
+  const navLinks = document.querySelectorAll('.nav-link');
+
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
@@ -394,11 +400,21 @@ function initSmoothScroll() {
       if (targetEl) {
         e.preventDefault();
         
+        // Immediately highlight clicked nav item
+        if (this.classList.contains('nav-link')) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          this.classList.add('active');
+        }
+
         // Auto-close mobile navbar collapse if open
         const navCollapseEl = document.getElementById('navbarContent');
-        if (navCollapseEl && navCollapseEl.classList.contains('show') && window.bootstrap) {
-          const bsCollapse = bootstrap.Collapse.getInstance(navCollapseEl) || new bootstrap.Collapse(navCollapseEl, { toggle: false });
-          bsCollapse.hide();
+        if (navCollapseEl && navCollapseEl.classList.contains('show')) {
+          if (window.bootstrap && bootstrap.Collapse) {
+            const bsCollapse = bootstrap.Collapse.getInstance(navCollapseEl) || new bootstrap.Collapse(navCollapseEl, { toggle: false });
+            bsCollapse.hide();
+          } else {
+            navCollapseEl.classList.remove('show');
+          }
         }
 
         const headerOffset = 75;

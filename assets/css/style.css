@@ -1417,9 +1417,6 @@ a:hover {
 }
 
 /* ==========================================================================
-   RESPONSIVE MEDIA QUERIES
-   ========================================================================== */
-/* ==========================================================================
    RESPONSIVE MEDIA QUERIES (DESKTOP, TABLET & MOBILE)
    ========================================================================== */
 
@@ -1492,6 +1489,8 @@ html, body {
   .hero-status-badge {
     margin-left: auto;
     margin-right: auto;
+    font-size: 0.78rem;
+    padding: 5px 12px;
   }
 
   .hero-title {
@@ -1500,7 +1499,7 @@ html, body {
 
   .hero-typing-box {
     justify-content: center;
-    font-size: clamp(1.1rem, 4.2vw, 1.45rem);
+    font-size: clamp(1.05rem, 4.2vw, 1.45rem);
     height: auto;
     min-height: 42px;
     white-space: normal;
@@ -1510,7 +1509,8 @@ html, body {
   .hero-subtitle {
     margin-left: auto;
     margin-right: auto;
-    font-size: 0.98rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
   }
 
   .hero-cta-group {
@@ -1527,6 +1527,7 @@ html, body {
   .btn-primary-glow, .btn-secondary-glass {
     width: 100%;
     justify-content: center;
+    min-height: 46px;
   }
 
   .terminal-window {
@@ -1534,47 +1535,122 @@ html, body {
   }
 
   .terminal-body {
-    min-height: 260px;
-    max-height: 300px;
-    font-size: 0.8rem;
-    padding: 14px;
+    min-height: 240px;
+    max-height: 280px;
+    font-size: 0.78rem;
+    padding: 12px;
   }
 
   .hero-stats-strip {
-    margin-top: 30px;
-    padding: 16px 12px;
+    margin-top: 25px;
+    padding: 14px 10px;
   }
   
   .section-title {
-    font-size: 1.75rem;
+    font-size: 1.65rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.88rem;
   }
   
   .stat-number {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
-  
+
+  /* ----------------------------------------------------
+     CI/CD PIPELINE SIMULATOR (MOBILE OPTIMIZED)
+     ---------------------------------------------------- */
+  .pipeline-visualizer-card {
+    padding: 18px 12px;
+  }
+
+  .pipeline-connector-line {
+    display: none; /* Avoid detached line on mobile */
+  }
+
+  .pipeline-steps-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 4px 16px;
+    margin: 15px 0 15px;
+  }
+
+  .pipeline-step-node {
+    min-width: 95px;
+    flex-shrink: 0;
+  }
+
+  .step-node-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+    margin-bottom: 6px;
+  }
+
+  .step-node-title {
+    font-size: 0.76rem;
+  }
+
+  .step-node-tool {
+    font-size: 0.68rem;
+  }
+
+  .pipeline-live-console {
+    font-size: 0.74rem;
+    line-height: 1.5;
+    padding: 12px 10px;
+    min-height: 110px;
+    word-break: break-word;
+    white-space: pre-wrap;
+  }
+
+  /* ----------------------------------------------------
+     PROFESSIONAL EXPERIENCE TIMELINE (MOBILE OPTIMIZED)
+     ---------------------------------------------------- */
   .timeline-container {
-    padding-left: 24px;
+    padding-left: 20px;
   }
 
   .timeline-container::before {
-    left: 8px;
+    left: 6px;
   }
   
   .timeline-dot {
-    left: -24px;
-    width: 18px;
-    height: 18px;
-    top: 8px;
+    left: -21px;
+    width: 16px;
+    height: 16px;
+    top: 10px;
   }
 
   .timeline-dot-inner {
-    width: 6px;
-    height: 6px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .timeline-item {
+    margin-bottom: 30px;
   }
 
   .experience-card {
-    padding: 20px 16px;
+    padding: 18px 14px;
+  }
+
+  .exp-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+
+  .exp-header > div:last-child {
+    text-align: left !important;
+    width: 100%;
   }
 
   .exp-role {
@@ -1582,11 +1658,139 @@ html, body {
   }
 
   .exp-company {
+    font-size: 0.92rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .exp-company .badge {
+    margin-left: 0 !important;
+    font-size: 0.72rem;
+  }
+
+  .exp-duration-badge {
+    font-size: 0.76rem;
+    padding: 3px 10px;
+  }
+
+  .exp-location {
+    font-size: 0.78rem;
+  }
+
+  .exp-bullet-list {
+    padding-left: 0;
+    margin-bottom: 14px;
+  }
+
+  .exp-bullet-list li {
+    padding-left: 18px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .exp-bullet-list li::before {
     font-size: 0.95rem;
   }
 
+  .exp-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tech-tag {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
+  /* ----------------------------------------------------
+     KEY IMPLEMENTATIONS & PROJECTS (MOBILE OPTIMIZED)
+     ---------------------------------------------------- */
+  .project-card {
+    height: 100%;
+  }
+
+  .project-thumb-wrapper {
+    height: 170px;
+    background: #070B14;
+  }
+
+  .project-thumb-img {
+    object-fit: contain;
+    padding: 8px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .project-body {
+    padding: 16px 14px;
+  }
+
+  .project-title {
+    font-size: 1.12rem;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 14px;
+  }
+
+  .project-metrics-box {
+    font-size: 0.78rem;
+    padding: 8px 10px;
+    flex-wrap: wrap;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  .project-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding-top: 12px;
+  }
+
+  .btn-project-modal, .project-footer .btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 9px 12px;
+    font-size: 0.85rem;
+  }
+
+  /* ----------------------------------------------------
+     CONTACT SECTION (MOBILE OPTIMIZED)
+     ---------------------------------------------------- */
   .contact-info-card, .contact-form-card {
-    padding: 22px 18px;
+    padding: 20px 14px;
+  }
+
+  .contact-channel-item {
+    padding: 12px 10px;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .contact-channel-icon {
+    width: 38px;
+    height: 38px;
+    font-size: 1rem;
+  }
+
+  .contact-channel-title {
+    font-size: 0.74rem;
+  }
+
+  .contact-channel-value {
+    font-size: 0.88rem;
+    word-break: break-all;
   }
 
   /* Form controls: 16px font prevents iOS zoom on focus */
@@ -1616,12 +1820,12 @@ html, body {
 /* Small Phones (< 576px) */
 @media (max-width: 575.98px) {
   .container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
   .navbar-pill-container {
-    padding: 10px 16px;
+    padding: 10px 14px;
   }
 
   .brand-logo-img {
@@ -1629,64 +1833,69 @@ html, body {
   }
 
   .hero-title {
-    font-size: 1.75rem;
+    font-size: 1.7rem;
   }
 
   .hero-stats-strip .col-6 {
-    padding: 6px;
+    padding: 5px;
   }
 
   .stat-number {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
   }
 
   .stat-label {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
   }
 
-  .skills-nav-pills {
-    gap: 6px;
-  }
-
-  .skills-pill-btn {
-    font-size: 0.8rem;
+  .skill-tab-btn {
+    font-size: 0.78rem;
     padding: 6px 12px;
   }
 
-  .project-thumb-wrapper {
-    height: 160px;
+  .skill-category-card {
+    padding: 16px 12px;
   }
 
-  .project-body {
-    padding: 18px 16px;
+  .skill-badge {
+    font-size: 0.76rem;
+    padding: 4px 8px;
+  }
+
+  .project-thumb-wrapper {
+    height: 150px;
+  }
+
+  .cert-card {
+    padding: 18px 14px;
   }
 
   .cert-badge-wrapper img {
-    max-width: 140px;
+    max-width: 120px;
   }
 
   .footer-custom {
-    padding: 40px 0 20px;
+    padding: 35px 0 20px;
     text-align: center;
   }
 
   .footer-nav-link {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
   }
 }
 
 /* Extra Compact Phones (< 380px) */
 @media (max-width: 379.98px) {
   .hero-title {
-    font-size: 1.55rem;
+    font-size: 1.5rem;
   }
 
   .hero-typing-box {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .btn-primary-glow, .btn-secondary-glass {
-    font-size: 0.85rem;
-    padding: 10px 14px;
+    font-size: 0.82rem;
+    padding: 9px 12px;
   }
 }
