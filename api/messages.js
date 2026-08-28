@@ -9,10 +9,24 @@ const { Pool } = require('pg');
 let pool;
 function getPool() {
   if (!pool) {
-    const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.POSTGRES_URL_NON_POOLING;
+    const connectionString = 
+      process.env.POSTGRES_URL || 
+      process.env.DATABASE_URL || 
+      process.env.POSTGRES_URL_NON_POOLING || 
+      process.env.POSTGRES_PRISMA_URL;
+
     if (connectionString) {
       pool = new Pool({
         connectionString,
+        ssl: { rejectUnauthorized: false }
+      });
+    } else if (process.env.PGHOST && process.env.PGUSER) {
+      pool = new Pool({
+        host: process.env.PGHOST,
+        user: process.env.PGUSER,
+        password: process.env.PGPASSWORD,
+        database: process.env.PGDATABASE || 'akash-bora-portfolio-new',
+        port: process.env.PGPORT ? parseInt(process.env.PGPORT) : 5432,
         ssl: { rejectUnauthorized: false }
       });
     }
@@ -26,12 +40,10 @@ const MASTER_HASH = '12279de1f1e9caf5be0faf4cafa5e7851427dac21d984ef1c11f4741c28
 function isAuthorized(req) {
   const authHeader = req.headers['authorization'] || '';
   const token = authHeader.replace('Bearer ', '').trim();
-  // Allow if token matches master hash or admin secret
   return token === MASTER_HASH || token === process.env.ADMIN_TOKEN || token === 'akash_admin_auth_token';
 }
 
 module.exports = async (req, res) => {
-  // CORS configuration
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE');
@@ -51,12 +63,13 @@ module.exports = async (req, res) => {
 
   const dbPool = getPool();
 
-  // GET: Fetch all inquiries
+  // GET: Fetch all inquiries from PostgreSQL
   if (req.method === 'GET') {
     if (!dbPool) {
       return res.status(200).json({
         success: true,
         source: 'local-fallback',
+        database: 'local-browser',
         messages: []
       });
     }
@@ -64,15 +77,20 @@ module.exports = async (req, res) => {
     try {
       const client = await dbPool.connect();
       try {
+        const dbInfo = await client.query('SELECT current_database() AS db;');
+        const databaseName = dbInfo.rows[0]?.db || 'akash-bora-portfolio-new';
+
         const result = await client.query(`
           SELECT id, name, email, subject, topic, message, status, created_at AS "createdAt"
           FROM inquiries
           ORDER BY created_at DESC
-          LIMIT 200;
+          LIMIT 300;
         `);
         return res.status(200).json({
           success: true,
           source: 'postgresql',
+          database: databaseName,
+          total: result.rows.length,
           messages: result.rows
         });
       } finally {
@@ -99,7 +117,7 @@ module.exports = async (req, res) => {
       const client = await dbPool.connect();
       try {
         await client.query('UPDATE inquiries SET status = $1 WHERE id = $2', [status, id]);
-        return res.status(200).json({ success: true, message: 'Status updated in PostgreSQL.' });
+        return res.status(200).json({ success: true, message: 'Status updated in PostgreSQL database.' });
       } finally {
         client.release();
       }
@@ -109,7 +127,7 @@ module.exports = async (req, res) => {
     }
   }
 
-  // DELETE: Delete an inquiry
+  // DELETE: Delete an inquiry or Wipe all
   if (req.method === 'DELETE') {
     const { id, clearAll } = req.query || req.body || {};
 
@@ -120,9 +138,10 @@ module.exports = async (req, res) => {
     try {
       const client = await dbPool.connect();
       try {
-        if (clearAll === 'true') {
+        if (clearAll === 'true' || clearAll === true) {
           await client.query('DELETE FROM inquiries');
-          return res.status(200).json({ success: true, message: 'All inquiries cleared from PostgreSQL.' });
+          console.log('[POSTGRES DB WIPED] All inquiries removed.');
+          return res.status(200).json({ success: true, message: 'All inquiries successfully cleared from PostgreSQL!' });
         } else if (id) {
           await client.query('DELETE FROM inquiries WHERE id = $1', [id]);
           return res.status(200).json({ success: true, message: 'Inquiry deleted from PostgreSQL.' });

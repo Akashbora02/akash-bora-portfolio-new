@@ -483,11 +483,16 @@
         <img src="assets/images/logo-banner.png?v=5.0" alt="Akash Bora Logo" class="brand-logo-img">
       </a>
       <span class="badge bg-dark text-cyan border border-info-subtle py-2 px-3 fw-semibold"><i class="fa-solid fa-shield-halved me-1"></i> Admin Portal</span>
-      <span id="db-status-badge" class="badge bg-success-subtle text-success border border-success-subtle py-2 px-3 mono d-none d-md-inline-flex"><i class="fa-solid fa-database me-1"></i> PostgreSQL Cloud</span>
+      <span id="db-status-badge" class="badge bg-info-subtle text-info border border-info-subtle py-2 px-3 mono d-inline-flex align-items-center gap-1" role="button" onclick="openDbDiagnostics()" title="Click to view PostgreSQL Database Connection Status">
+        <i class="fa-solid fa-database me-1"></i> Connecting DB...
+      </span>
     </div>
 
     <div class="d-flex align-items-center gap-2">
-      <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#changePinModal" title="Change Security Passcode">
+      <button class="btn btn-sm btn-outline-info" onclick="openDbDiagnostics()" title="PostgreSQL Database Manager">
+        <i class="fa-solid fa-server me-1"></i> DB Manager
+      </button>
+      <button class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#changePinModal" title="Change Security Passcode">
         <i class="fa-solid fa-key me-1"></i> Change PIN
       </button>
       <button id="btnExportCSV" class="btn btn-sm btn-cyan-glow">
@@ -705,6 +710,70 @@
     </div>
   </div>
 
+  <!-- Database Diagnostics & Management Modal -->
+  <div class="modal fade" id="dbDiagnosticsModal" tabindex="-1" aria-labelledby="dbDiagnosticsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content modal-dark-custom">
+        <div class="modal-header border-secondary">
+          <h5 class="modal-title fw-bold text-white d-flex align-items-center gap-2" id="dbDiagnosticsModalLabel">
+            <i class="fa-solid fa-database text-cyan"></i> PostgreSQL Database Manager
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+          <!-- Live Status Card -->
+          <div class="p-3 rounded mb-4" id="dbModalStatusBox" style="background: rgba(8, 16, 32, 0.8); border: 1px solid rgba(56, 189, 248, 0.3);">
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span class="text-secondary small font-monospace">POSTGRESQL CLOUD STATUS</span>
+              <span id="dbModalStatusTag" class="badge bg-secondary mono">Checking...</span>
+            </div>
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <small class="text-muted d-block font-monospace">DATABASE NAME</small>
+                <strong id="dbModalDbName" class="text-white fs-6 font-monospace">akash-bora-portfolio-new</strong>
+              </div>
+              <div class="col-sm-6">
+                <small class="text-muted d-block font-monospace">ENVIRONMENT VARIABLE</small>
+                <span id="dbModalEnvDetected" class="text-cyan small font-monospace">Detecting...</span>
+              </div>
+              <div class="col-sm-6">
+                <small class="text-muted d-block font-monospace">TOTAL STORED INQUIRIES</small>
+                <strong id="dbModalTotalCount" class="text-white fs-5 font-monospace">0</strong>
+              </div>
+              <div class="col-sm-6">
+                <small class="text-muted d-block font-monospace">LATENCY / RESPONSE TIME</small>
+                <span id="dbModalLatency" class="text-light small font-monospace">-- ms</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Connection Guide (Shows when needed) -->
+          <div id="dbModalGuideBox" class="p-3 rounded mb-4 d-none" style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.35);">
+            <h6 class="text-warning fw-bold mb-2"><i class="fa-solid fa-triangle-exclamation me-1"></i> How to Connect Your PostgreSQL Database:</h6>
+            <ol class="small text-light ps-3 mb-2" style="line-height: 1.7;">
+              <li>Open your <strong><a href="https://vercel.com/dashboard" target="_blank" class="text-cyan">Vercel Dashboard</a></strong> &rarr; Navigate to the <strong>Storage</strong> tab.</li>
+              <li>Click on your database (<strong><code>akash-bora-portfolio-new</code></strong>) &rarr; Click <strong>Connect Project</strong>.</li>
+              <li>Select your portfolio project (<strong><code>akash-bora-portfolio-new</code></strong>) and click <strong>Connect</strong>.</li>
+              <li>Vercel will inject <code>POSTGRES_URL</code> automatically. Trigger a redeployment or click "Test Ping" below!</li>
+            </ol>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center pt-2 border-top border-secondary">
+            <button id="btnTestDbPing" class="btn btn-sm btn-outline-info" onclick="checkDbDiagnostics()">
+              <i class="fa-solid fa-rotate me-1"></i> Test Ping &amp; Sync DB
+            </button>
+            <button id="btnModalWipeDb" class="btn btn-sm btn-outline-danger" onclick="wipePostgresDb()">
+              <i class="fa-solid fa-trash me-1"></i> Wipe All Records from PostgreSQL
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Bootstrap Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -717,10 +786,11 @@
     // Default SHA-256 salted hash for master key (Never plain text)
     const DEFAULT_SALTED_HASH = '12279de1f1e9caf5be0faf4cafa5e7851427dac21d984ef1c11f4741c287a099';
 
-    // Seed realistic sample data if clean
+    // Seed realistic sample data ONLY on very first initialization
     function seedInitialData() {
-      const existing = localStorage.getItem(STORAGE_KEY);
-      if (!existing || JSON.parse(existing).length === 0) {
+      const isInitialized = localStorage.getItem('akash_admin_initialized');
+      if (!isInitialized) {
+        localStorage.setItem('akash_admin_initialized', 'true');
         const samples = [
           {
             id: 'inq_1724601200000',
@@ -729,28 +799,8 @@
             subject: 'Lead DevOps / Cloud Engineer opening (Pune / Remote)',
             topic: 'Full-time DevOps Role',
             message: 'Hi Akash, I came across your impressive work with EKS, GitOps, and Terraform at Hisan Labs & Groots. We have an urgent opening for a Senior Cloud/DevOps Engineer. Would love to connect!',
-            createdAt: new Date(Date.now() - 3600000 * 2).toISOString(),
+            createdAt: new Date().toISOString(),
             status: 'unread'
-          },
-          {
-            id: 'inq_1724501200000',
-            name: 'Rahul Sharma (VP of Engineering)',
-            email: 'rahul.sharma@fintechscale.com',
-            subject: 'Kubernetes Migration & Zero-Downtime Pipeline Consultation',
-            topic: 'Kubernetes / CI/CD Migration',
-            message: 'Hello Akash, we are migrating our multi-tier AWS microservices to AWS EKS with Argo CD. Saw your architecture breakdown on your portfolio. Can we discuss your consulting availability this week?',
-            createdAt: new Date(Date.now() - 86400000).toISOString(),
-            status: 'unread'
-          },
-          {
-            id: 'inq_1724401200000',
-            name: 'David Miller',
-            email: 'david.m@awscloudpartners.com',
-            subject: 'AWS Solutions Architecture Review & IaC Automation',
-            topic: 'Cloud Architecture Consulting',
-            message: 'Great portfolio Akash! We need someone with AWS Solutions Architect Professional credentials to review our Terraform blueprints and CloudWatch/Prometheus observability stack.',
-            createdAt: new Date(Date.now() - 86400000 * 3).toISOString(),
-            status: 'replied'
           }
         ];
         localStorage.setItem(STORAGE_KEY, JSON.stringify(samples));
@@ -778,20 +828,30 @@
         document.getElementById('btnUnlock').disabled = true;
         document.getElementById('lockoutTimer').classList.remove('d-none');
         document.getElementById('lockoutSeconds').textContent = remaining;
-        setTimeout(checkLockout, 1000);
+        const countdown = setInterval(() => {
+          const rem = Math.ceil((lockUntil - Date.now()) / 1000);
+          if (rem <= 0) {
+            clearInterval(countdown);
+            sessionStorage.removeItem('auth_locked_until');
+            sessionStorage.removeItem('auth_failed_attempts');
+            failedAttempts = 0;
+            document.getElementById('adminPasscode').disabled = false;
+            document.getElementById('btnUnlock').disabled = false;
+            document.getElementById('lockoutTimer').classList.add('d-none');
+            document.getElementById('authError').classList.add('d-none');
+          } else {
+            document.getElementById('lockoutSeconds').textContent = rem;
+          }
+        }, 1000);
         return true;
-      } else {
-        document.getElementById('adminPasscode').disabled = false;
-        document.getElementById('btnUnlock').disabled = false;
-        document.getElementById('lockoutTimer').classList.add('d-none');
-        return false;
       }
+      return false;
     }
 
-    // Passcode visibility toggle
-    document.getElementById('btnTogglePassVisibility').addEventListener('click', () => {
+    // Toggle password view
+    document.getElementById('btnTogglePassView').addEventListener('click', () => {
       const input = document.getElementById('adminPasscode');
-      const icon = document.getElementById('passEyeIcon');
+      const icon = document.getElementById('btnTogglePassView').querySelector('i');
       if (input.type === 'password') {
         input.type = 'text';
         icon.classList.replace('fa-eye', 'fa-eye-slash');
@@ -858,6 +918,92 @@
       location.reload();
     });
 
+    // PostgreSQL Cloud Diagnostics & Connection Health
+    async function checkDbDiagnostics() {
+      const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
+      const statusTag = document.getElementById('dbModalStatusTag');
+      const dbNameEl = document.getElementById('dbModalDbName');
+      const envDetectedEl = document.getElementById('dbModalEnvDetected');
+      const countEl = document.getElementById('dbModalTotalCount');
+      const latencyEl = document.getElementById('dbModalLatency');
+      const guideBox = document.getElementById('dbModalGuideBox');
+      const headerBadge = document.getElementById('db-status-badge');
+
+      if (statusTag) {
+        statusTag.className = 'badge bg-secondary mono';
+        statusTag.textContent = 'Testing Ping...';
+      }
+
+      try {
+        const res = await fetch('/api/db-status', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const data = await res.json();
+
+        if (data && data.connected) {
+          const dbName = data.database || 'akash-bora-portfolio-new';
+          if (statusTag) {
+            statusTag.className = 'badge bg-success mono';
+            statusTag.textContent = '● CONNECTED (LIVE)';
+          }
+          if (dbNameEl) dbNameEl.textContent = dbName;
+          if (envDetectedEl) envDetectedEl.textContent = data.envDetected || 'POSTGRES_URL';
+          if (countEl) countEl.textContent = data.totalInquiries ?? '0';
+          if (latencyEl) latencyEl.textContent = `${data.latencyMs || 25} ms (${data.version || 'PostgreSQL'})`;
+          if (guideBox) guideBox.classList.add('d-none');
+
+          if (headerBadge) {
+            headerBadge.className = 'badge bg-success-subtle text-success border border-success-subtle py-2 px-3 mono d-inline-flex align-items-center gap-1';
+            headerBadge.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> PostgreSQL: <strong>${escapeHtml(dbName)}</strong> (Connected)`;
+          }
+        } else {
+          if (statusTag) {
+            statusTag.className = 'badge bg-warning mono text-dark';
+            statusTag.textContent = '⚠ SETUP REQUIRED';
+          }
+          if (dbNameEl) dbNameEl.textContent = 'akash-bora-portfolio-new (Pending Link)';
+          if (envDetectedEl) envDetectedEl.textContent = data.envDetected || 'None in Vercel Environment';
+          if (countEl) countEl.textContent = getMessages().length + ' (Local Cache)';
+          if (latencyEl) latencyEl.textContent = '--';
+          if (guideBox) guideBox.classList.remove('d-none');
+
+          if (headerBadge) {
+            headerBadge.className = 'badge bg-warning-subtle text-warning border border-warning-subtle py-2 px-3 mono d-inline-flex align-items-center gap-1';
+            headerBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-warning"></i> Local DB (Click to Connect PostgreSQL)`;
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching DB status:', err);
+      }
+    }
+
+    window.openDbDiagnostics = function() {
+      const modal = new bootstrap.Modal(document.getElementById('dbDiagnosticsModal'));
+      modal.show();
+      checkDbDiagnostics();
+    };
+
+    window.wipePostgresDb = async function() {
+      if (confirm('CAUTION: Are you sure you want to permanently delete ALL inquiry records from your PostgreSQL cloud database?')) {
+        const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
+        try {
+          const res = await fetch('/api/messages?clearAll=true', {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          if (res.ok) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
+            renderDashboard();
+            alert('✓ PostgreSQL Database has been completely wiped (0 records remaining).');
+            checkDbDiagnostics();
+            bootstrap.Modal.getInstance(document.getElementById('dbDiagnosticsModal')).hide();
+          }
+        } catch(e) {
+          alert('Failed to wipe database: ' + e.message);
+        }
+      }
+    };
+
     // PostgreSQL Cloud Synchronization
     async function syncPostgresInquiries() {
       const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
@@ -870,26 +1016,34 @@
         });
         if (res.ok) {
           const data = await res.json();
-          if (data && data.messages) {
+          if (data) {
             if (dbBadge) {
               if (data.source === 'postgresql') {
-                dbBadge.className = 'badge bg-success-subtle text-success border border-success-subtle py-2 px-3 mono d-none d-md-inline-flex';
-                dbBadge.innerHTML = '<i class="fa-solid fa-database me-1"></i> PostgreSQL Cloud (Synced)';
+                const dbName = data.database || 'akash-bora-portfolio-new';
+                dbBadge.className = 'badge bg-success-subtle text-success border border-success-subtle py-2 px-3 mono d-inline-flex align-items-center gap-1';
+                dbBadge.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> PostgreSQL: <strong>${escapeHtml(dbName)}</strong> (Connected)`;
               } else {
-                dbBadge.className = 'badge bg-info-subtle text-info border border-info-subtle py-2 px-3 mono d-none d-md-inline-flex';
-                dbBadge.innerHTML = '<i class="fa-solid fa-database me-1"></i> Local DB Active';
+                dbBadge.className = 'badge bg-warning-subtle text-warning border border-warning-subtle py-2 px-3 mono d-inline-flex align-items-center gap-1';
+                dbBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-warning"></i> Local DB (Click to Connect PostgreSQL)`;
+                dbBadge.style.cursor = 'pointer';
               }
             }
-            if (Array.isArray(data.messages) && data.messages.length > 0) {
-              const localMsgs = getMessages();
-              const map = new Map();
-              data.messages.forEach(m => map.set(m.id, m));
-              localMsgs.forEach(m => {
-                if (!map.has(m.id)) map.set(m.id, m);
-              });
-              const combined = Array.from(map.values());
-              localStorage.setItem(STORAGE_KEY, JSON.stringify(combined));
-              renderDashboard();
+            if (data.messages && Array.isArray(data.messages)) {
+              if (data.source === 'postgresql') {
+                // If PostgreSQL is live, use PostgreSQL as the single source of truth
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(data.messages));
+                renderDashboard();
+              } else if (data.messages.length > 0) {
+                const localMsgs = getMessages();
+                const map = new Map();
+                data.messages.forEach(m => map.set(m.id, m));
+                localMsgs.forEach(m => {
+                  if (!map.has(m.id)) map.set(m.id, m);
+                });
+                const combined = Array.from(map.values());
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(combined));
+                renderDashboard();
+              }
             }
           }
         }
@@ -1156,39 +1310,81 @@ ${escapeHtml(msg.message)}
       a.click();
     });
 
-    // Simulate sample lead
-    document.getElementById('btnSimulateLead').addEventListener('click', () => {
-      const messages = getMessages();
-      const newLead = {
-        id: 'inq_' + Date.now(),
+    // Simulate sample lead - Inserts to PostgreSQL directly!
+    document.getElementById('btnSimulateLead').addEventListener('click', async () => {
+      const btn = document.getElementById('btnSimulateLead');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Saving to DB...';
+
+      const samplePayload = {
         name: 'Amazon Web Services (AWS Recruiter)',
         email: 'recruiting@amazon.com',
         subject: 'AWS Solutions Architect & Cloud Role Opportunity',
         topic: 'Full-time DevOps Role',
-        message: 'Hi Akash, saw your AWS Certified Solutions Architect Professional credential and Kubernetes experience. We would love to discuss Cloud Architect opportunities with you!',
-        createdAt: new Date().toISOString(),
-        status: 'unread'
+        message: 'Hi Akash, saw your AWS Certified Solutions Architect Professional credential and Kubernetes experience. We would love to discuss Cloud Architect opportunities with you!'
       };
-      messages.unshift(newLead);
-      saveMessages(messages);
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(samplePayload)
+        });
+        const result = await res.json();
+        
+        const newLead = result.data || {
+          ...samplePayload,
+          id: 'inq_' + Date.now(),
+          createdAt: new Date().toISOString(),
+          status: 'unread'
+        };
+        const messages = getMessages();
+        messages.unshift(newLead);
+        saveMessages(messages);
+        await syncPostgresInquiries();
+      } catch(e) {
+        const messages = getMessages();
+        messages.unshift({
+          ...samplePayload,
+          id: 'inq_' + Date.now(),
+          createdAt: new Date().toISOString(),
+          status: 'unread'
+        });
+        saveMessages(messages);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fa-solid fa-plus me-1"></i> Add Sample Lead';
+      }
     });
 
-    // Clear all
+    // Clear all from PostgreSQL & Local storage
     document.getElementById('btnClearAll').addEventListener('click', async () => {
-      if (confirm('Are you sure you want to clear all inquiries from database?')) {
-        localStorage.removeItem(STORAGE_KEY);
+      if (confirm('Are you sure you want to permanently clear ALL inquiries from your PostgreSQL Database and local storage?')) {
+        const btn = document.getElementById('btnClearAll');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Clearing DB...';
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
         renderDashboard();
 
-        // Async sync with PostgreSQL
         const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
         try {
-          await fetch('/api/messages?clearAll=true', {
+          const res = await fetch('/api/messages?clearAll=true', {
             method: 'DELETE',
             headers: {
               'Authorization': `Bearer ${token}`
             }
           });
-        } catch(e) {}
+          if (res.ok) {
+            alert('✓ Database successfully wiped! 0 inquiries remaining.');
+          }
+        } catch(e) {
+          console.error('Error clearing database:', e);
+        } finally {
+          btn.disabled = false;
+          btn.innerHTML = '<i class="fa-solid fa-trash me-1"></i> Clear DB';
+          await syncPostgresInquiries();
+        }
       }
     });
 

@@ -9,10 +9,24 @@ const { Pool } = require('pg');
 let pool;
 function getPool() {
   if (!pool) {
-    const connectionString = process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.POSTGRES_URL_NON_POOLING;
+    const connectionString = 
+      process.env.POSTGRES_URL || 
+      process.env.DATABASE_URL || 
+      process.env.POSTGRES_URL_NON_POOLING || 
+      process.env.POSTGRES_PRISMA_URL;
+
     if (connectionString) {
       pool = new Pool({
         connectionString,
+        ssl: { rejectUnauthorized: false }
+      });
+    } else if (process.env.PGHOST && process.env.PGUSER) {
+      pool = new Pool({
+        host: process.env.PGHOST,
+        user: process.env.PGUSER,
+        password: process.env.PGPASSWORD,
+        database: process.env.PGDATABASE || 'akash-bora-portfolio-new',
+        port: process.env.PGPORT ? parseInt(process.env.PGPORT) : 5432,
         ssl: { rejectUnauthorized: false }
       });
     }
@@ -37,7 +51,6 @@ async function ensureTable(client) {
 }
 
 module.exports = async (req, res) => {
-  // CORS configuration
   res.setHeader('Access-Control-Allow-Credentials', true);
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,POST');
@@ -75,6 +88,7 @@ module.exports = async (req, res) => {
     };
 
     let storedInDb = false;
+    let databaseName = 'local';
     const dbPool = getPool();
 
     if (dbPool) {
@@ -96,14 +110,16 @@ module.exports = async (req, res) => {
           ]
         );
         storedInDb = true;
-        console.log('[POSTGRES SUCCESS] Saved inquiry to database:', id);
+        const dbInfo = await client.query('SELECT current_database() AS db;');
+        databaseName = dbInfo.rows[0]?.db || 'akash-bora-portfolio-new';
+        console.log('[POSTGRES SUCCESS] Inserted lead into', databaseName, 'ID:', id);
       } catch (dbErr) {
         console.error('[POSTGRES ERROR] Failed to insert inquiry:', dbErr);
       } finally {
         client.release();
       }
     } else {
-      console.log('[DEV/OFFLINE MODE] PostgreSQL URL not configured. Payload received:', id);
+      console.log('[FALLBACK MODE] PostgreSQL URL not configured yet. Payload cached.');
     }
 
     // Forward instant email alert if Resend API Key is set
@@ -128,7 +144,7 @@ module.exports = async (req, res) => {
                 <div style="background:#f4f4f5; padding:16px; border-left:4px solid #00E5FF; border-radius:4px; margin:16px 0;">
                   ${inquiryRecord.message.replace(/\n/g, '<br>')}
                 </div>
-                <p style="color:#71717a; font-size:12px;">Stored in PostgreSQL Database at ${timestamp}</p>
+                <p style="color:#71717a; font-size:12px;">Stored in PostgreSQL Database (${databaseName}) at ${timestamp}</p>
               </div>
             `
           })
@@ -142,6 +158,7 @@ module.exports = async (req, res) => {
       success: true,
       message: 'Inquiry received and permanently stored!',
       storedInDb,
+      database: databaseName,
       data: inquiryRecord
     });
   } catch (error) {
