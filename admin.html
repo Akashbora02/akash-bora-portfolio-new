@@ -384,16 +384,63 @@
     }
 
     /* Mobile & Tablet Responsiveness for Admin Portal */
+    .mobile-header-wrapper {
+      display: none;
+    }
+    .desktop-header-wrapper {
+      display: flex;
+    }
+
     @media (max-width: 991.98px) {
       .admin-nav {
-        padding: 10px 16px;
+        padding: 12px 16px;
+      }
+      .desktop-header-wrapper {
+        display: none !important;
+      }
+      .mobile-header-wrapper {
+        display: flex !important;
+      }
+      .brand-logo-img {
+        max-width: 135px;
+        height: 30px;
+      }
+      .mobile-action-pill-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding: 10px 0 2px;
+        width: 100%;
+      }
+      .mobile-action-pill-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .btn-action-pill {
+        white-space: nowrap;
+        background: rgba(13, 22, 43, 0.95);
+        border: 1px solid rgba(56, 189, 248, 0.28);
+        border-radius: 999px;
+        color: #F8FAFC;
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 6px 14px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        flex-shrink: 0;
+        text-decoration: none;
+        transition: all 0.2s ease;
+      }
+      .btn-action-pill:hover, .btn-action-pill:active {
+        background: rgba(0, 229, 255, 0.15);
+        border-color: var(--accent-cyan);
+        color: #FFFFFF;
       }
       .stat-val-num {
         font-size: 1.6rem;
-      }
-      .brand-logo-img {
-        max-width: 140px;
-        height: 32px;
       }
     }
 
@@ -402,91 +449,59 @@
         overflow-x: hidden;
       }
       main {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-        padding-top: 14px !important;
-      }
-      .admin-nav {
-        padding: 10px 12px;
-        flex-direction: column;
-        gap: 10px;
-        align-items: stretch !important;
-      }
-      .admin-nav-top-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-      }
-      .admin-nav-actions-row {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 4px;
-        width: 100%;
-      }
-      .admin-nav-actions-row .btn {
-        padding: 6px 4px;
-        font-size: 0.72rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2px;
-        border-radius: 8px;
-        min-height: 44px;
-      }
-      .admin-nav-actions-row .btn i {
-        font-size: 0.9rem;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
+        padding-top: 16px !important;
       }
       .brand-logo-img {
         max-width: 120px;
         height: 28px;
       }
       .stat-card {
-        padding: 12px;
-        border-radius: 12px;
+        padding: 14px;
+        border-radius: 14px;
       }
       .stat-val-num {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         margin-top: 6px;
       }
       .stat-label-title {
-        font-size: 0.65rem;
+        font-size: 0.7rem;
       }
       .stat-icon-wrapper {
-        width: 32px;
-        height: 32px;
-        font-size: 0.9rem;
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
       }
       .filter-panel {
-        padding: 12px;
-        border-radius: 12px;
-        margin-bottom: 16px;
+        padding: 14px;
+        border-radius: 14px;
+        margin-bottom: 18px;
       }
       .custom-select, .search-field {
-        font-size: 0.85rem;
-        padding: 8px 10px;
+        font-size: 0.88rem;
+        padding: 9px 12px;
       }
       .search-input-group {
-        padding: 0 10px;
+        padding: 0 12px;
       }
       .data-table-container {
-        border-radius: 12px;
+        border-radius: 14px;
       }
       .auth-card {
-        margin: 12px;
-        padding: 24px 16px;
-        border-radius: 16px;
+        margin: 16px;
+        padding: 28px 20px;
+        border-radius: 18px;
       }
       
       /* Mobile Lead Card Styles */
       .mobile-lead-card {
         background: #0D162B;
-        border: 1px solid rgba(56, 189, 248, 0.2);
-        border-radius: 12px;
-        padding: 14px;
-        margin-bottom: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        border: 1px solid rgba(56, 189, 248, 0.22);
+        border-radius: 14px;
+        padding: 16px;
+        margin-bottom: 14px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       }
       .mobile-lead-card:last-child {
         margin-bottom: 0;
@@ -495,49 +510,49 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
       }
       .mobile-lead-name {
-        font-size: 1rem;
+        font-size: 1.05rem;
         font-weight: 700;
         color: #FFFFFF;
       }
       .mobile-lead-email {
-        font-size: 0.8rem;
+        font-size: 0.84rem;
         color: var(--accent-cyan);
         text-decoration: none;
         word-break: break-all;
       }
       .mobile-lead-subject {
         font-weight: 600;
-        font-size: 0.88rem;
+        font-size: 0.92rem;
         color: #F1F5F9;
-        margin: 8px 0 4px;
+        margin: 10px 0 4px;
       }
       .mobile-lead-preview {
-        font-size: 0.8rem;
+        font-size: 0.84rem;
         color: var(--text-muted);
-        line-height: 1.4;
+        line-height: 1.45;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        margin-bottom: 12px;
+        margin-bottom: 14px;
       }
       .mobile-lead-actions {
         display: flex;
-        gap: 6px;
+        gap: 8px;
         border-top: 1px solid rgba(51, 65, 85, 0.4);
-        padding-top: 10px;
+        padding-top: 12px;
       }
       .mobile-lead-actions .btn {
         flex: 1;
-        font-size: 0.76rem;
-        padding: 6px 8px;
+        font-size: 0.8rem;
+        padding: 7px 10px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 4px;
+        gap: 5px;
       }
     }
   </style>
@@ -582,45 +597,71 @@
   </div>
 
   <!-- ==========================================================================
-       DASHBOARD HEADER (FULLY RESPONSIVE)
+       DASHBOARD HEADER (DESKTOP & MOBILE RESPONSIVE)
        ========================================================================== -->
-  <header class="admin-nav d-flex justify-content-between">
-    <div class="admin-nav-top-row d-flex align-items-center justify-content-between">
-      <div class="d-flex align-items-center gap-2">
+  <header class="admin-nav">
+    <!-- Desktop & Laptop Header (> 992px) -->
+    <div class="desktop-header-wrapper d-none d-lg-flex align-items-center justify-content-between w-100">
+      <div class="d-flex align-items-center gap-3">
         <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
           <img src="assets/images/logo-banner.png?v=5.0" alt="Akash Bora Logo" class="brand-logo-img">
         </a>
-        <span class="badge bg-dark text-cyan border border-info-subtle py-1 px-2 fw-semibold d-none d-lg-inline-flex"><i class="fa-solid fa-shield-halved me-1"></i> Admin</span>
+        <span class="badge bg-dark text-cyan border border-info-subtle py-2 px-3 fw-semibold"><i class="fa-solid fa-shield-halved me-1"></i> Admin Portal</span>
+        <span class="db-status-badge badge bg-info-subtle text-info border border-info-subtle py-2 px-3 mono d-inline-flex align-items-center gap-1" role="button" onclick="openDbDiagnostics()" title="Click to view PostgreSQL Database Connection Status">
+          <i class="fa-solid fa-database me-1"></i> Connecting DB...
+        </span>
       </div>
 
       <div class="d-flex align-items-center gap-2">
-        <span id="db-status-badge" class="badge bg-info-subtle text-info border border-info-subtle py-1 px-2 mono d-inline-flex align-items-center gap-1" role="button" onclick="openDbDiagnostics()" title="Click to view PostgreSQL Database Connection Status">
-          <i class="fa-solid fa-database text-info"></i> <span class="d-none d-sm-inline">PostgreSQL</span><span class="d-inline d-sm-none">DB</span>
-        </span>
+        <button class="btn btn-sm btn-outline-info" onclick="openDbDiagnostics()" title="PostgreSQL Database Manager">
+          <i class="fa-solid fa-server me-1"></i> DB Manager
+        </button>
+        <button class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#changePinModal" title="Change Security Passcode">
+          <i class="fa-solid fa-key me-1"></i> Change PIN
+        </button>
+        <button id="btnExportCSV" class="btn btn-sm btn-cyan-glow" title="Export CSV">
+          <i class="fa-solid fa-file-csv me-1"></i> Export CSV
+        </button>
+        <a href="index.html" class="btn btn-sm btn-outline-light" title="Return to Portfolio">
+          <i class="fa-solid fa-arrow-left me-1"></i> Portfolio
+        </a>
+        <button id="btnLogout" class="btn btn-sm btn-outline-danger" title="Lock Admin Portal">
+          <i class="fa-solid fa-right-from-bracket me-1"></i> Lock
+        </button>
       </div>
     </div>
 
-    <div class="admin-nav-actions-row d-flex align-items-center gap-2">
-      <button class="btn btn-sm btn-outline-info" onclick="openDbDiagnostics()" title="PostgreSQL Database Manager">
-        <i class="fa-solid fa-server"></i>
-        <span>DB</span>
-      </button>
-      <button class="btn btn-sm btn-outline-light" data-bs-toggle="modal" data-bs-target="#changePinModal" title="Change Security Passcode">
-        <i class="fa-solid fa-key"></i>
-        <span>PIN</span>
-      </button>
-      <button id="btnExportCSV" class="btn btn-sm btn-cyan-glow" title="Export CSV">
-        <i class="fa-solid fa-file-csv"></i>
-        <span>CSV</span>
-      </button>
-      <a href="index.html" class="btn btn-sm btn-outline-light" title="Return to Portfolio">
-        <i class="fa-solid fa-arrow-left"></i>
-        <span>Site</span>
-      </a>
-      <button id="btnLogout" class="btn btn-sm btn-outline-danger" title="Lock Admin Portal">
-        <i class="fa-solid fa-right-from-bracket"></i>
-        <span>Lock</span>
-      </button>
+    <!-- Mobile & Tablet Header (< 992px) -->
+    <div class="mobile-header-wrapper d-flex d-lg-none flex-column w-100">
+      <div class="d-flex align-items-center justify-content-between w-100">
+        <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+          <img src="assets/images/logo-banner.png?v=5.0" alt="Akash Bora Logo" class="brand-logo-img">
+        </a>
+        <div class="d-flex align-items-center gap-2">
+          <span class="db-status-badge badge bg-info-subtle text-info border border-info-subtle py-1 px-2 mono d-inline-flex align-items-center gap-1" role="button" onclick="openDbDiagnostics()" title="Database Status">
+            <i class="fa-solid fa-database me-1"></i> PostgreSQL
+          </span>
+          <button id="btnLogoutMobile" class="btn btn-sm btn-outline-danger py-1 px-2" title="Lock">
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Pill Action Bar -->
+      <div class="mobile-action-pill-bar">
+        <button class="btn-action-pill" onclick="openDbDiagnostics()">
+          <i class="fa-solid fa-server text-cyan"></i> DB Manager
+        </button>
+        <button id="btnExportCSVMobile" class="btn-action-pill">
+          <i class="fa-solid fa-file-csv text-info"></i> Export CSV
+        </button>
+        <button class="btn-action-pill" data-bs-toggle="modal" data-bs-target="#changePinModal">
+          <i class="fa-solid fa-key text-warning"></i> PIN
+        </button>
+        <a href="index.html" class="btn-action-pill">
+          <i class="fa-solid fa-arrow-left text-light"></i> Portfolio
+        </a>
+      </div>
     </div>
   </header>
 
@@ -630,16 +671,16 @@
   <main class="container-fluid py-4 px-lg-5">
     
     <!-- Top Welcome Strip -->
-    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center gap-3 mb-4">
       <div>
         <h2 class="fw-bold text-white mb-1">Inquiries &amp; Opportunity Leads</h2>
         <p class="text-secondary small mb-0">Live recruiter and client inquiries submitted through your portfolio contact form.</p>
       </div>
-      <div class="d-flex gap-2">
-        <button id="btnSimulateLead" class="btn btn-sm btn-outline-info">
+      <div class="d-flex gap-2 w-100 w-md-auto">
+        <button id="btnSimulateLead" class="btn btn-sm btn-outline-info flex-grow-1 flex-md-grow-0">
           <i class="fa-solid fa-plus me-1"></i> Add Sample Lead
         </button>
-        <button id="btnClearAll" class="btn btn-sm btn-outline-danger">
+        <button id="btnClearAll" class="btn btn-sm btn-outline-danger flex-grow-1 flex-md-grow-0">
           <i class="fa-solid fa-trash-can me-1"></i> Clear DB
         </button>
       </div>
@@ -1079,6 +1120,19 @@
       location.reload();
     });
 
+    function updateAllDbBadges(isConnected, dbName) {
+      const badges = document.querySelectorAll('.db-status-badge');
+      badges.forEach(b => {
+        if (isConnected) {
+          b.className = 'db-status-badge badge bg-success-subtle text-success border border-success-subtle py-1 px-2 py-lg-2 px-lg-3 mono d-inline-flex align-items-center gap-1';
+          b.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> <span class="d-none d-lg-inline">PostgreSQL: <strong>${escapeHtml(dbName)}</strong> (Connected)</span><span class="d-inline d-lg-none"><strong>Postgres Live</strong></span>`;
+        } else {
+          b.className = 'db-status-badge badge bg-warning-subtle text-warning border border-warning-subtle py-1 px-2 py-lg-2 px-lg-3 mono d-inline-flex align-items-center gap-1';
+          b.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-warning"></i> <span class="d-none d-lg-inline">Local DB (Click to Connect PostgreSQL)</span><span class="d-inline d-lg-none">Local DB</span>`;
+        }
+      });
+    }
+
     // PostgreSQL Cloud Diagnostics & Connection Health
     async function checkDbDiagnostics() {
       const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
@@ -1088,7 +1142,6 @@
       const countEl = document.getElementById('dbModalTotalCount');
       const latencyEl = document.getElementById('dbModalLatency');
       const guideBox = document.getElementById('dbModalGuideBox');
-      const headerBadge = document.getElementById('db-status-badge');
 
       if (statusTag) {
         statusTag.className = 'badge bg-secondary mono';
@@ -1102,7 +1155,7 @@
         const data = await res.json();
 
         if (data && data.connected) {
-          const dbName = data.database || 'akash-bora-portfolio-new';
+          const dbName = data.database || 'neondb';
           if (statusTag) {
             statusTag.className = 'badge bg-success mono';
             statusTag.textContent = '● CONNECTED (LIVE)';
@@ -1113,25 +1166,19 @@
           if (latencyEl) latencyEl.textContent = `${data.latencyMs || 25} ms (${data.version || 'PostgreSQL'})`;
           if (guideBox) guideBox.classList.add('d-none');
 
-          if (headerBadge) {
-            headerBadge.className = 'badge bg-success-subtle text-success border border-success-subtle py-1 px-2 mono d-inline-flex align-items-center gap-1';
-            headerBadge.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> <span class="d-none d-lg-inline">PostgreSQL: <strong>${escapeHtml(dbName)}</strong> (Connected)</span><span class="d-inline d-lg-none"><strong>Postgres Live</strong></span>`;
-          }
+          updateAllDbBadges(true, dbName);
         } else {
           if (statusTag) {
             statusTag.className = 'badge bg-warning mono text-dark';
             statusTag.textContent = '⚠ SETUP REQUIRED';
           }
-          if (dbNameEl) dbNameEl.textContent = 'akash-bora-portfolio-new (Pending Link)';
+          if (dbNameEl) dbNameEl.textContent = 'neondb (Pending Link)';
           if (envDetectedEl) envDetectedEl.textContent = data.envDetected || 'None in Vercel Environment';
           if (countEl) countEl.textContent = getMessages().length + ' (Local Cache)';
           if (latencyEl) latencyEl.textContent = '--';
           if (guideBox) guideBox.classList.remove('d-none');
 
-          if (headerBadge) {
-            headerBadge.className = 'badge bg-warning-subtle text-warning border border-warning-subtle py-1 px-2 mono d-inline-flex align-items-center gap-1';
-            headerBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-warning"></i> <span class="d-none d-lg-inline">Local DB (Click to Connect PostgreSQL)</span><span class="d-inline d-lg-none">Local DB</span>`;
-          }
+          updateAllDbBadges(false);
         }
       } catch (err) {
         console.error('Error fetching DB status:', err);
@@ -1168,7 +1215,6 @@
     // PostgreSQL Cloud Synchronization
     async function syncPostgresInquiries() {
       const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
-      const dbBadge = document.getElementById('db-status-badge');
       try {
         const res = await fetch('/api/messages', {
           headers: {
@@ -1178,16 +1224,11 @@
         if (res.ok) {
           const data = await res.json();
           if (data) {
-            if (dbBadge) {
-              if (data.source === 'postgresql') {
-                const dbName = data.database || 'akash-bora-portfolio-new';
-                dbBadge.className = 'badge bg-success-subtle text-success border border-success-subtle py-1 px-2 mono d-inline-flex align-items-center gap-1';
-                dbBadge.innerHTML = `<i class="fa-solid fa-circle-check text-success"></i> <span class="d-none d-lg-inline">PostgreSQL: <strong>${escapeHtml(dbName)}</strong> (Connected)</span><span class="d-inline d-lg-none"><strong>Postgres Live</strong></span>`;
-              } else {
-                dbBadge.className = 'badge bg-warning-subtle text-warning border border-warning-subtle py-1 px-2 mono d-inline-flex align-items-center gap-1';
-                dbBadge.innerHTML = `<i class="fa-solid fa-triangle-exclamation text-warning"></i> <span class="d-none d-lg-inline">Local DB (Click to Connect PostgreSQL)</span><span class="d-inline d-lg-none">Local DB</span>`;
-                dbBadge.style.cursor = 'pointer';
-              }
+            if (data.source === 'postgresql') {
+              const dbName = data.database || 'neondb';
+              updateAllDbBadges(true, dbName);
+            } else {
+              updateAllDbBadges(false);
             }
             if (data.messages && Array.isArray(data.messages)) {
               if (data.source === 'postgresql') {
@@ -1487,7 +1528,7 @@ ${escapeHtml(msg.message)}
     document.getElementById('filterStatus').addEventListener('change', renderDashboard);
 
     // Export to CSV
-    document.getElementById('btnExportCSV').addEventListener('click', () => {
+    function exportCSV() {
       const messages = getMessages();
       if (messages.length === 0) {
         alert('No inquiries to export.');
@@ -1507,7 +1548,21 @@ ${escapeHtml(msg.message)}
       a.href = url;
       a.download = `akash_portfolio_leads_${new Date().toISOString().slice(0,10)}.csv`;
       a.click();
-    });
+    }
+
+    const btnExport = document.getElementById('btnExportCSV');
+    if (btnExport) btnExport.addEventListener('click', exportCSV);
+
+    const btnExportMobile = document.getElementById('btnExportCSVMobile');
+    if (btnExportMobile) btnExportMobile.addEventListener('click', exportCSV);
+
+    const btnLogoutMobile = document.getElementById('btnLogoutMobile');
+    if (btnLogoutMobile) {
+      btnLogoutMobile.addEventListener('click', () => {
+        sessionStorage.removeItem(AUTH_SESSION_KEY);
+        location.reload();
+      });
+    }
 
     // Simulate sample lead - Inserts to PostgreSQL directly!
     document.getElementById('btnSimulateLead').addEventListener('click', async () => {
