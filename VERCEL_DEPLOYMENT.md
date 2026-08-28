@@ -1,132 +1,88 @@
-# Vercel Deployment & Contact Form Data Architecture Guide
+# Vercel Deployment & PostgreSQL Database Guide
 ## Akash Bora — DevOps & Cloud Engineer Portfolio
 
-This document explains how to deploy your portfolio to **Vercel**, how the contact form data flow works, how the built-in **Admin Dashboard** operates, and how to store data in a database.
+This guide explains how to deploy your portfolio to **Vercel**, configure **Clean `/admin` URLs**, and connect a **PostgreSQL Database** for permanent inquiry storage.
 
 ---
 
-## 1. How Contact Form Data Flows (Architecture & Storage)
+## 1. Quick Deployment to Vercel
 
-When a recruiter or visitor submits the contact form on your portfolio (`index.html`), here is what happens:
+Your portfolio is pre-configured with `vercel.json` for:
+- Automatic clean URLs (`/admin` &rarr; `admin/index.html`).
+- Serverless API routes (`/api/contact`, `/api/messages`).
+- Enterprise security headers (CSP, HSTS, XSS protection, Cache-Control).
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│ 1. Visitor Fills Contact Form (index.html)                  │
-│    - Name, Email, Subject, Topic, Message                   │
-└──────────────────────────────┬──────────────────────────────┘
-                               │ (Form Validation Passed)
-                               ▼
-┌─────────────────────────────────────────────────────────────┐
-│ 2. Dual-Engine Storage & Notification Trigger               │
-│                                                             │
-│   ├── [Channel A: Private Admin Database (Instant)]         │
-│   │   - Automatically saves inquiry into browser DB         │
-│   │   - Available in your Admin Portal (admin.html)         │
-│   │   - Protected with PIN (default: akash2026)             │
-│   │   - 1-Click Export to CSV / JSON                        │
-│   │                                                         │
-│   └── [Channel B: Vercel Serverless API (/api/contact)]     │
-│       - Receives JSON payload via Vercel Function           │
-│       - Can forward instant email to akashbora0082@gmail.com│
-│       - Can connect to MongoDB, Supabase, or PostgreSQL     │
-└─────────────────────────────────────────────────────────────┘
-```
-
----
-
-## 2. Using Your Secure Admin Dashboard (`admin.html`)
-
-You have a built-in, private Admin Dashboard to view, filter, manage, and export all inquiries.
-
-1. Open **`admin.html`** (or press `Ctrl + Shift + A` anywhere on your portfolio).
-2. Enter your private master security passcode.
-3. **Features in the Admin Dashboard**:
-   - **Real-Time Metrics**: Total Messages, Unread Inquiries, Job Openings, Consulting Requests.
-   - **Search & Filter**: Search by keyword or filter by Topic / Status.
-   - **View Full Message Modal**: Read the full inquiry with timestamps.
-   - **1-Click Reply**: Opens pre-filled email client directly to the sender.
-   - **Export to CSV**: Download all leads to an Excel/CSV spreadsheet for record keeping.
-   - **Change Passcode**: Update and re-encrypt your passcode directly from within the dashboard.
-   - **Mark as Read / Delete**: Manage inquiry status.
-
----
-
-## 3. Step-by-Step Vercel Hosting Guide
-
-### Method 1: Deploy via GitHub (Recommended — Auto Deploy on `git push`)
-
-#### Step 1: Push your code to GitHub
 ```bash
-cd akash-bora-portfolio
-git init
+# Push directly to your verified GitHub repository
 git add .
-git commit -m "feat: complete Akash Bora DevOps portfolio with Vercel API and Admin Dashboard"
-git branch -M main
-git remote add origin https://github.com/Akashbora02/akash-bora-portfolio-new.git
-git push -u origin main
-```
-
-#### Step 2: Import into Vercel
-1. Go to [vercel.com](https://vercel.com) and log in with your GitHub account.
-2. Click **"Add New..."** &rarr; **Project**.
-3. Under **Import Git Repository**, select `akash-bora-portfolio`.
-4. In the Project Settings:
-   - **Framework Preset**: Leave as `Other` (Static HTML/JS).
-   - **Root Directory**: `./`
-5. Click **Deploy**.
-6. Within 15 seconds, Vercel will give you a live production URL:
-   `https://akash-bora-portfolio.vercel.app`
-
----
-
-### Method 2: Deploy directly via Vercel CLI (Instant)
-
-If you have Node.js installed, you can deploy straight from your terminal:
-
-```bash
-# 1. Install Vercel CLI globally
-npm i -g vercel
-
-# 2. Navigate to project
-cd /home/newuser/.gemini/antigravity/scratch/akash-bora-portfolio
-
-# 3. Deploy to preview
-vercel
-
-# 4. Deploy to production
-vercel --prod
+git commit -m "feat: updated logo, postgresql integration, and mobile responsive refinements"
+git push origin main
 ```
 
 ---
 
-## 4. (Optional) Connecting a Cloud Database to Vercel
+## 2. Setting Up Free PostgreSQL on Vercel (or Neon / Supabase)
 
-If you want submissions stored in an external cloud database, you can connect any of these options in under 2 minutes:
+### Option A: Vercel Postgres (Neon) - 100% Free
+1. Go to your [Vercel Dashboard](https://vercel.com/dashboard).
+2. Navigate to **Storage** &rarr; **Create Database** &rarr; **Postgres**.
+3. Choose a name (e.g. `akash-portfolio-db`) and select region (e.g. `ap-south-1` Mumbai / `sin1` Singapore).
+4. Click **Connect to Project** and select `akash-bora-portfolio-new`.
+5. Vercel will automatically inject `POSTGRES_URL` into your project environment variables.
+6. The `inquiries` table is **automatically created on first submission** via `api/contact.js`!
 
-### Option A: Free Resend API (Instant Email Delivery to your Gmail)
-1. Sign up for free at [resend.com](https://resend.com).
-2. Generate an API Key.
+### Option B: Supabase / Neon External PostgreSQL
+1. Create a free database on [Neon.tech](https://neon.tech) or [Supabase.com](https://supabase.com).
+2. Run `schema.sql` in the SQL Editor:
+```sql
+CREATE TABLE IF NOT EXISTS inquiries (
+  id VARCHAR(64) PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  subject VARCHAR(255),
+  topic VARCHAR(255),
+  message TEXT NOT NULL,
+  status VARCHAR(32) DEFAULT 'unread',
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+```
 3. In Vercel Project Settings &rarr; **Environment Variables**, add:
-   - `RESEND_API_KEY`: `re_xxxxxxxxx`
-   - `NOTIFICATION_EMAIL`: `akashbora0082@gmail.com`
-4. Now every inquiry submitted on the website will land directly in your Gmail inbox!
-
-### Option B: Formspree (Zero-Code Email Forwarding)
-1. Register at [formspree.io](https://formspree.io).
-2. Copy your Form ID (e.g. `https://formspree.io/f/mqkvabzo`).
-3. Set the form `action="https://formspree.io/f/YOUR_ID"` in `index.html`.
-
-### Option C: MongoDB Atlas or Supabase
-- Add your connection string in Vercel Environment Variables (`MONGODB_URI` or `SUPABASE_URL`) to query or insert records directly within `api/contact.js`.
+   - **`POSTGRES_URL`**: `postgres://postgres:[PASSWORD]@[HOST]:5432/[DATABASE]?sslmode=require`
+   - **`NOTIFICATION_EMAIL`**: `akashbora0082@gmail.com`
+   - **`RESEND_API_KEY`**: *(Optional for instant email alerts on new inquiries)*
 
 ---
 
-## 5. Adding a Custom Domain on Vercel
+## 3. How the Data Flow Works
 
-1. In Vercel, open your project &rarr; **Settings** &rarr; **Domains**.
-2. Enter your custom domain (e.g., `akashbora.dev` or `akashbora.in`).
-3. Add the CNAME or A-Record provided by Vercel into your DNS registrar (GoDaddy, Namecheap, Route53, or Cloudflare).
-4. Vercel automatically provisions a free SSL Certificate!
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Visitor as Website Visitor
+    participant Frontend as Portfolio UI (/index.html)
+    participant API as Vercel Serverless (/api/contact)
+    participant DB as PostgreSQL Database
+    actor Admin as Akash Bora (/admin)
+
+    Visitor->>Frontend: Fills Contact Form & Clicks Submit
+    Frontend->>API: POST /api/contact {name, email, topic, message}
+    API->>DB: INSERT INTO inquiries (...)
+    API-->>Frontend: 200 OK (Success Message & ID)
+    Frontend->>Visitor: Displays "Message Sent Successfully" Toast
+
+    Admin->>Frontend: Visits /admin & Enters Master Passcode
+    Frontend->>API: GET /api/messages (Bearer MasterToken)
+    API->>DB: SELECT * FROM inquiries ORDER BY created_at DESC
+    DB-->>API: Returns all Inquiry Records
+    API-->>Frontend: Returns JSON Array of Leads
+    Frontend->>Admin: Renders Live Dashboard & Metrics
+```
 
 ---
-*Created for Akash Bora • Cloud & DevOps Engineer Portfolio*
+
+## 4. Admin Portal Access & Controls
+
+- **URL**: `https://your-portfolio.vercel.app/admin`
+- **Stealth Shortcut**: Press **`Ctrl + Shift + A`** (or `Cmd + Shift + A`) from any page.
+- **Passcode**: Master Passcode protected with salted SHA-256 Web Crypto hashing.
+- **Live Sync**: When you unlock the dashboard, it fetches live leads directly from PostgreSQL and allows you to mark messages read/replied, reply via email, export CSV, and delete messages.

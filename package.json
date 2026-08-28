@@ -1,0 +1,21 @@
+{
+  "name": "akash-bora-portfolio",
+  "version": "2.0.0",
+  "description": "Akash Bora - Senior DevOps & Cloud Engineer Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "dependencies": {
+    "pg": "^8.11.5"
+  },
+  "keywords": [
+    "devops",
+    "cloud-engineer",
+    "aws",
+    "kubernetes",
+    "portfolio"
+  ],
+  "author": "Akash Bora <akashbora0082@gmail.com>",
+  "license": "MIT"
+}

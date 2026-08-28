@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="assets/images/logo.jpg">
+  <link rel="icon" type="image/png" href="assets/images/logo-icon.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,11 +74,11 @@
     }
 
     .brand-logo-img {
-      height: 36px;
+      height: 38px;
       width: auto;
       border-radius: 6px;
-      background: #FFFFFF;
-      padding: 2px 4px;
+      background: transparent;
+      padding: 0;
     }
 
     /* Stat Cards */
@@ -480,10 +480,10 @@
   <header class="admin-nav d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center gap-3">
       <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
-        <img src="assets/images/logo.jpg" alt="Akash Bora Logo" class="brand-logo-img">
-        <span class="text-white fw-bold fs-5">Akash <span style="color: var(--accent-cyan);">Bora</span></span>
+        <img src="assets/images/logo-dark.png" alt="Akash Bora Logo" class="brand-logo-img">
       </a>
       <span class="badge bg-dark text-cyan border border-info-subtle py-2 px-3 fw-semibold"><i class="fa-solid fa-shield-halved me-1"></i> Admin Portal</span>
+      <span id="db-status-badge" class="badge bg-success-subtle text-success border border-success-subtle py-2 px-3 mono d-none d-md-inline-flex"><i class="fa-solid fa-database me-1"></i> PostgreSQL Cloud</span>
     </div>
 
     <div class="d-flex align-items-center gap-2">
@@ -814,6 +814,7 @@
       if (token && token === expectedHash) {
         authOverlay.style.display = 'none';
         renderDashboard();
+        syncPostgresInquiries();
       } else {
         authOverlay.style.display = 'flex';
         checkLockout();
@@ -835,6 +836,7 @@
         authOverlay.style.display = 'none';
         authError.classList.add('d-none');
         renderDashboard();
+        syncPostgresInquiries();
       } else {
         failedAttempts++;
         sessionStorage.setItem('auth_failed_attempts', failedAttempts.toString());
@@ -855,6 +857,46 @@
       sessionStorage.removeItem(AUTH_SESSION_KEY);
       location.reload();
     });
+
+    // PostgreSQL Cloud Synchronization
+    async function syncPostgresInquiries() {
+      const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
+      const dbBadge = document.getElementById('db-status-badge');
+      try {
+        const res = await fetch('/api/messages', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data && data.messages) {
+            if (dbBadge) {
+              if (data.source === 'postgresql') {
+                dbBadge.className = 'badge bg-success-subtle text-success border border-success-subtle py-2 px-3 mono d-none d-md-inline-flex';
+                dbBadge.innerHTML = '<i class="fa-solid fa-database me-1"></i> PostgreSQL Cloud (Synced)';
+              } else {
+                dbBadge.className = 'badge bg-info-subtle text-info border border-info-subtle py-2 px-3 mono d-none d-md-inline-flex';
+                dbBadge.innerHTML = '<i class="fa-solid fa-database me-1"></i> Local DB Active';
+              }
+            }
+            if (Array.isArray(data.messages) && data.messages.length > 0) {
+              const localMsgs = getMessages();
+              const map = new Map();
+              data.messages.forEach(m => map.set(m.id, m));
+              localMsgs.forEach(m => {
+                if (!map.has(m.id)) map.set(m.id, m);
+              });
+              const combined = Array.from(map.values());
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(combined));
+              renderDashboard();
+            }
+          }
+        }
+      } catch (err) {
+        console.log('Postgres sync running in local/fallback mode:', err);
+      }
+    }
 
     // Change PIN Logic
     document.getElementById('changePinForm').addEventListener('submit', async (e) => {
@@ -1043,7 +1085,7 @@ ${escapeHtml(msg.message)}
       modal.show();
     };
 
-    document.getElementById('btnToggleReadStatus').addEventListener('click', () => {
+    document.getElementById('btnToggleReadStatus').addEventListener('click', async () => {
       if (!activeModalMessageId) return;
       const messages = getMessages();
       const msg = messages.find(m => m.id === activeModalMessageId);
@@ -1051,14 +1093,38 @@ ${escapeHtml(msg.message)}
         msg.status = msg.status === 'unread' ? 'replied' : 'unread';
         saveMessages(messages);
         bootstrap.Modal.getInstance(document.getElementById('messageModal')).hide();
+
+        // Async sync with PostgreSQL
+        const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
+        try {
+          await fetch('/api/messages', {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ id: msg.id, status: msg.status })
+          });
+        } catch(e) {}
       }
     });
 
-    window.deleteMessage = function(id) {
+    window.deleteMessage = async function(id) {
       if (confirm('Are you sure you want to delete this message?')) {
         let messages = getMessages();
         messages = messages.filter(m => m.id !== id);
         saveMessages(messages);
+
+        // Async sync with PostgreSQL
+        const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
+        try {
+          await fetch(`/api/messages?id=${encodeURIComponent(id)}`, {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+        } catch(e) {}
       }
     };
 
@@ -1108,10 +1174,21 @@ ${escapeHtml(msg.message)}
     });
 
     // Clear all
-    document.getElementById('btnClearAll').addEventListener('click', () => {
+    document.getElementById('btnClearAll').addEventListener('click', async () => {
       if (confirm('Are you sure you want to clear all inquiries from database?')) {
         localStorage.removeItem(STORAGE_KEY);
         renderDashboard();
+
+        // Async sync with PostgreSQL
+        const token = sessionStorage.getItem(AUTH_SESSION_KEY) || DEFAULT_SALTED_HASH;
+        try {
+          await fetch('/api/messages?clearAll=true', {
+            method: 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          });
+        } catch(e) {}
       }
     });
 
