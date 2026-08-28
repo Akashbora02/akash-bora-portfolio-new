@@ -218,15 +218,18 @@ a:hover {
 .brand-logo-img {
   height: 38px;
   width: auto;
+  max-width: 190px;
   border-radius: 8px;
   object-fit: contain;
   background: transparent;
   padding: 0;
-  transition: transform var(--transition-fast);
+  filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.3));
+  transition: transform var(--transition-fast), filter var(--transition-fast);
 }
 
 .brand-logo-img:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.6));
 }
 
 .nav-link {
@@ -1380,10 +1383,14 @@ a:hover {
 }
 
 .footer-brand-logo {
-  height: 32px;
-  background: #FFFFFF;
+  height: 36px;
+  width: auto;
+  max-width: 170px;
+  background: transparent;
   border-radius: 6px;
-  padding: 2px 4px;
+  padding: 0;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.25));
 }
 
 .footer-nav-link {
