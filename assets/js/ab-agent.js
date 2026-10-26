@@ -1,9 +1,10 @@
 /**
  * ==============================================================================
- * AB AGENT — Cloud & DevOps Autonomous AI Copilot
+ * AB AGENT — Cloud & DevOps Autonomous AI ChatBot Copilot
  * ==============================================================================
- * Domain-specific AI assistant trained on Akash Bora's AWS Cloud Architecture,
- * Enterprise Linux Production Operations, Kubernetes GitOps, FinOps, and SRE.
+ * Domain-specific conversational AI assistant trained on Akash Bora's
+ * AWS Cloud Architecture, Enterprise Linux Systems Engineering, Kubernetes
+ * GitOps, Cloud FinOps, and SRE incident triage.
  * ==============================================================================
  */
 
@@ -11,16 +12,104 @@
   'use strict';
 
   // ----------------------------------------------------------------------------
-  // Comprehensive Technical Knowledge Base for Cloud + DevOps
+  // Session State (Memory & Context)
   // ----------------------------------------------------------------------------
-  const KNOWLEDGE_BASE = [
-    {
-      id: 'why_hire',
-      keywords: ['why hire', 'hire akash', 'recommend', 'value', 'fit', 'strengths', 'benefits', 'candidate', 'interview akash', 'strengths as engineer', 'why choose'],
-      topic: 'hire',
+  const sessionState = {
+    userName: null,
+    turnCount: 0,
+    lastTopic: null
+  };
+
+  // ----------------------------------------------------------------------------
+  // Helper: Extract User Name from Natural Intro
+  // ----------------------------------------------------------------------------
+  function extractUserName(text) {
+    const clean = text.trim();
+    // "praful this side", "hi ab, praful this side", "akash this side"
+    const matchThisSide = clean.match(/(?:(?:hi|hello|hey)\s*(?:ab|akash)?,?\s*)?([A-Za-z]+)\s+this\s+side/i);
+    if (matchThisSide && matchThisSide[1]) {
+      return capitalize(matchThisSide[1]);
+    }
+
+    // "my name is praful", "i am praful", "i'm praful"
+    const matchMyName = clean.match(/(?:my\s+name\s+is|i\s+am|i'm)\s+([A-Za-z]+)/i);
+    if (matchMyName && matchMyName[1]) {
+      return capitalize(matchMyName[1]);
+    }
+
+    // "this is praful from..."
+    const matchThisIs = clean.match(/this\s+is\s+([A-Za-z]+)/i);
+    if (matchThisIs && matchThisIs[1]) {
+      return capitalize(matchThisIs[1]);
+    }
+
+    // "praful here", "hi praful here"
+    const matchHere = clean.match(/(?:(?:hi|hello|hey)\s*(?:ab|akash)?,?\s*)?([A-Za-z]+)\s+here/i);
+    if (matchHere && matchHere[1]) {
+      return capitalize(matchHere[1]);
+    }
+
+    return null;
+  }
+
+  function capitalize(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  // ----------------------------------------------------------------------------
+  // Knowledge Base: In-depth Technical Answers
+  // ----------------------------------------------------------------------------
+  const KNOWLEDGE_RESPONSES = {
+    // 1. Greetings & Introductions
+    greeting: (name) => {
+      const greetingHeader = name
+        ? `Hello **${name}**! Great to connect with you. 👋`
+        : `Hello! Great to meet you. 👋`;
+
+      return {
+        response: `${greetingHeader}
+
+I'm **AB Agent**, Akash Bora's personal **Cloud & DevOps AI ChatBot**. I am trained on his production infrastructure work across AWS, enterprise Linux, Kubernetes, and Cloud FinOps.
+
+Here are a few quick topics we can explore:
+- 🏢 **Groots Role**: Akash's work as Cloud Engineer & FinOps (AWS CUR 2.0 / FOCUS 1.2)
+- 📈 **Tradetron Production**: Managing 40+ low-latency algorithmic trading Linux servers
+- ☸️ **Kubernetes & GitOps**: Production Amazon EKS, Karpenter, and Argo CD
+- ⏳ **Hiring & Availability**: Immediate joiner, Pune / Remote, and interview scheduling
+
+Feel free to ask any question or tap a suggestion below!`,
+        actions: [
+          { label: '🏢 Groots Cloud Experience', query: 'Tell me about his role at Groots Software Technologies' },
+          { label: '📈 Tradetron 40+ Servers', query: 'Tell me about his Linux engineering role at Tradetron' },
+          { label: '💡 Why Hire Akash?', query: 'Why should we hire Akash for our Cloud/DevOps team?' },
+          { label: '📞 Contact / Schedule Interview', query: 'How can I contact Akash Bora for an interview?' }
+        ]
+      };
+    },
+
+    // 2. Polite / Gratitude
+    polite: (name) => {
+      const salutation = name ? `, ${name}` : '';
+      return {
+        response: `You're very welcome${salutation}! 😊
+
+Is there anything else you'd like to explore regarding Akash's AWS cloud architecture, enterprise Linux production experience, or Kubernetes GitOps pipelines? 
+
+Feel free to ask, or click below to connect with Akash directly!`,
+        actions: [
+          { label: '💬 Chat on WhatsApp', target: 'https://api.whatsapp.com/send?phone=917057100082' },
+          { label: '📧 Send Email', target: 'mailto:akashbora0082@gmail.com' },
+          { label: '📜 View Credentials', target: '#certifications' }
+        ]
+      };
+    },
+
+    // 3. Why Hire Akash Bora?
+    why_hire: () => ({
       response: `### 💡 Why Hire Akash Bora for Your Cloud / DevOps Team?
 
-Akash is a battle-tested **Cloud & DevOps Engineer** and **AWS Certified Solutions Architect – Professional** who bridges production cloud infrastructure with developer velocity and operational reliability:
+Akash is a battle-tested **Cloud & DevOps Engineer** and **AWS Certified Solutions Architect – Professional** who bridges production cloud reliability with developer productivity:
 
 1. **AWS Multi-Account & Production Architecture**:
    - Hands-on expertise across **EKS, Multi-AZ VPC, EC2, RDS Aurora, S3, IAM, ALB, Route 53, and CloudFormation**.
@@ -42,14 +131,13 @@ Akash is a battle-tested **Cloud & DevOps Engineer** and **AWS Certified Solutio
         { label: 'Featured Projects', target: '#projects' },
         { label: 'Contact Akash Directly', target: '#contact' }
       ]
-    },
-    {
-      id: 'groots_experience',
-      keywords: ['groots', 'groots software', 'cloud engineer', 'cloudnetra', 'current company', 'current role', 'cur 2.0', 'focus 1.2', 'finops platform'],
-      topic: 'finops',
+    }),
+
+    // 4. Groots Software Technologies (Current Position)
+    groots: () => ({
       response: `### 🏢 Current Role: Cloud Engineer @ Groots Software Technologies
 
-Akash works as a **Cloud Engineer** at **Groots Software Technologies** (Pune, India), where he spearheads AWS cloud operations and the core data ingestion engine for **CloudNetra**, a multi-tenant Cloud FinOps platform:
+Akash serves as **Cloud Engineer** at **Groots Software Technologies** (Pune, India), where he spearheads AWS cloud operations and the core data ingestion engine for **CloudNetra**, an enterprise multi-tenant Cloud FinOps platform:
 
 1. **Multi-Account AWS Onboarding Automation**:
    - Developed declarative **CloudFormation templates** distributed to client AWS organizations.
@@ -57,7 +145,7 @@ Akash works as a **Cloud Engineer** at **Groots Software Technologies** (Pune, I
 
 2. **Cloud Cost & Usage Ingestion Engine**:
    - Built resilient data processing pipelines for **AWS Cost and Usage Reports (CUR 2.0)** and **AWS FOCUS 1.2 (FinOps Open Cost & Usage Specification)**.
-   - Handled ingestion edge cases, schema validations, and automated reprocessing from S3 buckets.
+   - Handled ingestion edge cases, schema validations, and automated reprocessing from Amazon S3 buckets.
 
 3. **Time-Series Database Architecture**:
    - Structured billing and usage telemetry into **PostgreSQL and TimescaleDB** hypertables.
@@ -68,13 +156,13 @@ Akash works as a **Cloud Engineer** at **Groots Software Technologies** (Pune, I
    - Recommended compute rightsizing with AWS Graviton and Karpenter dynamic node consolidation.`,
       actions: [
         { label: 'View Groots Timeline Entry', target: '#experience' },
-        { label: 'Inspect FinOps Architecture', target: '#projects' }
+        { label: 'Inspect FinOps Architecture', target: '#projects' },
+        { label: 'Contact Akash', target: '#contact' }
       ]
-    },
-    {
-      id: 'tradetron_experience',
-      keywords: ['tradetron', 'linux systems engineer', 'algorithmic trading', 'trading platform', 'low latency', '40+ servers', 'kernel tuning', 'sysctl', 'socket', 'tcp', 'oom killer', 'tradetron solutions'],
-      topic: 'linux',
+    }),
+
+    // 5. Tradetron Solutions (Linux Production & Algorithmic Trading)
+    tradetron: () => ({
       response: `### 📈 Experience: Linux Systems Engineer @ Tradetron Solutions
 
 At **Tradetron Solutions**, Akash managed the Linux infrastructure backbone powering high-frequency algorithmic trading:
@@ -85,12 +173,12 @@ At **Tradetron Solutions**, Akash managed the Linux infrastructure backbone powe
 
 2. **Kernel Tuning & Network Socket Optimization**:
    - Fine-tuned Linux kernel parameters via \`/etc/sysctl.conf\` for extreme network throughput:
-     \`\`\`bash
-     net.core.somaxconn = 65535
-     net.ipv4.tcp_max_syn_backlog = 65535
-     net.ipv4.tcp_tw_reuse = 1
-     net.ipv4.ip_local_port_range = 1024 65535
-     \`\`\`
+\`\`\`bash
+net.core.somaxconn = 65535
+net.ipv4.tcp_max_syn_backlog = 65535
+net.ipv4.tcp_tw_reuse = 1
+net.ipv4.ip_local_port_range = 1024 65535
+\`\`\`
 
 3. **Production Incident Diagnostics**:
    - Responded to high-volatility memory pressure, diagnosing Out-Of-Memory (OOM) killer events and thread starvation.
@@ -102,11 +190,10 @@ At **Tradetron Solutions**, Akash managed the Linux infrastructure backbone powe
         { label: 'View Tradetron Timeline', target: '#experience' },
         { label: 'Try Linux Terminal Commands', target: '#terminal-body' }
       ]
-    },
-    {
-      id: 'hisan_experience',
-      keywords: ['hisan', 'hisan labs', 'devops engineer', 'microservices', 'gitlab ci', 'azure devops', 'dockerize', 'helm charts', 'deployment time'],
-      topic: 'k8s',
+    }),
+
+    // 6. Hisan Labs (DevOps & CI/CD)
+    hisan: () => ({
       response: `### 🚀 Experience: DevOps Engineer @ Hisan Labs
 
 At **Hisan Labs**, Akash spearheaded the containerization transformation and CI/CD modernization:
@@ -129,11 +216,10 @@ At **Hisan Labs**, Akash spearheaded the containerization transformation and CI/
         { label: 'View Hisan Labs Entry', target: '#experience' },
         { label: 'Launch Pipeline Flow Simulator', target: '#pipeline' }
       ]
-    },
-    {
-      id: 'aiops_agent',
-      keywords: ['aiops', 'ai agent', 'langgraph', 'self healing', 'autonomous', 'sre agent', 'remediation', 'alertmanager webhook', 'qdrant', 'vector db'],
-      topic: 'k8s',
+    }),
+
+    // 7. Flagship AIOps & SRE Self-Healing Kubernetes Agent
+    aiops: () => ({
       response: `### 🤖 Autonomous AIOps & Self-Healing SRE Agent
 
 Akash engineered a cutting-edge **Autonomous Self-Healing Kubernetes Agent** combining LLMs with SRE incident triage:
@@ -154,51 +240,13 @@ Akash engineered a cutting-edge **Autonomous Self-Healing Kubernetes Agent** com
         { label: 'Inspect AI Agent Project Card', target: '#projects' },
         { label: 'Review Credentials & Training', target: '#certifications' }
       ]
-    },
-    {
-      id: 'aws_architecture',
-      keywords: ['aws', 'cloud architecture', 'vpc', 'rds', 'aurora', 'ec2', 's3', 'iam', 'route53', 'cloudformation', 'solutions architect', 'multi-az', 'subnets'],
-      topic: 'aws',
-      response: `### ☁️ AWS Cloud Infrastructure & Multi-Tier Architecture
+    }),
 
-Akash designs scalable, multi-AZ cloud foundations following the **AWS Well-Architected Framework**:
-
-\`\`\`text
-[ Internet / Route 53 DNS ]
-             │
-   [ Application Load Balancer (ALB) + ACM SSL/TLS ]
-             │
- ┌───────────┴─────────────────────────────┐
- │ Public Subnets (NAT Gateways, Bastion)  │
- └───────────┬─────────────────────────────┘
-             │
- ┌───────────┴─────────────────────────────┐
- │ Private Subnets: Amazon EKS Worker Nodes │
- │ Auto Scaling Group + Karpenter Dynamic   │
- └───────────┬─────────────────────────────┘
-             │
- ┌───────────┴─────────────────────────────┐
- │ Isolated Database Subnets: Multi-AZ RDS  │
- │ Aurora (PostgreSQL / TimescaleDB)       │
- └─────────────────────────────────────────┘
-\`\`\`
-
-**Key Architectural Patterns**:
-- **Multi-Account AWS Governance**: Automated onboarding via CloudFormation StackSets with cross-account IAM role delegation.
-- **High Availability & Zero Single Points of Failure**: Multi-AZ deployments with automated RDS Aurora failover (<30s RTO).
-- **Network Security**: Private subnets with no public IPs for worker nodes, AWS PrivateLink for S3 & ECR, and strictly scoped Security Groups.`,
-      actions: [
-        { label: 'Inspect 3D Architecture Topology', target: '#hero' },
-        { label: 'Explore Key Projects', target: '#projects' }
-      ]
-    },
-    {
-      id: 'linux_troubleshooting',
-      keywords: ['linux', 'rhel', 'ubuntu', 'centos', 'troubleshoot', 'oom', 'cpu', 'memory', 'disk', 'systemd', 'journalctl', 'bash', 'scripting', 'triage', 'sysadmin'],
-      topic: 'linux',
+    // 8. Linux Troubleshooting & Commands
+    linux_commands: () => ({
       response: `### 🐧 Enterprise Linux Production Systems & Incident Triage
 
-Akash has extensive experience managing **RHEL, Ubuntu, and CentOS** in production. Here is his systematic incident triage playbook:
+Here is Akash's systematic production triage playbook for RHEL, Ubuntu, and CentOS:
 
 #### 1. Memory & OOM Kill Diagnostics:
 \`\`\`bash
@@ -238,11 +286,46 @@ ss -tulpn
         { label: 'View Tradetron Experience', target: '#experience' },
         { label: 'Run Commands in Terminal HUD', target: '#terminal-body' }
       ]
-    },
-    {
-      id: 'k8s_gitops',
-      keywords: ['kubernetes', 'k8s', 'eks', 'argo', 'argocd', 'gitops', 'docker', 'container', 'helm', 'ingress', 'hpa', 'karpenter'],
-      topic: 'k8s',
+    }),
+
+    // 9. AWS Cloud Architecture
+    aws: () => ({
+      response: `### ☁️ AWS Cloud Infrastructure & Multi-Tier Architecture
+
+Akash designs scalable, multi-AZ cloud foundations following the **AWS Well-Architected Framework**:
+
+\`\`\`text
+[ Internet / Route 53 DNS ]
+             │
+   [ Application Load Balancer (ALB) + ACM SSL/TLS ]
+             │
+ ┌───────────┴─────────────────────────────┐
+ │ Public Subnets (NAT Gateways, Bastion)  │
+ └───────────┬─────────────────────────────┘
+             │
+ ┌───────────┴─────────────────────────────┐
+ │ Private Subnets: Amazon EKS Worker Nodes │
+ │ Auto Scaling Group + Karpenter Dynamic   │
+ └───────────┬─────────────────────────────┘
+             │
+ ┌───────────┴─────────────────────────────┐
+ │ Isolated Database Subnets: Multi-AZ RDS  │
+ │ Aurora (PostgreSQL / TimescaleDB)       │
+ └─────────────────────────────────────────┘
+\`\`\`
+
+**Key Architectural Patterns**:
+- **Multi-Account AWS Governance**: Automated onboarding via CloudFormation StackSets with cross-account IAM role delegation.
+- **High Availability & Zero Single Points of Failure**: Multi-AZ deployments with automated RDS Aurora failover (<30s RTO).
+- **Network Security**: Private subnets with no public IPs for worker nodes, AWS PrivateLink for S3 & ECR, and strictly scoped Security Groups.`,
+      actions: [
+        { label: 'Inspect 3D Architecture Topology', target: '#hero' },
+        { label: 'Explore Key Projects', target: '#projects' }
+      ]
+    }),
+
+    // 10. Kubernetes & GitOps
+    k8s: () => ({
       response: `### ☸️ Kubernetes (Amazon EKS) & Declarative GitOps
 
 Akash delivers containerized workloads with declarative GitOps synchronization:
@@ -258,11 +341,10 @@ Akash delivers containerized workloads with declarative GitOps synchronization:
         { label: 'Inspect CI/CD Flow Visualizer', target: '#pipeline' },
         { label: 'View Kubernetes Projects', target: '#projects' }
       ]
-    },
-    {
-      id: 'finops_cur_focus',
-      keywords: ['finops', 'cur', 'focus', 'cost', 'optimization', 'billing', 'savings', 'ebs cleanup', 'gp2 to gp3', 'timescaledb'],
-      topic: 'finops',
+    }),
+
+    // 11. FinOps CUR & FOCUS 1.2
+    finops: () => ({
       response: `### 💰 Cloud FinOps & Multi-Account Cost Optimization
 
 At **Groots Software Technologies**, Akash directly builds FinOps data pipelines and cost governance mechanisms:
@@ -282,11 +364,10 @@ At **Groots Software Technologies**, Akash directly builds FinOps data pipelines
         { label: 'View Groots Cloud Role', target: '#experience' },
         { label: 'Inspect FinOps Project Card', target: '#projects' }
       ]
-    },
-    {
-      id: 'terraform_iac',
-      keywords: ['terraform', 'iac', 'infrastructure as code', 'terragrunt', 's3 backend', 'dynamodb lock', 'state file', 'tfsec', 'drift'],
-      topic: 'aws',
+    }),
+
+    // 12. Terraform & Infrastructure as Code
+    terraform: () => ({
       response: `### 🧱 Terraform Infrastructure as Code (IaC)
 
 Akash designs modular, production-ready Terraform architectures:
@@ -304,11 +385,10 @@ Akash designs modular, production-ready Terraform architectures:
         { label: 'Explore Terraform Project Card', target: '#projects' },
         { label: 'View Skills Matrix', target: '#skills' }
       ]
-    },
-    {
-      id: 'observability_sre',
-      keywords: ['observability', 'monitoring', 'prometheus', 'grafana', 'alertmanager', 'sre', 'sli', 'slo', 'red method', 'use method', 'metrics', 'loki'],
-      topic: 'linux',
+    }),
+
+    // 13. Observability & SRE
+    observability: () => ({
       response: `### 📊 Observability, SRE Practices & Incident Management
 
 Akash implements full-stack observability based on Site Reliability Engineering principles:
@@ -330,41 +410,46 @@ Akash implements full-stack observability based on Site Reliability Engineering 
         { label: 'View Observability Project Card', target: '#projects' },
         { label: 'Skills Matrix', target: '#skills' }
       ]
-    },
-    {
-      id: 'cicd_devops',
-      keywords: ['ci/cd', 'pipeline', 'jenkins', 'gitlab', 'azure devops', 'github actions', 'sonarqube', 'trivy', 'devsecops', 'docker build'],
-      topic: 'k8s',
-      response: `### 🚀 Production CI/CD & DevSecOps Pipelines
+    }),
 
-Akash builds end-to-end automated pipelines taking code from Git commit to production cluster:
+    // 14. Availability, Notice Period & Hiring Logistics
+    availability: () => ({
+      response: `### ⏳ Availability & Role Preferences
 
-\`\`\`text
-[Developer Push] ➔ [Lint & Unit Tests]
-                          │
-                  [SonarQube SAST Quality Gate]
-                          │
-                  [Docker Multi-Stage Build]
-                          │
-                  [Trivy Container CVE Scan]
-                          │
-                  [Push Image to AWS ECR]
-                          │
-                  [Argo CD GitOps Sync to EKS]
-\`\`\`
+Akash is actively considering **Cloud Engineer, DevOps Engineer, Platform Engineer, and SRE** opportunities:
 
-- **Tooling**: GitLab CI/CD, Azure DevOps Server, GitHub Actions, and Jenkins.
-- **Shift-Left Security**: Quality gates fail builds if critical CVEs or code quality vulnerabilities are detected.
-- **Outcome**: Slashed deployment lead times from 45+ minutes to under 5 minutes with zero deployment drift.`,
+- **Target Roles**: Cloud Engineer, DevOps Engineer, Site Reliability Engineer (SRE), Platform Engineer.
+- **Notice Period**: **Immediate to 15 days** (negotiable / short notice).
+- **Location Preference**: **Pune, Maharashtra** (On-site / Hybrid), Mumbai, Bangalore, or **Full Remote**.
+- **Willingness to Relocate**: Yes, open to relocation for high-impact engineering opportunities.
+- **Interview Readiness**: Available for technical architecture discussions, hands-on Linux/AWS scenarios, and live coding assessments.`,
       actions: [
-        { label: 'Launch Pipeline Simulator', target: '#pipeline' },
-        { label: 'Contact Akash', target: '#contact' }
+        { label: 'Schedule an Interview', target: '#contact' },
+        { label: 'Connect on WhatsApp', target: 'https://api.whatsapp.com/send?phone=917057100082' },
+        { label: 'Direct Email', target: 'mailto:akashbora0082@gmail.com' }
       ]
-    },
-    {
-      id: 'certifications',
-      keywords: ['certification', 'certified', 'sap', 'solutions architect professional', 'trainwithshubham', 'credentials', 'agentic ai masterclass'],
-      topic: 'aws',
+    }),
+
+    // 15. Contact Information
+    contact: () => ({
+      response: `### 📬 Contact Akash Bora Directly
+
+Akash is ready to discuss how he can add immediate value to your infrastructure team:
+
+- 📧 **Email**: [akashbora0082@gmail.com](mailto:akashbora0082@gmail.com)
+- 📱 **Phone**: [+91-7057100082](tel:+917057100082)
+- 💬 **WhatsApp**: [Direct WhatsApp Chat](https://api.whatsapp.com/send?phone=917057100082)
+- 💼 **LinkedIn**: [linkedin.com/in/akash-bora](https://www.linkedin.com/in/akash-bora/)
+- 💻 **GitHub**: [github.com/Akashbora02](https://github.com/Akashbora02)
+- 📍 **Location**: Pune, Maharashtra, India (Open to On-site, Hybrid & Remote)`,
+      actions: [
+        { label: 'Open Contact Form', target: '#contact' },
+        { label: 'Chat on WhatsApp', target: 'https://api.whatsapp.com/send?phone=917057100082' }
+      ]
+    }),
+
+    // 16. Certifications
+    certifications: () => ({
       response: `### 📜 Verified Professional Certifications
 
 Akash holds premier industry credentials validating deep technical competence:
@@ -382,44 +467,8 @@ Akash holds premier industry credentials validating deep technical competence:
         { label: 'View Verified Badges', target: '#certifications' },
         { label: 'Contact Akash', target: '#contact' }
       ]
-    },
-    {
-      id: 'availability_notice',
-      keywords: ['notice period', 'availability', 'immediate', 'start date', 'join', 'relocate', 'salary', 'ctc', 'location', 'pune', 'remote'],
-      topic: 'hire',
-      response: `### ⏳ Availability & Role Preferences
-
-Akash is actively seeking new career opportunities in Cloud & DevOps engineering:
-
-- **Target Roles**: Cloud Engineer, DevOps Engineer, Site Reliability Engineer (SRE), Platform Engineer.
-- **Notice Period**: Immediate to 15 days (negotiable / short notice).
-- **Location Preference**: Pune, Maharashtra (On-site / Hybrid), Mumbai, Bangalore, or Full Remote.
-- **Willingness to Relocate**: Open to relocation for high-impact engineering opportunities.
-- **Interview Readiness**: Available for technical discussions, architectural whiteboard rounds, and coding assessments.`,
-      actions: [
-        { label: 'Schedule an Interview', target: '#contact' },
-        { label: 'Connect on WhatsApp', target: 'https://api.whatsapp.com/send?phone=917057100082' }
-      ]
-    },
-    {
-      id: 'contact_info',
-      keywords: ['contact', 'email', 'phone', 'call', 'reach', 'whatsapp', 'linkedin', 'github', 'get in touch'],
-      topic: 'hire',
-      response: `### 📬 Get in Touch with Akash Bora
-
-Akash is ready to discuss how he can add immediate value to your infrastructure team:
-
-- 📧 **Email**: [akashbora0082@gmail.com](mailto:akashbora0082@gmail.com)
-- 📱 **Phone**: [+91-7057100082](tel:+917057100082)
-- 💬 **WhatsApp**: [Direct WhatsApp Chat](https://api.whatsapp.com/send?phone=917057100082)
-- 💼 **LinkedIn**: [linkedin.com/in/akash-bora](https://www.linkedin.com/in/akash-bora/)
-- 💻 **GitHub**: [github.com/Akashbora02](https://github.com/Akashbora02)
-- 📍 **Location**: Pune, Maharashtra, India (Open to On-site, Hybrid & Remote)`,
-      actions: [
-        { label: 'Open Contact Form', target: '#contact' }
-      ]
-    }
-  ];
+    })
+  };
 
   // ----------------------------------------------------------------------------
   // Suggested Prompts by Category
@@ -431,7 +480,7 @@ Akash is ready to discuss how he can add immediate value to your infrastructure 
       { text: '🐧 Linux Triage & Tradetron', query: 'How did Akash troubleshoot Linux and 40+ servers at Tradetron?' },
       { text: '💰 FinOps CUR & FOCUS 1.2', query: 'Explain his FinOps and CUR / FOCUS 1.2 data pipeline experience' },
       { text: '☸️ Kubernetes & Argo CD GitOps', query: 'How does he implement GitOps with Argo CD on Amazon EKS?' },
-      { text: '🤖 AIOps Self-Healing Agent', query: 'Explain his Autonomous AIOps Kubernetes SRE Agent project' }
+      { text: '⏳ Notice Period & Availability', query: 'What is Akash Bora notice period and availability?' }
     ],
     aws: [
       { text: '🏢 Groots Cloud Engineer role', query: 'Tell me about his AWS Cloud Engineer role at Groots Software Technologies' },
@@ -466,55 +515,119 @@ Akash is ready to discuss how he can add immediate value to your infrastructure 
   };
 
   // ----------------------------------------------------------------------------
-  // Match User Query to Knowledge Engine
+  // Intelligent Conversational Intent Router
   // ----------------------------------------------------------------------------
-  function matchQueryToKnowledge(query) {
-    const clean = query.toLowerCase().trim();
-    let bestMatch = null;
-    let maxScore = 0;
+  function routeUserMessage(query) {
+    const raw = query.trim();
+    const clean = raw.toLowerCase();
 
-    for (const item of KNOWLEDGE_BASE) {
-      let score = 0;
-      for (const kw of item.keywords) {
-        if (clean.includes(kw)) {
-          // Weight multi-word and exact matches heavily
-          score += (kw.length * kw.length);
-        }
-      }
-      if (score > maxScore) {
-        maxScore = score;
-        bestMatch = item;
-      }
+    // 1. Check for name introduction ("praful this side", "my name is praful", "i am praful")
+    const extractedName = extractUserName(raw);
+    if (extractedName) {
+      sessionState.userName = extractedName;
+      return KNOWLEDGE_RESPONSES.greeting(sessionState.userName);
     }
 
-    if (bestMatch && maxScore >= 9) {
-      return bestMatch;
+    // 2. Greetings without name ("hi", "hello", "hey", "good morning", "hey ab", "hi ab")
+    if (/^(hi|hello|hey|hey\s+there|good\s+(morning|afternoon|evening)|hi\s+ab|hello\s+ab|hey\s+ab|yo|greetings)[\s!.,?]*$/i.test(clean)) {
+      return KNOWLEDGE_RESPONSES.greeting(sessionState.userName);
     }
 
-    // Dynamic SRE/DevOps fallback with rich reasoning
+    // 3. Polite / Thanks / Acknowledgment
+    if (clean.includes('thank') || clean.includes('thx') || /^(awesome|great|cool|nice|good\s+job|perfect|ok|okay|got\s+it|bye|see\s+you)(\s+(ab|akash|bot|agent))?[\s!.,?]*$/i.test(clean)) {
+      return KNOWLEDGE_RESPONSES.polite(sessionState.userName);
+    }
+
+    // 4. Hiring / Candidate Fit / Why Hire
+    if (clean.includes('why hire') || clean.includes('hire akash') || clean.includes('why should we hire') || clean.includes('strengths') || clean.includes('fit') || clean.includes('value proposition') || clean.includes('recommend')) {
+      return KNOWLEDGE_RESPONSES.why_hire();
+    }
+
+    // 5. Notice Period / Availability / Join / Relocate / Location
+    if (clean.includes('notice period') || clean.includes('availability') || clean.includes('immediate') || clean.includes('join') || clean.includes('relocate') || clean.includes('relocation') || clean.includes('location') || clean.includes('pune') || clean.includes('remote') || clean.includes('salary') || clean.includes('ctc') || clean.includes('resume') || clean.includes('cv')) {
+      return KNOWLEDGE_RESPONSES.availability();
+    }
+
+    // 6. Contact / Schedule Interview / Phone / Email / WhatsApp
+    if (clean.includes('contact') || clean.includes('interview') || clean.includes('email') || clean.includes('phone') || clean.includes('call') || clean.includes('reach') || clean.includes('whatsapp') || clean.includes('schedule') || clean.includes('hire him')) {
+      return KNOWLEDGE_RESPONSES.contact();
+    }
+
+    // 7. Groots Software Technologies / FinOps / CUR / FOCUS 1.2
+    if (clean.includes('groots') || clean.includes('cloudnetra') || clean.includes('cur') || clean.includes('focus') || clean.includes('timescale') || clean.includes('timescaledb') || clean.includes('billing') || clean.includes('cost optimization') || clean.includes('current role') || clean.includes('current job') || clean.includes('current company')) {
+      return KNOWLEDGE_RESPONSES.groots();
+    }
+
+    // 8. Tradetron Solutions / Linux Trading Systems / Low Latency
+    if (clean.includes('tradetron') || clean.includes('trading') || clean.includes('40+') || clean.includes('low latency') || clean.includes('sysctl') || clean.includes('socket') || clean.includes('kernel')) {
+      return KNOWLEDGE_RESPONSES.tradetron();
+    }
+
+    // 9. Hisan Labs / Microservices / GitLab CI / Azure DevOps
+    if (clean.includes('hisan') || clean.includes('gitlab') || clean.includes('azure devops') || clean.includes('microservices') || clean.includes('dockerize') || clean.includes('helm chart')) {
+      return KNOWLEDGE_RESPONSES.hisan();
+    }
+
+    // 10. Autonomous AIOps / Self-Healing Agent
+    if (clean.includes('ai agent') || clean.includes('aiops') || clean.includes('self healing') || clean.includes('langgraph') || clean.includes('qdrant') || clean.includes('vector db') || clean.includes('remediation')) {
+      return KNOWLEDGE_RESPONSES.aiops();
+    }
+
+    // 11. Linux Troubleshooting Commands / OOM / Disk / Inode / Systemd
+    if (clean.includes('oom') || clean.includes('linux') || clean.includes('rhel') || clean.includes('ubuntu') || clean.includes('centos') || clean.includes('troubleshoot') || clean.includes('memory') || clean.includes('disk full') || clean.includes('inode') || clean.includes('systemd') || clean.includes('journalctl') || clean.includes('bash script')) {
+      return KNOWLEDGE_RESPONSES.linux_commands();
+    }
+
+    // 12. AWS Architecture / Multi-AZ / VPC / RDS
+    if (clean.includes('aws') || clean.includes('vpc') || clean.includes('subnets') || clean.includes('aurora') || clean.includes('rds') || clean.includes('cloudformation') || clean.includes('s3') || clean.includes('multi-az') || clean.includes('solutions architect')) {
+      return KNOWLEDGE_RESPONSES.aws();
+    }
+
+    // 13. Kubernetes / EKS / Argo CD / GitOps / Karpenter
+    if (clean.includes('kubernetes') || clean.includes('k8s') || clean.includes('eks') || clean.includes('argo') || clean.includes('argocd') || clean.includes('gitops') || clean.includes('karpenter') || clean.includes('ingress') || clean.includes('container') || clean.includes('docker')) {
+      return KNOWLEDGE_RESPONSES.k8s();
+    }
+
+    // 14. Terraform / Infrastructure as Code
+    if (clean.includes('terraform') || clean.includes('iac') || clean.includes('terragrunt') || clean.includes('state') || clean.includes('dynamodb') || clean.includes('tfsec') || clean.includes('drift')) {
+      return KNOWLEDGE_RESPONSES.terraform();
+    }
+
+    // 15. Observability / Monitoring / Prometheus / Grafana / SRE
+    if (clean.includes('prometheus') || clean.includes('grafana') || clean.includes('alertmanager') || clean.includes('observability') || clean.includes('monitoring') || clean.includes('sre') || clean.includes('slo') || clean.includes('sli') || clean.includes('metric')) {
+      return KNOWLEDGE_RESPONSES.observability();
+    }
+
+    // 16. Certifications
+    if (clean.includes('certif') || clean.includes('credential') || clean.includes('sap') || clean.includes('trainwithshubham')) {
+      return KNOWLEDGE_RESPONSES.certifications();
+    }
+
+    // Conversational Fallback: Intelligent, helpful, natural AI response
+    const namePrefix = sessionState.userName ? `${sessionState.userName}, regarding` : 'Regarding';
     return {
-      id: 'dynamic_technical',
-      response: `### 🤖 AB Agent Technical Analysis
+      response: `### 🤖 AB Agent Response
 
-Regarding **"${escapeHtml(query)}"**:
+${namePrefix} **"${escapeHtml(raw)}"**:
 
-Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspective:
+Akash Bora approaches this with a strong **Production Cloud & SRE Mindset**:
 
-1. **Reliability & Architecture**: Ensures multi-AZ resilience, automated health checks, and failure domain isolation on **AWS (EKS, VPC, RDS Aurora)**.
-2. **Operational Verification**: Employs deep Linux diagnostics (\`journalctl\`, \`vmstat\`, \`dmesg\`, \`ss\`) and real-time observability via **Prometheus, Grafana, and CloudWatch**.
-3. **Automated Remediation**: Encapsulates manual operational tasks into declarative **Terraform IaC**, **Bash/Python runbooks**, or automated **Argo CD GitOps** pipelines.
+- **Resilience & High Availability**: Multi-AZ AWS architecture (EKS, RDS Aurora, VPC) with automated failover and zero single points of failure.
+- **Enterprise Linux Rigor**: Deep operational verification using non-destructive diagnostics (\`vmstat\`, \`journalctl\`, \`ss\`, \`dmesg\`) developed managing 40+ trading servers.
+- **Declarative Automation**: Automating manual toil into reproducible **Terraform IaC**, **Bash watchdogs**, or **Argo CD GitOps** pipelines.
+- **Cost Awareness (FinOps)**: Enforcing data-driven efficiency via AWS CUR 2.0 & FOCUS 1.2 standards to eliminate idle cloud waste.
 
-*Would you like to explore Akash's related production implementations or get in touch directly?*`,
+Would you like to explore any of Akash's specific production projects or discuss a role opening?`,
       actions: [
-        { label: 'Explore Key Projects', target: '#projects' },
-        { label: 'View Technical Skills', target: '#skills' },
-        { label: 'Contact Akash', target: '#contact' }
+        { label: '🏢 Groots Cloud Experience', query: 'Tell me about his role as Cloud Engineer at Groots Software Technologies' },
+        { label: '💡 Why Hire Akash?', query: 'Why should we hire Akash for our Cloud/DevOps team?' },
+        { label: '📞 Contact / Schedule Interview', query: 'How can I contact Akash Bora for an interview?' }
       ]
     };
   }
 
   // ----------------------------------------------------------------------------
-  // Format Markdown to Clean HTML
+  // Format Markdown to Clean HTML (Native List Rendering, No Flex Breakage)
   // ----------------------------------------------------------------------------
   function formatMarkdown(text) {
     let html = text;
@@ -548,11 +661,11 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
     // Links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="ab-msg-link">$1</a>');
 
-    // Numbered lists
-    html = html.replace(/^\s*(\d+)\.\s+(.*$)/gm, '<li class="ab-num-item"><span class="ab-num-bullet">$1.</span> $2</li>');
+    // Numbered lists: wrap inside clean <ol> and <li> without flex
+    html = html.replace(/^\s*\d+\.\s+(.*$)/gm, '<li class="ab-num-item">$1</li>');
     html = html.replace(/((?:<li class="ab-num-item">[\s\S]*?<\/li>\s*)+)/g, '<ol class="ab-num-list">$1</ol>');
 
-    // Bullet lists
+    // Bullet lists: wrap inside clean <ul> and <li> without flex
     html = html.replace(/^\s*[-*]\s+(.*$)/gm, '<li class="ab-bullet-item">$1</li>');
     html = html.replace(/((?:<li class="ab-bullet-item">[\s\S]*?<\/li>\s*)+)/g, '<ul class="ab-bullet-list">$1</ul>');
 
@@ -611,6 +724,8 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
     // Clear Chat
     if (clearBtn) {
       clearBtn.addEventListener('click', () => {
+        sessionState.turnCount = 0;
+        sessionState.userName = null;
         renderWelcomeCard();
       });
     }
@@ -654,7 +769,7 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
             </div>
             <div>
               <h5 class="ab-welcome-title mb-0">Hi, I'm AB Agent!</h5>
-              <small class="text-cyan mono" style="font-size: 0.76rem;">Autonomous Cloud &amp; DevOps Assistant</small>
+              <small class="text-cyan mono" style="font-size: 0.76rem;">Cloud &amp; DevOps Autonomous AI Copilot</small>
             </div>
           </div>
           <p class="ab-welcome-text">
@@ -683,11 +798,22 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
       if (actions && actions.length > 0) {
         actionsHtml = `
           <div class="ab-msg-actions-row">
-            ${actions.map(a => `
-              <button type="button" class="ab-msg-action-btn" data-target="${a.target}">
-                <i class="fa-solid fa-arrow-right-long text-cyan me-1"></i> ${a.label}
-              </button>
-            `).join('')}
+            ${actions.map(a => {
+              if (a.query) {
+                return `
+                  <button type="button" class="ab-msg-action-btn query-action" data-query="${escapeAttribute(a.query)}">
+                    <i class="fa-solid fa-arrow-right text-cyan me-1"></i> ${a.label}
+                  </button>
+                `;
+              } else if (a.target) {
+                return `
+                  <button type="button" class="ab-msg-action-btn target-action" data-target="${escapeAttribute(a.target)}">
+                    <i class="fa-solid fa-arrow-up-right-from-square text-cyan me-1"></i> ${a.label}
+                  </button>
+                `;
+              }
+              return '';
+            }).join('')}
           </div>
         `;
       }
@@ -705,11 +831,19 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
       messagesContainer.appendChild(row);
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-      // Bind action buttons inside message
-      row.querySelectorAll('.ab-msg-action-btn').forEach(btn => {
+      // Bind query action buttons (ask next question)
+      row.querySelectorAll('.ab-msg-action-btn.query-action').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const q = btn.getAttribute('data-query');
+          if (q) handleUserMessage(q);
+        });
+      });
+
+      // Bind navigation / external target action buttons
+      row.querySelectorAll('.ab-msg-action-btn.target-action').forEach(btn => {
         btn.addEventListener('click', () => {
           const target = btn.getAttribute('data-target');
-          if (target && target.startsWith('http')) {
+          if (target && (target.startsWith('http') || target.startsWith('mailto:'))) {
             window.open(target, '_blank', 'noopener,noreferrer');
           } else if (target && target.startsWith('#')) {
             const el = document.querySelector(target);
@@ -762,22 +896,24 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
       const q = queryText.trim();
       if (!q) return;
 
+      sessionState.turnCount++;
+
       // 1. User Message
       appendMessage('user', escapeHtml(q));
 
       // 2. Typing Indicator
       const typingEl = showTypingIndicator();
 
-      // 3. Process with realistic AI latency (400ms)
+      // 3. Process with realistic conversational delay (350ms)
       setTimeout(() => {
         if (typingEl && typingEl.parentElement) {
           typingEl.remove();
         }
 
-        const match = matchQueryToKnowledge(q);
+        const match = routeUserMessage(q);
         const formatted = formatMarkdown(match.response);
         appendMessage('bot', formatted, match.actions);
-      }, 400);
+      }, 350);
     }
 
     // Form Submit
@@ -793,14 +929,15 @@ Akash Bora approaches this from an **SRE & Production Cloud Engineering** perspe
     // Initial render
     renderWelcomeCard();
 
-    // Export globally for programmatic interaction
+    // Export globally for programmatic interaction & automated test suites
     window.ABAgent = {
       open: () => toggleWidget(true),
       close: () => toggleWidget(false),
       ask: (q) => {
         toggleWidget(true);
         handleUserMessage(q);
-      }
+      },
+      getState: () => ({ ...sessionState })
     };
   }
 
