@@ -1495,6 +1495,88 @@
     </div>
   </div>
 
+  <!-- ==========================================================================
+       AB AGENT: REAL CLOUD & DEVOPS AI COPILOT
+       ========================================================================== -->
+
+  <!-- Single Floating Trigger Button (Bottom Right) -->
+  <button id="ab-agent-trigger" class="ab-agent-floating-btn" aria-label="Open AB Agent Cloud &amp; DevOps AI Assistant" title="Open AB Agent (Cloud &amp; DevOps AI)">
+    <span class="ab-agent-icon-wrapper">
+      <i class="fa-solid fa-robot"></i>
+    </span>
+    <span class="ab-agent-label">AB Agent</span>
+    <span class="ab-agent-badge-pulse">Online</span>
+  </button>
+
+  <!-- AB Agent Interactive Drawer / Window -->
+  <div id="ab-agent-widget" class="ab-agent-widget" aria-hidden="true">
+    <!-- Header -->
+    <div class="ab-agent-header">
+      <div class="d-flex align-items-center gap-2">
+        <div class="ab-agent-avatar">
+          <i class="fa-solid fa-robot text-cyan"></i>
+          <span class="ab-status-indicator" title="Agent Online"></span>
+        </div>
+        <div>
+          <div class="d-flex align-items-center gap-2">
+            <h5 class="ab-agent-title mb-0">AB Agent</h5>
+            <span class="badge ab-version-badge">v3.0 Cloud &amp; DevOps</span>
+          </div>
+          <p class="ab-agent-subtitle mb-0">Specialized AI Copilot for AWS, Linux &amp; SRE</p>
+        </div>
+      </div>
+      <div class="ab-header-controls">
+        <button id="ab-btn-clear" class="ab-header-btn" title="Clear Chat History">
+          <i class="fa-solid fa-trash-can"></i>
+        </button>
+        <button id="ab-btn-close" class="ab-header-btn" title="Close AB Agent">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Messages Body -->
+    <div id="ab-chat-messages" class="ab-chat-messages">
+      <!-- Welcome card & messages rendered dynamically -->
+    </div>
+
+    <!-- Quick Filter Topics / Suggestion Pills -->
+    <div class="ab-prompts-container">
+      <div class="ab-topic-tabs">
+        <button class="ab-tab active" data-topic="all">All Topics</button>
+        <button class="ab-tab" data-topic="aws">☁️ AWS Cloud</button>
+        <button class="ab-tab" data-topic="linux">🐧 Linux Systems</button>
+        <button class="ab-tab" data-topic="k8s">☸️ K8s &amp; GitOps</button>
+        <button class="ab-tab" data-topic="finops">💰 FinOps</button>
+        <button class="ab-tab" data-topic="hire">💼 Why Hire?</button>
+      </div>
+      <div id="ab-prompt-pills" class="ab-prompt-pills">
+        <!-- Dynamic contextual prompt buttons -->
+      </div>
+    </div>
+
+    <!-- Input Bar -->
+    <div class="ab-chat-footer">
+      <form id="ab-chat-form" class="ab-chat-form">
+        <input 
+          type="text" 
+          id="ab-chat-input" 
+          class="ab-chat-input" 
+          placeholder="Ask AB Agent about AWS, Linux, K8s, or Akash's experience..." 
+          autocomplete="off"
+          maxlength="500"
+        >
+        <button type="submit" id="ab-chat-send" class="ab-chat-send-btn" aria-label="Send message" title="Send (Enter)">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+      <div class="ab-footer-meta">
+        <span><i class="fa-solid fa-shield-halved text-cyan"></i> Real Cloud &amp; DevOps Reasoning Engine</span>
+        <span class="mono">Trained on Akash Bora's Profile</span>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
     <div id="contactToast" class="toast toast-custom align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
@@ -1511,10 +1593,11 @@
   <!-- Bootstrap 5.3 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-  <!-- Custom Scripts (3D WebGL, 3D Tilt & Terminal) -->
+  <!-- Custom Scripts (3D WebGL, 3D Tilt, AB Agent & Terminal) -->
   <script src="assets/js/three-scene.js?v=6.0"></script>
   <script src="assets/js/tilt-3d.js?v=6.0"></script>
   <script src="assets/js/main.js?v=6.0"></script>
+  <script src="assets/js/ab-agent.js?v=6.0"></script>
   <script src="assets/js/terminal.js?v=6.0"></script>
 </body>
 </html>

@@ -45,6 +45,7 @@ akash-bora-portfolio/
     ├── css/
     │   └── style.css            # Responsive styles, dark glassmorphism, animations
     ├── js/
+    │   ├── ab-agent.js          # AB Agent: Cloud & DevOps Autonomous AI Copilot with categorized prompts
     │   ├── main.js              # Dynamic typing, smooth scroll, form validation
     │   ├── terminal.js          # Interactive Cloud Shell simulator with Linux & AWS diagnostics
     │   ├── three-scene.js       # 3D WebGL Three.js interactive cloud topology engine
@@ -144,9 +145,21 @@ python3 -m http.server 8000
 
 ## 6. Final Production Polish & Career-Focused Enhancements
 
-### Streamlined Recruiter Presentation & AB Agent Removal
-- **Complete AB Agent Removal**: Removed "Ask with AB Agent" chatbot and modal completely per user request, replacing floating clutter with clean, distraction-free portfolio presentation.
-- **Navbar Streamline**: Cleaned navbar action buttons by removing "Ask with AB Agent" and "Let's Connect", leaving a focused, high-contrast **"Contact Akash"** action button.
+### Dedicated AB Agent — Real Cloud & DevOps AI Copilot
+- **Single Right-Side Floating Action Button**: Positioned cleanly at the bottom right (`bottom: 24px; right: 24px`) with a luminous cyan-purple gradient, robot avatar, and live pulsing green "Online" indicator. Zero navbar clutter.
+- **Modern User-Friendly Copilot Drawer**: An interactive floating glass drawer widget that slides up seamlessly on desktop without blocking the whole page, and transforms into a responsive full-height bottom sheet on mobile.
+- **Domain-Specific Cloud + DevOps Reasoning Engine**: Deeply trained on Akash Bora's actual production stack:
+  - AWS Cloud Architecture (Multi-AZ VPC, EKS, RDS Aurora, CloudFormation, IAM condition keys, Route 53)
+  - Enterprise Linux Systems Engineering (RHEL, Ubuntu, CentOS diagnostics for OOM, CPU load, disk space, and systemd daemons)
+  - Kubernetes & GitOps Delivery (Argo CD declarative drift sync, Helm charts, Karpenter dynamic node autoscaling)
+  - Cloud FinOps (CloudNetra platform, AWS CUR & FOCUS 1.2 ingestion pipelines, PostgreSQL / TimescaleDB)
+  - Interviewer & Recruiter Insights (Detailed breakdown of why to hire Akash Bora, verified credentials, and direct reach-out links)
+- **Interactive Capabilities**:
+  - Filter tabs by domain: `All Topics`, `☁️ AWS Cloud`, `🐧 Linux Systems`, `☸️ K8s & GitOps`, `💰 FinOps`, `💼 Why Hire?`
+  - Dynamic prompt pills for instant one-click questions
+  - Syntax-highlighted code blocks with a one-click `[Copy Code]` button
+  - In-chat actionable navigation buttons that scroll smoothly to relevant sections (`#projects`, `#experience`, `#contact`)
+  - Realistic typing animation with streaming delay simulation
 
 ### Hero Section Redesign: High-Converting Realistic Buttons & Bold Sub-Points
 - **Realistic CTA Buttons**: Replaced legacy "3D Arch", "Experience", and "LinkedIn" buttons with realistic, career-accelerating buttons:
