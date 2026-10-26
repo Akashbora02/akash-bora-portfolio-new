@@ -150,10 +150,11 @@
         </ul>
       </div>
 
-      <div class="d-none d-md-flex align-items-center gap-2">
-        <a href="#contact" class="btn-nav-action">
-          <i class="fa-solid fa-paper-plane"></i> Contact Akash
-        </a>
+      <div class="d-none d-lg-flex align-items-center">
+        <span class="nav-status-pill">
+          <span class="status-dot-green"></span>
+          <span class="nav-status-text">Available for Hire</span>
+        </span>
       </div>
     </div>
   </nav>
@@ -186,48 +187,32 @@
             <span class="typed-cursor">_</span>
           </div>
 
-          <p class="hero-subtitle">
+          <p class="hero-subtitle mb-3">
             AWS Certified Solutions Architect – Professional and Cloud &amp; DevOps Engineer with <strong>2+ years of production experience</strong> engineering high-availability AWS cloud infrastructure, enterprise Linux environments, Kubernetes workloads, and automated GitOps pipelines.
           </p>
 
-          <!-- Clear, High-Impact Profile Sub-Points with Bold Wording -->
-          <div class="hero-profile-highlights">
-            <div class="hero-highlight-point">
+          <!-- Clear, High-Impact 1-Line Profile Sub-Points -->
+          <div class="hero-profile-highlights mb-4">
+            <div class="hero-highlight-point" title="Current Role: Cloud Engineer @ Groots Software Technologies">
+              <i class="fa-solid fa-briefcase highlight-icon text-cyan"></i>
+              <p><strong>Current Role:</strong> Cloud Engineer @ <strong>Groots Software Technologies</strong> (AWS &amp; FinOps)</p>
+            </div>
+            <div class="hero-highlight-point" title="AWS Architecture: Certified Solutions Architect – Professional">
               <i class="fa-brands fa-aws highlight-icon text-warning"></i>
-              <p><strong>AWS Cloud Infrastructure:</strong> Hands-on engineering across <strong>EKS, Multi-AZ VPC, EC2, RDS Aurora, ALB, S3, IAM, Route 53</strong>, and <strong>CloudWatch</strong> delivering <strong>99.95% high availability</strong>.</p>
+              <p><strong>AWS Architecture:</strong> Certified Solutions Architect – Professional (EKS, Multi-AZ VPC, Aurora)</p>
             </div>
-            <div class="hero-highlight-point">
+            <div class="hero-highlight-point" title="Linux Systems: Enterprise RHEL, Ubuntu & CentOS Administration">
               <i class="fa-brands fa-linux highlight-icon text-cyan"></i>
-              <p><strong>Linux Production Operations:</strong> Enterprise <strong>RHEL, Ubuntu &amp; CentOS administration</strong>, kernel diagnostics, systemd services, and <strong>Bash / Python automation</strong> eliminating operational toil.</p>
+              <p><strong>Linux Production:</strong> Enterprise RHEL, Ubuntu &amp; CentOS administration, kernel diagnostics &amp; Bash</p>
             </div>
-            <div class="hero-highlight-point">
-              <i class="fa-solid fa-dharmachakra highlight-icon text-info"></i>
-              <p><strong>Kubernetes &amp; GitOps Delivery:</strong> Containerized microservices on <strong>Amazon EKS</strong>, declarative provisioning with <strong>Terraform IaC</strong>, and automated drift sync via <strong>Argo CD &amp; CI/CD pipelines</strong>.</p>
+            <div class="hero-highlight-point" title="GitOps & FinOps: Declarative Argo CD, Terraform IaC, CUR & FOCUS 1.2">
+              <i class="fa-solid fa-code-merge highlight-icon text-success"></i>
+              <p><strong>DevOps &amp; FinOps:</strong> Declarative Argo CD GitOps, Terraform IaC &amp; AWS CUR / FOCUS 1.2 pipelines</p>
             </div>
-            <div class="hero-highlight-point">
-              <i class="fa-solid fa-coins highlight-icon text-success"></i>
-              <p><strong>Cloud FinOps &amp; Governance:</strong> Scalable <strong>multi-account AWS onboarding (CloudFormation / IAM roles)</strong>, S3 cost-data pipelines, and <strong>CUR / FOCUS 1.2 data validation</strong> to eliminate cloud waste.</p>
-            </div>
-          </div>
-
-          <!-- Realistic, Recruiter-Focused CTA Buttons -->
-          <div class="hero-cta-group">
-            <a href="#projects" class="btn-primary-glow">
-              <i class="fa-solid fa-diagram-project"></i> Featured Projects
-            </a>
-            <a href="#pipeline" class="btn-secondary-glass">
-              <i class="fa-solid fa-code-branch text-cyan"></i> CI/CD &amp; GitOps Flow
-            </a>
-            <a href="#certifications" class="btn-secondary-glass">
-              <i class="fa-brands fa-aws text-warning"></i> AWS Certified SAP
-            </a>
-            <a href="#contact" class="btn-secondary-glass">
-              <i class="fa-solid fa-paper-plane text-info"></i> Contact Akash
-            </a>
           </div>
 
           <!-- Social Links Strip -->
-          <div class="hero-social-links">
+          <div class="hero-social-links mt-2">
             <span class="text-secondary small fw-bold me-2 mono">FIND ME ON:</span>
             <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" rel="noopener noreferrer" class="social-icon-btn" title="LinkedIn Profile">
               <i class="fa-brands fa-linkedin-in"></i>
@@ -872,9 +857,9 @@
 
         <!-- Project 0: Autonomous AIOps & SRE Self-Healing Kubernetes Agent (Flagship) -->
         <div class="col-12 mb-2">
-          <div class="project-card" style="border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 229, 255, 0.15);">
-            <div class="project-header-bar" style="background: rgba(13, 22, 43, 0.98);">
-              <span class="project-category-badge" style="background: rgba(168, 85, 247, 0.18); border-color: rgba(168, 85, 247, 0.45); color: #C084FC;">
+          <div class="project-card project-theme-ai">
+            <div class="project-header-bar">
+              <span class="project-category-badge">
                 <i class="fa-solid fa-brain me-1"></i> Agentic AI &amp; SRE
               </span>
               <span class="badge-arch-type"><i class="fa-solid fa-robot me-1 text-cyan"></i> Autonomous Self-Healing Blueprint</span>
@@ -888,8 +873,8 @@
               <div class="col-lg-6">
                 <div class="project-body">
                   <div class="d-flex align-items-center gap-2 mb-2">
-                    <span class="badge bg-info-subtle text-cyan border border-info-subtle"><i class="fa-solid fa-star me-1 text-warning"></i> Flagship AI Implementation</span>
-                    <span class="badge bg-success-subtle text-success border border-success-subtle">Production Live</span>
+                    <span class="badge badge-flagship-ai"><i class="fa-solid fa-star me-1 text-warning"></i> Flagship AI Implementation</span>
+                    <span class="badge badge-live-status">Production Live</span>
                   </div>
                   <h3 class="project-title">Autonomous AIOps &amp; Self-Healing Kubernetes SRE Agent</h3>
                   <p class="project-desc">
@@ -923,7 +908,7 @@
 
         <!-- Project 1: GitOps Kubernetes Platform -->
         <div class="col-lg-6">
-          <div class="project-card">
+          <div class="project-card project-theme-gitops">
             <div class="project-header-bar">
               <span class="project-category-badge"><i class="fa-solid fa-code-branch me-1"></i> GitOps &amp; K8s</span>
               <span class="badge-arch-type"><i class="fa-solid fa-diagram-project me-1"></i> Architecture Blueprint</span>
@@ -954,7 +939,9 @@
                 <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal1">
                   <i class="fa-solid fa-circle-info"></i> Architecture Details
                 </button>
-                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+                <a href="#contact" class="btn btn-sm btn-outline-info">
+                  <i class="fa-solid fa-paper-plane me-1 text-cyan"></i> Inquire Architecture
+                </a>
               </div>
             </div>
           </div>
@@ -962,7 +949,7 @@
 
         <!-- Project 2: DevSecOps Pipeline -->
         <div class="col-lg-6">
-          <div class="project-card">
+          <div class="project-card project-theme-sec">
             <div class="project-header-bar">
               <span class="project-category-badge"><i class="fa-solid fa-shield-halved me-1"></i> DevSecOps</span>
               <span class="badge-arch-type"><i class="fa-solid fa-diagram-project me-1"></i> CI/CD Security Pipeline</span>
@@ -993,7 +980,9 @@
                 <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal2">
                   <i class="fa-solid fa-circle-info"></i> Architecture Details
                 </button>
-                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+                <a href="#contact" class="btn btn-sm btn-outline-info">
+                  <i class="fa-solid fa-paper-plane me-1 text-cyan"></i> Inquire Architecture
+                </a>
               </div>
             </div>
           </div>
@@ -1001,7 +990,7 @@
 
         <!-- Project 3: Full-Stack Observability -->
         <div class="col-lg-6">
-          <div class="project-card">
+          <div class="project-card project-theme-obs">
             <div class="project-header-bar">
               <span class="project-category-badge"><i class="fa-solid fa-chart-pie me-1"></i> SRE &amp; Observability</span>
               <span class="badge-arch-type"><i class="fa-solid fa-diagram-project me-1"></i> Monitoring Stack</span>
@@ -1032,7 +1021,9 @@
                 <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal3">
                   <i class="fa-solid fa-circle-info"></i> Architecture Details
                 </button>
-                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+                <a href="#contact" class="btn btn-sm btn-outline-info">
+                  <i class="fa-solid fa-paper-plane me-1 text-cyan"></i> Inquire Architecture
+                </a>
               </div>
             </div>
           </div>
@@ -1040,7 +1031,7 @@
 
         <!-- Project 4: Terraform Multi-Tier Cloud -->
         <div class="col-lg-6">
-          <div class="project-card">
+          <div class="project-card project-theme-iac">
             <div class="project-header-bar">
               <span class="project-category-badge"><i class="fa-solid fa-cloud me-1"></i> IaC &amp; Cloud</span>
               <span class="badge-arch-type"><i class="fa-solid fa-diagram-project me-1"></i> Infrastructure Architecture</span>
@@ -1071,7 +1062,9 @@
                 <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal4">
                   <i class="fa-solid fa-circle-info"></i> Architecture Details
                 </button>
-                <a href="#contact" class="btn btn-sm btn-outline-info">Discuss System</a>
+                <a href="#contact" class="btn btn-sm btn-outline-info">
+                  <i class="fa-solid fa-paper-plane me-1 text-cyan"></i> Inquire Architecture
+                </a>
               </div>
             </div>
           </div>
@@ -1313,31 +1306,98 @@
        ========================================================================== -->
   <footer class="footer-custom">
     <div class="container">
-      <div class="row align-items-center g-4">
-        <div class="col-md-4 text-center text-md-start">
-          <div class="d-flex align-items-center justify-content-center justify-content-md-start gap-2 mb-2">
+      <div class="row g-4 pb-4 border-bottom border-secondary-subtle">
+        
+        <!-- Column 1: Brand & Profile -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
             <img src="assets/images/logo-banner.png?v=5.0" alt="Akash Bora Logo" class="footer-brand-logo">
           </div>
-          <p class="text-muted small mb-0">DevOps Engineer &amp; AWS Solutions Architect.</p>
-        </div>
-
-        <div class="col-md-4 text-center">
-          <div class="d-flex justify-content-center gap-3">
-            <a href="#about" class="footer-nav-link">About</a>
-            <a href="#skills" class="footer-nav-link">Skills</a>
-            <a href="#experience" class="footer-nav-link">Experience</a>
-            <a href="#projects" class="footer-nav-link">Projects</a>
-            <a href="#contact" class="footer-nav-link">Contact</a>
+          <p class="footer-bio-text">
+            AWS Certified Solutions Architect – Professional and Cloud &amp; DevOps Engineer specializing in AWS multi-account governance, enterprise Linux systems, Kubernetes, and Cloud FinOps.
+          </p>
+          <div class="footer-role-badge">
+            <span class="status-dot-green"></span>
+            <span>Cloud Engineer @ Groots Software Technologies</span>
+          </div>
+          <div class="mt-2 text-muted small mono">
+            <i class="fa-solid fa-location-dot text-danger me-1"></i> Pune, Maharashtra, India
           </div>
         </div>
 
-        <div class="col-md-4 text-center text-md-end">
-          <div class="d-flex justify-content-center justify-content-md-end gap-2 mb-2">
-            <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" class="social-icon-btn" style="width:36px; height:36px;"><i class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://github.com/Akashbora02" target="_blank" class="social-icon-btn" style="width:36px; height:36px;"><i class="fa-brands fa-github"></i></a>
-            <a href="mailto:akashbora0082@gmail.com" class="social-icon-btn" style="width:36px; height:36px;"><i class="fa-solid fa-envelope"></i></a>
+        <!-- Column 2: Navigation Menus -->
+        <div class="col-lg-2 col-md-6 col-6">
+          <h6 class="footer-col-title">NAVIGATION</h6>
+          <ul class="footer-menu-list">
+            <li><a href="#hero" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> Home</a></li>
+            <li><a href="#about" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> About Akash</a></li>
+            <li><a href="#skills" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> Skills Matrix</a></li>
+            <li><a href="#pipeline" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> CI/CD Flow</a></li>
+            <li><a href="#experience" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> Experience</a></li>
+            <li><a href="#projects" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> Key Projects</a></li>
+            <li><a href="#certifications" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> Credentials</a></li>
+            <li><a href="#contact" class="footer-link"><i class="fa-solid fa-angle-right me-1"></i> Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Tech Specializations -->
+        <div class="col-lg-3 col-md-6 col-6">
+          <h6 class="footer-col-title">SPECIALIZATIONS</h6>
+          <ul class="footer-menu-list">
+            <li><span class="footer-spec-item"><i class="fa-brands fa-aws text-warning me-2"></i> AWS Cloud Multi-AZ</span></li>
+            <li><span class="footer-spec-item"><i class="fa-brands fa-linux text-cyan me-2"></i> Enterprise Linux (RHEL)</span></li>
+            <li><span class="footer-spec-item"><i class="fa-solid fa-dharmachakra text-info me-2"></i> Kubernetes &amp; Amazon EKS</span></li>
+            <li><span class="footer-spec-item"><i class="fa-solid fa-coins text-success me-2"></i> Cloud FinOps (CUR/FOCUS)</span></li>
+            <li><span class="footer-spec-item"><i class="fa-solid fa-code-merge text-danger me-2"></i> Argo CD GitOps Sync</span></li>
+            <li><span class="footer-spec-item"><i class="fa-solid fa-cubes text-primary me-2"></i> Terraform IaC Modules</span></li>
+            <li><span class="footer-spec-item"><i class="fa-solid fa-chart-line text-warning me-2"></i> Prometheus &amp; Grafana</span></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Connect & Direct Reach -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-col-title">GET IN TOUCH</h6>
+          <div class="footer-contact-items mb-3">
+            <a href="mailto:akashbora0082@gmail.com" class="footer-contact-link">
+              <i class="fa-solid fa-envelope text-cyan me-2"></i> akashbora0082@gmail.com
+            </a>
+            <a href="tel:+917057100082" class="footer-contact-link">
+              <i class="fa-solid fa-phone text-cyan me-2"></i> +91-7057100082
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=917057100082" target="_blank" rel="noopener noreferrer" class="footer-contact-link">
+              <i class="fa-brands fa-whatsapp text-success me-2"></i> WhatsApp Direct
+            </a>
           </div>
-          <p class="text-muted small mb-0">&copy; <span id="current-year">2026</span> Akash Bora. All rights reserved. <a href="admin/" class="text-muted text-decoration-none ms-1 opacity-25" title="Admin Access"><i class="fa-solid fa-shield-halved"></i></a></p>
+          <div class="footer-social-strip">
+            <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/Akashbora02" target="_blank" rel="noopener noreferrer" class="footer-social-btn" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="mailto:akashbora0082@gmail.com" class="footer-social-btn" title="Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+            <a href="tel:+917057100082" class="footer-social-btn" title="Phone">
+              <i class="fa-solid fa-phone"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom Bar -->
+      <div class="footer-bottom-bar d-flex flex-wrap align-items-center justify-content-between pt-3 gap-2">
+        <p class="text-muted small mb-0">
+          &copy; <span id="current-year">2026</span> <strong>Akash Bora</strong>. Built with precision, reliability, and high availability.
+        </p>
+        <div class="d-flex align-items-center gap-3">
+          <a href="admin/" class="text-muted text-decoration-none small opacity-40 hover-opacity-100" title="Admin Portal">
+            <i class="fa-solid fa-shield-halved me-1"></i> Admin
+          </a>
+          <a href="#hero" class="btn-back-to-top" title="Back to top">
+            <i class="fa-solid fa-arrow-up me-1"></i> Top
+          </a>
         </div>
       </div>
     </div>
