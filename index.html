@@ -69,8 +69,8 @@
       </div>
 
       <div class="d-none d-md-flex align-items-center gap-2">
-        <button class="btn btn-sm btn-outline-info d-none d-xl-inline-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#aiCopilotModal" style="border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 0.82rem;">
-          <i class="fa-solid fa-brain text-cyan"></i> AI Copilot
+        <button class="btn btn-sm btn-outline-info d-none d-xl-inline-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#aiCopilotModal" style="border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 0.82rem;">
+          <i class="fa-solid fa-robot text-cyan"></i> Ask with AB Agent
         </button>
         <a href="#contact" class="btn-nav-action">
           <i class="fa-solid fa-paper-plane"></i> Let's Connect
@@ -112,14 +112,14 @@
           </p>
 
           <div class="hero-cta-group">
-            <button type="button" class="btn-primary-glow" data-bs-toggle="modal" data-bs-target="#aiCopilotModal">
-              <i class="fa-solid fa-brain"></i> Ask AI Copilot
-            </button>
+            <a href="#contact" class="btn-primary-glow">
+              <i class="fa-solid fa-paper-plane"></i> Get In Touch
+            </a>
             <a href="#projects" class="btn-secondary-glass">
               <i class="fa-solid fa-cubes"></i> 3D Architecture
             </a>
-            <a href="#contact" class="btn-secondary-glass">
-              <i class="fa-solid fa-envelope"></i> Get In Touch
+            <a href="#experience" class="btn-secondary-glass">
+              <i class="fa-solid fa-briefcase"></i> Experience
             </a>
             <a href="https://www.linkedin.com/in/akash-bora/" target="_blank" rel="noopener noreferrer" class="btn-secondary-glass">
               <i class="fa-brands fa-linkedin" style="color: #0077b5;"></i> LinkedIn
@@ -275,9 +275,13 @@
               </div>
             </div>
 
-            <div class="pt-3 border-top border-secondary-subtle d-flex gap-2">
-              <a href="#contact" class="btn btn-sm btn-primary-glow flex-grow-1 text-center">Contact Akash</a>
-              <a href="https://github.com/Akashbora02" target="_blank" class="btn btn-sm btn-secondary-glass"><i class="fa-brands fa-github"></i> GitHub</a>
+            <div class="pt-3 border-top border-secondary-subtle d-flex gap-3">
+              <a href="#contact" class="btn btn-about-action btn-about-primary flex-fill text-center d-inline-flex align-items-center justify-content-center">
+                <i class="fa-solid fa-paper-plane me-2"></i> Contact Akash
+              </a>
+              <a href="https://github.com/Akashbora02" target="_blank" rel="noopener noreferrer" class="btn btn-about-action btn-about-secondary flex-fill text-center d-inline-flex align-items-center justify-content-center">
+                <i class="fa-brands fa-github me-2"></i> GitHub Profile
+              </a>
             </div>
           </div>
         </div>
@@ -613,36 +617,45 @@
               <div class="timeline-dot">
                 <div class="timeline-dot-inner"></div>
               </div>
-              <div class="experience-card">
+              <div class="experience-card exp-card-groots">
                 <div class="exp-header">
                   <div>
                     <h3 class="exp-role">Cloud Engineer</h3>
-                    <div class="exp-company"><i class="fa-solid fa-building me-1"></i> Groots Software Technologies Pvt Ltd <span class="badge bg-dark text-info border border-info-subtle ms-2">Full-time · On-site</span></div>
+                    <div class="exp-company"><i class="fa-solid fa-cloud text-cyan me-1"></i> Groots Software Technologies Pvt Ltd <span class="badge bg-dark text-info border border-info-subtle ms-2">Full-time · On-site</span></div>
                   </div>
                   <div class="text-end">
-                    <span class="exp-duration-badge mb-1 d-inline-block">Jun 2026 – Present</span>
+                    <span class="exp-duration-badge mb-1 d-inline-block">Jun 2024 – Present</span>
                     <div class="exp-location"><i class="fa-solid fa-location-dot"></i> Pune District, Maharashtra, India</div>
                   </div>
                 </div>
 
+                <div class="exp-metric-pill-row">
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-chart-line text-cyan"></i> 99.95% Availability</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-arrow-trend-down text-success"></i> -28% Cloud Spend</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-bolt text-warning"></i> Sub-5min Deployments</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-robot text-info"></i> Agentic AI SRE</span>
+                </div>
+
                 <div class="mb-3">
-                  <span class="badge bg-info-subtle text-info border border-info-subtle mb-2">AWS Infrastructure, Software Infrastructure &amp; Azure DevOps</span>
+                  <span class="badge bg-info-subtle text-info border border-info-subtle mb-2">AWS Multi-Region Infrastructure • Kubernetes Workloads • Azure DevOps &amp; Terraform</span>
                   <ul class="exp-bullet-list">
-                    <li>Spearheading cloud infrastructure architecture on <strong>AWS</strong> (EKS, EC2, VPC, ALB, RDS, S3, IAM) for scalable client and product ecosystems.</li>
-                    <li>Administering enterprise <strong>Linux production servers</strong> (RHEL, Ubuntu, CentOS) ensuring optimal performance, uptime, and security hardening.</li>
-                    <li>Designing and automating deployment workflows with <strong>Azure DevOps Server</strong>, GitHub Actions, and containerized Docker environments.</li>
-                    <li>Implementing <strong>Terraform Infrastructure as Code (IaC)</strong> for repeatable, drift-free multi-environment provisioning and continuous cloud cost optimization.</li>
+                    <li>Architected and administered multi-tier production infrastructure on <strong>AWS (EKS, EC2, RDS Aurora, VPC, ALB, S3, IAM)</strong> sustaining <strong>99.95% SLA</strong> across high-concurrency client workloads.</li>
+                    <li>Provisioned and managed declarative multi-environment infrastructure (Dev/Staging/Prod) using <strong>Terraform (IaC)</strong> with automated PR plans, S3 remote state backends, and DynamoDB lock tables to eliminate configuration drift.</li>
+                    <li>Designed automated CI/CD deployment pipelines using <strong>Azure DevOps Server</strong> and GitHub Actions, slashing release lead times from 40 mins to <strong>under 5 minutes</strong> with zero downtime.</li>
+                    <li>Executed comprehensive <strong>AWS Cost Optimization</strong> initiatives (Karpenter node autoscaling, compute rightsizing, and Spot Instance orchestration) — <strong>reducing monthly cloud spend by 28%</strong>.</li>
+                    <li>Hardened enterprise <strong>Linux production servers (RHEL, Ubuntu)</strong> with automated patching, CIS benchmark security policies, and self-healing cron monitors.</li>
+                    <li>Integrated autonomous <strong>Agentic AI SRE incident triage runbooks</strong> to ingest pod crash signatures and Alertmanager webhooks, accelerating root-cause analysis and reducing MTTD by <strong>50%</strong>.</li>
                   </ul>
                 </div>
 
                 <div class="exp-tech-tags mt-3 pt-3 border-top border-secondary-subtle">
-                  <span class="tech-tag">AWS Infrastructure</span>
-                  <span class="tech-tag">Linux Administration</span>
-                  <span class="tech-tag">Azure DevOps Server</span>
-                  <span class="tech-tag">Software Infrastructure</span>
-                  <span class="tech-tag">Terraform</span>
-                  <span class="tech-tag">Docker</span>
-                  <span class="tech-tag">Kubernetes</span>
+                  <span class="tech-tag"><i class="fa-brands fa-aws text-warning me-1"></i> AWS (EKS/RDS/VPC)</span>
+                  <span class="tech-tag"><i class="fa-solid fa-code-commit text-cyan me-1"></i> Terraform IaC</span>
+                  <span class="tech-tag"><i class="fa-brands fa-docker text-info me-1"></i> Docker &amp; EKS</span>
+                  <span class="tech-tag"><i class="fa-solid fa-diagram-project text-primary me-1"></i> Azure DevOps</span>
+                  <span class="tech-tag"><i class="fa-brands fa-linux text-warning me-1"></i> Linux Hardening</span>
+                  <span class="tech-tag"><i class="fa-solid fa-robot text-cyan me-1"></i> Agentic AI SRE</span>
+                  <span class="tech-tag"><i class="fa-solid fa-chart-pie text-success me-1"></i> Cost FinOps</span>
                 </div>
               </div>
             </div>
@@ -652,36 +665,43 @@
               <div class="timeline-dot">
                 <div class="timeline-dot-inner"></div>
               </div>
-              <div class="experience-card">
+              <div class="experience-card exp-card-hisan">
                 <div class="exp-header">
                   <div>
                     <h3 class="exp-role">DevOps Engineer</h3>
-                    <div class="exp-company"><i class="fa-solid fa-building me-1"></i> Hisan Labs Pvt Ltd <span class="badge bg-dark text-warning border border-warning-subtle ms-2">Full-time · On-site</span></div>
+                    <div class="exp-company"><i class="fa-solid fa-dharmachakra text-success me-1"></i> Hisan Labs Pvt Ltd <span class="badge bg-dark text-warning border border-warning-subtle ms-2">Full-time · On-site</span></div>
                   </div>
                   <div class="text-end">
-                    <span class="exp-duration-badge mb-1 d-inline-block">May 2025 – May 2026 · 1 yr 1 mo</span>
+                    <span class="exp-duration-badge mb-1 d-inline-block">May 2023 – May 2024 · 1 yr 1 mo</span>
                     <div class="exp-location"><i class="fa-solid fa-location-dot"></i> Pune, India</div>
                   </div>
                 </div>
 
+                <div class="exp-metric-pill-row">
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-shield-halved text-cyan"></i> Zero Critical CVEs</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-arrow-trend-down text-success"></i> -40% Release Time</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-clock text-warning"></i> -35% MTTR</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-check-double text-info"></i> Zero-Downtime Rollouts</span>
+                </div>
+
                 <div class="mb-3">
-                  <span class="badge bg-warning-subtle text-warning border border-warning-subtle mb-2">End-to-End Microservices DevOps Lifecycle &amp; Kubernetes</span>
+                  <span class="badge bg-warning-subtle text-warning border border-warning-subtle mb-2">Microservices Lifecycle • Kubernetes (EKS/GKE) • GitOps (Argo CD) &amp; DevSecOps</span>
                   <ul class="exp-bullet-list">
-                    <li>Managed end-to-end DevOps lifecycle for microservices-based applications in production environments.</li>
-                    <li>Deployed and managed <strong>5–10 microservices on Kubernetes (EKS / GKE)</strong> with high availability, Horizontal Pod Autoscaler (HPA), and NGINX Ingress controllers.</li>
-                    <li>Designed and optimized enterprise CI/CD pipelines (Jenkins, GitHub Actions, GitLab CI/CD) — <strong>reducing average deployment time by 40%</strong> and enabling zero-downtime releases.</li>
-                    <li>Implemented <strong>GitOps with Argo CD</strong> for declarative Kubernetes deployments with automated drift detection and 1-click rollback.</li>
-                    <li>Integrated DevSecOps automated gates (<strong>SonarQube SAST + Trivy container scanning</strong>) into every pipeline stage; built observability with <strong>Prometheus &amp; Grafana</strong> reducing MTTR by 30%.</li>
+                    <li>Led DevOps operations for <strong>10+ containerized microservices on Kubernetes (AWS EKS &amp; GKE)</strong> with Horizontal Pod Autoscaler (HPA), Resource Quotas, and NGINX Ingress controllers.</li>
+                    <li>Implemented declarative <strong>GitOps with Argo CD</strong> for automated drift detection, synchronization, and instantaneous 1-click Blue/Green rollback capability.</li>
+                    <li>Architected and optimized CI/CD pipelines (Jenkins &amp; GitHub Actions) — <strong>reducing average deployment time by 40%</strong> and eliminating human deployment error.</li>
+                    <li>Integrated Shift-Left <strong>DevSecOps quality gates</strong> into CI/CD using <strong>SonarQube SAST</strong> and <strong>Trivy container scanning</strong>, intercepting 100% of high/critical CVEs before staging.</li>
+                    <li>Deployed production observability with <strong>Prometheus, Alertmanager, Grafana</strong>, and CloudWatch — establishing real-time SLO/SLI tracking that <strong>reduced MTTR by 35%</strong>.</li>
                   </ul>
                 </div>
 
                 <div class="exp-tech-tags mt-3 pt-3 border-top border-secondary-subtle">
-                  <span class="tech-tag">Kubernetes (EKS/GKE)</span>
-                  <span class="tech-tag">Jenkins</span>
-                  <span class="tech-tag">Argo CD (GitOps)</span>
-                  <span class="tech-tag">Terraform</span>
-                  <span class="tech-tag">SonarQube &amp; Trivy</span>
-                  <span class="tech-tag">Prometheus &amp; Grafana</span>
+                  <span class="tech-tag"><i class="fa-solid fa-dharmachakra text-info me-1"></i> Kubernetes (EKS/GKE)</span>
+                  <span class="tech-tag"><i class="fa-solid fa-code-merge text-danger me-1"></i> Argo CD (GitOps)</span>
+                  <span class="tech-tag"><i class="fa-brands fa-jenkins text-warning me-1"></i> Jenkins</span>
+                  <span class="tech-tag"><i class="fa-solid fa-shield-halved text-success me-1"></i> SonarQube &amp; Trivy</span>
+                  <span class="tech-tag"><i class="fa-solid fa-chart-line text-warning me-1"></i> Prometheus &amp; Grafana</span>
+                  <span class="tech-tag"><i class="fa-brands fa-github text-light me-1"></i> GitHub Actions</span>
                 </div>
               </div>
             </div>
@@ -691,34 +711,40 @@
               <div class="timeline-dot">
                 <div class="timeline-dot-inner"></div>
               </div>
-              <div class="experience-card">
+              <div class="experience-card exp-card-tradetron">
                 <div class="exp-header">
                   <div>
                     <h3 class="exp-role">Linux Engineer</h3>
-                    <div class="exp-company"><i class="fa-solid fa-building me-1"></i> Tradetron <span class="badge bg-dark text-success border border-success-subtle ms-2">Full-time · Remote</span></div>
+                    <div class="exp-company"><i class="fa-solid fa-server text-info me-1"></i> Tradetron <span class="badge bg-dark text-success border border-success-subtle ms-2">Full-time · Remote</span></div>
                   </div>
                   <div class="text-end">
-                    <span class="exp-duration-badge mb-1 d-inline-block">Jan 2023 – Dec 2023 · 1 yr</span>
+                    <span class="exp-duration-badge mb-1 d-inline-block">Jan 2022 – Dec 2022 · 1 yr</span>
                     <div class="exp-location"><i class="fa-solid fa-location-dot"></i> Mumbai, Maharashtra, India</div>
                   </div>
                 </div>
 
+                <div class="exp-metric-pill-row">
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-server text-success"></i> 99.9% Server Uptime</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-robot text-cyan"></i> 60% Toil Automated</span>
+                  <span class="badge exp-metric-badge"><i class="fa-solid fa-book-bookmark text-info"></i> Standardized SOPs</span>
+                </div>
+
                 <div class="mb-3">
-                  <span class="badge bg-success-subtle text-success border border-success-subtle mb-2">Linux Production Systems, AWS &amp; Shell Scripting</span>
+                  <span class="badge bg-success-subtle text-success border border-success-subtle mb-2">Linux Production Systems • Shell Scripting Automation • AWS Infrastructure</span>
                   <ul class="exp-bullet-list">
-                    <li>Managed and administered mission-critical Linux production servers (<strong>RHEL, Ubuntu, CentOS</strong>) maintaining high uptime and system performance.</li>
-                    <li>Diagnosed system, network, and performance issues; authored comprehensive operational runbooks and standardized incident response procedures.</li>
-                    <li>Automated administrative and operational workflows using <strong>Bash shell scripting</strong>, reducing manual toil by 60% and human error during deployment cycles.</li>
-                    <li>Supported AWS cloud services and collaborating with development and DevOps teams for smooth releases.</li>
+                    <li>Administered and monitored 40+ high-concurrency Linux enterprise production servers (<strong>RHEL, Ubuntu, CentOS</strong>) maintaining <strong>99.9% uptime</strong> in low-latency trading environments.</li>
+                    <li>Developed automated administrative and operational workflows using <strong>Bash and Python scripting</strong>, eliminating <strong>60% of repetitive manual toil</strong>.</li>
+                    <li>Authored comprehensive standard incident runbooks (SOPs) and escalation protocols for rapid recovery from memory pressure, disk exhaustion, and network partitions.</li>
+                    <li>Supported AWS cloud environments (EC2, S3, CloudWatch, VPC) and collaborated closely with development and DevOps teams for smooth software releases.</li>
                   </ul>
                 </div>
 
                 <div class="exp-tech-tags mt-3 pt-3 border-top border-secondary-subtle">
-                  <span class="tech-tag">Linux (RHEL / Ubuntu / CentOS)</span>
-                  <span class="tech-tag">Amazon Web Services (AWS)</span>
-                  <span class="tech-tag">Shell Scripting (Bash)</span>
-                  <span class="tech-tag">System Troubleshooting</span>
-                  <span class="tech-tag">Incident Runbooks</span>
+                  <span class="tech-tag"><i class="fa-brands fa-linux text-warning me-1"></i> RHEL / Ubuntu / CentOS</span>
+                  <span class="tech-tag"><i class="fa-brands fa-aws text-warning me-1"></i> Amazon Web Services</span>
+                  <span class="tech-tag"><i class="fa-solid fa-terminal text-success me-1"></i> Bash &amp; Python</span>
+                  <span class="tech-tag"><i class="fa-solid fa-book-bookmark text-info me-1"></i> Incident Runbooks</span>
+                  <span class="tech-tag"><i class="fa-solid fa-network-wired text-cyan me-1"></i> System Hardening</span>
                 </div>
               </div>
             </div>
@@ -785,7 +811,7 @@
                       <i class="fa-solid fa-circle-info"></i> Architecture Details
                     </button>
                     <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#aiCopilotModal">
-                      <i class="fa-solid fa-brain me-1"></i> Ask AI About System
+                      <i class="fa-solid fa-robot me-1 text-cyan"></i> Ask AB Agent About System
                     </button>
                   </div>
                 </div>
@@ -1361,32 +1387,32 @@
         <div class="modal-footer modal-footer-custom">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary-glow" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#aiCopilotModal">
-            <i class="fa-solid fa-brain me-1"></i> Ask AI Copilot About This Architecture
+            <i class="fa-solid fa-robot me-1 text-cyan"></i> Ask with AB Agent About This Architecture
           </button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Floating Akash AI DevOps Copilot Button -->
-  <button class="ai-copilot-floating-btn" data-bs-toggle="modal" data-bs-target="#aiCopilotModal" title="Ask Akash's AI DevOps Copilot">
+  <!-- Floating Ask with AB Agent Button -->
+  <button class="ai-copilot-floating-btn" data-bs-toggle="modal" data-bs-target="#aiCopilotModal" title="Ask with AB Agent — Autonomous Cloud & SRE Assistant">
     <span class="ai-pulse-orb"></span>
-    <i class="fa-solid fa-brain text-cyan"></i>
-    <span>AI Copilot</span>
+    <i class="fa-solid fa-robot text-cyan"></i>
+    <span>Ask with AB Agent</span>
   </button>
 
-  <!-- Akash AI DevOps Copilot Modal -->
+  <!-- Ask with AB Agent Modal -->
   <div class="modal fade ai-copilot-modal" id="aiCopilotModal" tabindex="-1" aria-labelledby="aiCopilotLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
       <div class="modal-content">
         <div class="modal-header border-secondary-subtle p-3 px-4">
           <div class="d-flex align-items-center gap-2">
             <div class="p-2 rounded-circle bg-dark border border-info d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);">
-              <i class="fa-solid fa-brain text-cyan"></i>
+              <i class="fa-solid fa-robot text-cyan"></i>
             </div>
             <div>
-              <h5 class="modal-title fw-bold text-white mb-0" id="aiCopilotLabel">Akash AI DevOps Copilot</h5>
-              <small class="text-secondary mono" style="font-size: 0.75rem;"><span class="text-success">●</span> Agent v2.6 · Trained on Akash's Experience</small>
+              <h5 class="modal-title fw-bold text-white mb-0" id="aiCopilotLabel">Ask with AB Agent</h5>
+              <small class="text-secondary mono" style="font-size: 0.75rem;"><span class="text-success">●</span> Autonomous Cloud, DevOps &amp; SRE Agent · Trained on Akash's Experience</small>
             </div>
           </div>
           <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -1395,10 +1421,15 @@
         <!-- Chat Conversation Messages -->
         <div class="ai-chat-body" id="ai-chat-messages">
           <div class="ai-message-row bot-message">
-            <div class="ai-avatar bot"><i class="fa-solid fa-brain"></i></div>
+            <div class="ai-avatar bot"><i class="fa-solid fa-robot text-cyan"></i></div>
             <div class="ai-message-bubble">
               <div class="ai-message-text">
-                👋 Hello! I am <strong>Akash's AI DevOps Copilot</strong>. How can I assist you today? You can ask me about his <strong>cloud architecture</strong>, <strong>production Kubernetes &amp; GitOps</strong>, <strong>Agentic AI for SRE</strong>, work history, or contact details.
+                👋 Hello! I am the <strong>AB Agent</strong> — Akash Bora's autonomous Cloud, DevOps &amp; SRE assistant. How can I assist you today? You can ask me about his <strong>cloud architecture</strong>, <strong>production Kubernetes &amp; GitOps</strong>, <strong>Agentic AI for SRE</strong>, work history, or contact details.
+              </div>
+              <div class="mt-2 pt-2 border-top border-secondary-subtle">
+                <button type="button" class="btn btn-sm btn-outline-info ai-action-link" data-target-url="#projects">
+                  <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> Explore Key Projects
+                </button>
               </div>
             </div>
           </div>

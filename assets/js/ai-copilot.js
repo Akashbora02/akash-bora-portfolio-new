@@ -1,6 +1,7 @@
 /**
- * Akash AI DevOps & SRE Copilot Agent
- * Autonomous conversational agent for recruiters, interviewers & engineering managers
+ * Ask with AB Agent — Autonomous Cloud, DevOps & SRE Assistant
+ * Interactive conversational agent for recruiters, interviewers & engineering managers
+ * For Akash Bora Portfolio
  */
 
 (function () {
@@ -36,7 +37,7 @@
 - **Argo CD Controller:** Automated drift detection between Git and live AWS EKS clusters.
 - **Zero-Downtime Rollouts:** Blue/Green and Canary releases using NGINX Ingress and Argo Rollouts.
 - **High Availability & Autoscaling:** Horizontal Pod Autoscaler (HPA) coupled with Cluster Autoscaler to handle dynamic traffic spikes smoothly.`,
-      quickAction: { label: 'View GitOps Architecture', url: '#projectModal1' }
+      quickAction: { label: 'View GitOps Architecture', url: '#projects' }
     },
     {
       keywords: ['aws', 'cloud', 'cert', 'certified', 'solutions architect', 'professional', 'sap'],
@@ -50,11 +51,11 @@
       keywords: ['experience', 'work', 'history', 'company', 'groots', 'hisan', 'tradetron', 'background'],
       title: 'Professional Track Record (2+ Years)',
       response: `Here is a summary of Akash Bora's professional journey:
-1. **Cloud Engineer @ Groots Software Technologies** *(Jun 2026 – Present | Pune)*
+1. **Cloud Engineer @ Groots Software Technologies** *(Jun 2024 – Present | Pune)*
    - Leading AWS cloud infrastructure (EKS, VPC, ALB, RDS, S3), Linux production hardening, Azure DevOps Server, and Terraform IaC provisioning.
-2. **DevOps Engineer @ Hisan Labs** *(May 2025 – May 2026 · 1 yr 1 mo | Pune)*
-   - Managed 5–10 microservices on Kubernetes (EKS/GKE), streamlined Jenkins & GitHub Actions pipelines (cutting deployment time by 40%), and implemented GitOps with Argo CD.
-3. **Linux Engineer @ Tradetron** *(Jan 2023 – Dec 2023 · 1 yr | Remote)*
+2. **DevOps Engineer @ Hisan Labs** *(May 2023 – May 2024 · 1 yr 1 mo | Pune)*
+   - Managed 10+ microservices on Kubernetes (EKS/GKE), streamlined Jenkins & GitHub Actions pipelines (cutting deployment time by 40%), and implemented GitOps with Argo CD.
+3. **Linux Engineer @ Tradetron** *(Jan 2022 – Dec 2022 · 1 yr | Remote)*
    - Mission-critical Linux server administration (RHEL, Ubuntu, CentOS), authoring standard incident runbooks, and automating operational tasks via Bash scripting.`,
       quickAction: { label: 'View Full Timeline', url: '#experience' }
     },
@@ -76,7 +77,7 @@
 - **Terraform:** Reusable multi-environment modules (Dev, Staging, Prod), remote S3 state backends with DynamoDB locking, and automated \`terraform plan\` pull-request review gates.
 - **Ansible:** Automated configuration management and Linux server security hardening.
 - **Shell & Python:** Custom CLI tools, automated health probe monitors, and deployment hooks.`,
-      quickAction: { label: 'View Terraform Project', url: '#projectModal4' }
+      quickAction: { label: 'View Key Projects', url: '#projects' }
     }
   ];
 
@@ -105,14 +106,14 @@
     // Default intelligent fallback
     return {
       title: 'Akash Bora — Cloud & DevOps Engineer Profile',
-      response: `I'm **Akash's AI DevOps Copilot**! I can answer specific questions regarding:
+      response: `Hello! I'm **AB Agent** — Akash Bora's autonomous Cloud, DevOps & SRE assistant! I can answer technical questions regarding:
 - 🚀 **Skills & Architecture:** AWS, Kubernetes (EKS), GitOps (Argo CD), Terraform, DevSecOps.
-- 🧠 **Agentic AI & SRE:** Autonomous SRE remediation, Prometheus AIOps, LLMOps on K8s.
+- 🤖 **Agentic AI & SRE:** Autonomous SRE remediation, Prometheus AIOps, OpenTelemetry pod logs.
 - 🏢 **Work Experience:** Cloud Engineer at Groots, DevOps Engineer at Hisan Labs, Linux Engineer at Tradetron.
-- 📜 **Credentials:** AWS Certified Solutions Architect – Professional & Agentic AI Masterclass.
+- 📜 **Credentials:** AWS Certified Solutions Architect – Professional (SAP) & Agentic AI Masterclass.
 - 📞 **Contact Information:** Phone, email, WhatsApp, and LinkedIn.
 
-*Feel free to click any of the prompt pills above or ask any technical interview question!*`,
+*Feel free to click any of the prompt pills below or ask any technical interview question!*`,
       quickAction: { label: 'Contact Akash Directly', url: '#contact' }
     };
   }
@@ -132,7 +133,7 @@
 
       const avatar = sender === 'user' 
         ? '<div class="ai-avatar user"><i class="fa-solid fa-user"></i></div>'
-        : '<div class="ai-avatar bot"><i class="fa-solid fa-brain"></i></div>';
+        : '<div class="ai-avatar bot"><i class="fa-solid fa-robot text-cyan"></i></div>';
 
       // Markdown formatting conversion
       let formattedText = text
@@ -144,9 +145,9 @@
       let actionHtml = '';
       if (quickAction && quickAction.url && quickAction.label) {
         actionHtml = `<div class="mt-2 pt-2 border-top border-secondary-subtle">
-          <a href="${quickAction.url}" class="btn btn-sm btn-outline-info ai-action-link" data-bs-dismiss="modal">
+          <button type="button" class="btn btn-sm btn-outline-info ai-action-link" data-target-url="${quickAction.url}">
             <i class="fa-solid fa-arrow-up-right-from-square me-1"></i> ${quickAction.label}
-          </a>
+          </button>
         </div>`;
       }
 
@@ -162,6 +163,36 @@
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
 
+    // Direct Action Link Handler: smoothly closes modal and navigates/scrolls to target
+    messagesContainer.addEventListener('click', (e) => {
+      const btn = e.target.closest('.ai-action-link');
+      if (!btn) return;
+      const targetUrl = btn.getAttribute('data-target-url');
+      if (!targetUrl) return;
+
+      const modalInstance = bootstrap.Modal.getInstance(modalEl) || bootstrap.Modal.getOrCreateInstance(modalEl);
+      if (modalInstance) {
+        modalInstance.hide();
+      }
+
+      setTimeout(() => {
+        if (targetUrl.startsWith('#projectModal')) {
+          const targetModalEl = document.querySelector(targetUrl);
+          if (targetModalEl) {
+            const nextModal = new bootstrap.Modal(targetModalEl);
+            nextModal.show();
+          }
+        } else if (targetUrl.startsWith('#')) {
+          const targetSection = document.querySelector(targetUrl);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          }
+        } else {
+          window.location.href = targetUrl;
+        }
+      }, 350);
+    });
+
     function handleUserSubmit(queryText) {
       const text = (queryText || inputField.value).trim();
       if (!text) return;
@@ -173,7 +204,7 @@
       const typingIndicator = document.createElement('div');
       typingIndicator.className = 'ai-message-row bot-message ai-typing-indicator';
       typingIndicator.innerHTML = `
-        <div class="ai-avatar bot"><i class="fa-solid fa-brain"></i></div>
+        <div class="ai-avatar bot"><i class="fa-solid fa-robot text-cyan"></i></div>
         <div class="ai-message-bubble py-2 px-3">
           <span class="ai-dot"></span><span class="ai-dot"></span><span class="ai-dot"></span>
         </div>

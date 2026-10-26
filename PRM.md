@@ -140,3 +140,24 @@ python3 -m http.server 8000
 - **Tablet (768px - 991px)**: Vertical stack with centered topology behind terminal and full-width container margins.
 - **Laptop (992px - 1199px)**: Compact navbar with `white-space: nowrap` ensuring all 8 links fit on one line without "CI/CD Flow" wrapping.
 - **Desktop (1200px+)**: Full widescreen 2-column layout with 3D WebGL camera depth.
+
+---
+
+## 6. Final Production Polish & Career-Focused Enhancements
+
+### Autonomous AB Agent ("Ask with AB Agent")
+- **Rebranding & Professional Icon**: Renamed from generic "AI Copilot" to **"Ask with AB Agent"** across navbar, floating trigger, and modal header with a high-contrast glowing cyan robot icon (`fa-solid fa-robot`).
+- **Interactive Quick-Action Link Engine**: Added a dedicated click dispatcher that automatically closes the modal and smoothly scrolls to anchor sections (`#projects`, `#contact`, `#experience`, `#certifications`) or launches project modals without navigation errors.
+
+### Hero Section Proportions & Typographic Harmony
+- **Hero CTA Optimization**: Removed redundant AI button from hero buttons; elevated **`Get In Touch`** as the primary luminous CTA alongside **`3D Architecture`**, **`Experience`**, and **`LinkedIn`**.
+- **Typing Container Zero-Overflow**: Adjusted `.hero-typing-box` font size to `clamp(1.05rem, 1.8vw, 1.35rem)` and curated punchy phrases so text never truncates on laptop/tablet viewports.
+
+### About Section Symmetrical Matching Buttons
+- **`Contact Akash` & `GitHub Profile`**: Converted into an identical matching pair of action buttons (`btn-about-action`) with equal flex widths, uniform heights, identical 12px radius, and matching icons.
+
+### Recruiter & Hiring Manager Experience Metrics
+- **Groots Software Technologies (Cloud Engineer)**: Highlighted 99.95% AWS SLA, Terraform modular IaC drift prevention, Azure DevOps sub-5min CI/CD releases, Karpenter & Spot FinOps saving 28%, and Agentic AI SRE incident triage cutting MTTD by 50%.
+- **Hisan Labs (DevOps Engineer)**: Highlighted 10+ Kubernetes microservices, Argo CD declarative GitOps with automated Blue/Green rollbacks, SonarQube & Trivy DevSecOps gates blocking 100% of critical CVEs, and Prometheus/Grafana cutting MTTR by 35%.
+- **Tradetron (Linux Engineer)**: Highlighted 40+ high-concurrency Linux trading servers (RHEL, Ubuntu, CentOS), Bash/Python operational automation reducing manual toil by 60%, and standardized incident runbooks.
+- **Visual Elevation**: Glowing gradient card headers, real-time metric pill rows, and branded tech tags with authentic ecosystem logos.

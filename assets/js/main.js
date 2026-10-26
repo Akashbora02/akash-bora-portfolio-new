@@ -133,11 +133,11 @@ function initDynamicTyping() {
   if (!typingElement) return;
 
   const roles = [
-    'Cloud Engineer @ Groots Software',
-    'AWS Solutions Architect (Professional)',
-    'Agentic AI for DevOps & SRE Self-Healing',
-    'Kubernetes (EKS) & GitOps (Argo CD) Specialist',
-    'AIOps & Terraform Infrastructure as Code'
+    'Cloud & DevOps Engineer',
+    'AWS Solutions Architect (SAP)',
+    'Kubernetes & GitOps (Argo CD)',
+    'Agentic AI & SRE Specialist',
+    'Terraform Infrastructure as Code'
   ];
 
   let roleIndex = 0;
