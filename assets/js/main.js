@@ -134,9 +134,10 @@ function initDynamicTyping() {
 
   const roles = [
     'Cloud & DevOps Engineer',
-    'AWS Solutions Architect (SAP)',
+    'AWS Solutions Architect – Professional',
+    'Enterprise Linux Systems Specialist',
     'Kubernetes & GitOps (Argo CD)',
-    'Agentic AI & SRE Specialist',
+    'Cloud FinOps & Multi-Account AWS',
     'Terraform Infrastructure as Code'
   ];
 

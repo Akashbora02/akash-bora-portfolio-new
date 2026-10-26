@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://akash-bora-portfolio-new.vercel.app/sitemap.xml

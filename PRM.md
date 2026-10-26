@@ -45,11 +45,10 @@ akash-bora-portfolio/
     ├── css/
     │   └── style.css            # Responsive styles, dark glassmorphism, animations
     ├── js/
-    │   ├── main.js              # Particles, typing effect, mobile nav, form submission
-    │   ├── terminal.js          # Interactive DevOps terminal shell simulator with AI commands
-    │   ├── three-scene.js       # 3D WebGL Three.js interactive cloud & AI topology engine
-    │   ├── tilt-3d.js           # 3D holographic card tilt & specular reflection engine
-    │   └── ai-copilot.js        # Akash AI DevOps Copilot conversational agent for interviewers
+    │   ├── main.js              # Dynamic typing, smooth scroll, form validation
+    │   ├── terminal.js          # Interactive Cloud Shell simulator with Linux & AWS diagnostics
+    │   ├── three-scene.js       # 3D WebGL Three.js interactive cloud topology engine
+    │   └── tilt-3d.js           # 3D holographic card tilt & specular reflection engine
     └── images/
         ├── logo-banner.png      # Full logo banner (transparent dark-mode optimized)
         ├── logo-icon.png        # Square icon badge for favicon & mobile header
@@ -145,19 +144,38 @@ python3 -m http.server 8000
 
 ## 6. Final Production Polish & Career-Focused Enhancements
 
-### Autonomous AB Agent ("Ask with AB Agent")
-- **Rebranding & Professional Icon**: Renamed from generic "AI Copilot" to **"Ask with AB Agent"** across navbar, floating trigger, and modal header with a high-contrast glowing cyan robot icon (`fa-solid fa-robot`).
-- **Interactive Quick-Action Link Engine**: Added a dedicated click dispatcher that automatically closes the modal and smoothly scrolls to anchor sections (`#projects`, `#contact`, `#experience`, `#certifications`) or launches project modals without navigation errors.
+### Streamlined Recruiter Presentation & AB Agent Removal
+- **Complete AB Agent Removal**: Removed "Ask with AB Agent" chatbot and modal completely per user request, replacing floating clutter with clean, distraction-free portfolio presentation.
+- **Navbar Streamline**: Cleaned navbar action buttons by removing "Ask with AB Agent" and "Let's Connect", leaving a focused, high-contrast **"Contact Akash"** action button.
 
-### Hero Section Proportions & Typographic Harmony
-- **Hero CTA Optimization**: Removed redundant AI button from hero buttons; elevated **`Get In Touch`** as the primary luminous CTA alongside **`3D Architecture`**, **`Experience`**, and **`LinkedIn`**.
-- **Typing Container Zero-Overflow**: Adjusted `.hero-typing-box` font size to `clamp(1.05rem, 1.8vw, 1.35rem)` and curated punchy phrases so text never truncates on laptop/tablet viewports.
+### Hero Section Redesign: High-Converting Realistic Buttons & Bold Sub-Points
+- **Realistic CTA Buttons**: Replaced legacy "3D Arch", "Experience", and "LinkedIn" buttons with realistic, career-accelerating buttons:
+  1. `Featured Projects` (Primary Glow)
+  2. `CI/CD & GitOps Flow` (Secondary Glass)
+  3. `AWS Certified SAP` (Secondary Glass with official AWS gold badge)
+  4. `Contact Akash` (Secondary Glass)
+- **High-Impact Sub-Points with Bold Wording**:
+  - ☁️ **AWS Cloud Infrastructure:** Hands-on engineering across **EKS, Multi-AZ VPC, EC2, RDS Aurora, ALB, S3, IAM, Route 53**, and **CloudWatch** delivering **99.95% high availability**.
+  - 🐧 **Linux Production Operations:** Enterprise **RHEL, Ubuntu & CentOS administration**, kernel diagnostics, systemd services, and **Bash / Python automation** eliminating operational toil.
+  - ☸️ **Kubernetes & GitOps Delivery:** Containerized microservices on **Amazon EKS**, declarative provisioning with **Terraform IaC**, and automated drift sync via **Argo CD & CI/CD pipelines**.
+  - 💰 **Cloud FinOps & Governance:** Scalable **multi-account AWS onboarding (CloudFormation / IAM roles)**, S3 cost-data pipelines, and **CUR / FOCUS 1.2 data validation** to eliminate cloud waste.
 
-### About Section Symmetrical Matching Buttons
-- **`Contact Akash` & `GitHub Profile`**: Converted into an identical matching pair of action buttons (`btn-about-action`) with equal flex widths, uniform heights, identical 12px radius, and matching icons.
+### Deep Linux + AWS Experience Realignment (ChatGPT Aligned)
+- **Groots Software Technologies (Cloud Engineer)**:
+  - AWS Multi-Account Governance, VPC networking, EKS clusters, and CloudFormation onboarding templates.
+  - FinOps engineering: Ingestion pipelines for AWS Cost & Usage Reports (CUR) and AWS FOCUS 1.2 data specifications with PostgreSQL and TimescaleDB.
+  - Linux production operations: Resource monitoring, systemd services, and safe Bash automated volume cleanup.
+- **Hisan Labs (DevOps Engineer)**:
+  - AWS cloud infrastructure (EC2, VPC, ALB, S3, IAM) and Docker microservices containerization.
+  - Automated CI/CD pipelines via Jenkins & GitHub Actions with Bash & Python automation.
+  - Linux system administration, service availability troubleshooting, and systemd management.
+- **Tradetron (Linux Systems & Support Engineer)**:
+  - Enterprise Linux administration (RHEL, Ubuntu, CentOS) in high-frequency trading environments.
+  - System-level root-cause analysis (`journalctl`, `iotop`, `netstat`, `/proc`), disk space management, and memory diagnostics.
+  - Bash shell scripting automation for health checks, log rotation, and standardized SOP runbooks.
 
-### Recruiter & Hiring Manager Experience Metrics
-- **Groots Software Technologies (Cloud Engineer)**: Highlighted 99.95% AWS SLA, Terraform modular IaC drift prevention, Azure DevOps sub-5min CI/CD releases, Karpenter & Spot FinOps saving 28%, and Agentic AI SRE incident triage cutting MTTD by 50%.
-- **Hisan Labs (DevOps Engineer)**: Highlighted 10+ Kubernetes microservices, Argo CD declarative GitOps with automated Blue/Green rollbacks, SonarQube & Trivy DevSecOps gates blocking 100% of critical CVEs, and Prometheus/Grafana cutting MTTR by 35%.
-- **Tradetron (Linux Engineer)**: Highlighted 40+ high-concurrency Linux trading servers (RHEL, Ubuntu, CentOS), Bash/Python operational automation reducing manual toil by 60%, and standardized incident runbooks.
-- **Visual Elevation**: Glowing gradient card headers, real-time metric pill rows, and branded tech tags with authentic ecosystem logos.
+### Comprehensive Google SEO Suite for "Akash Bora"
+- **Title Tag**: `Akash Bora | AWS Cloud & DevOps Engineer | Linux Systems & Kubernetes Specialist`
+- **Rich Meta Description & Strong Keywords**: Targeted for high Google ranking on "Akash Bora", "Akash Bora Cloud Engineer", "Akash Bora DevOps", "Akash Bora Pune".
+- **Structured Data (Schema.org JSON-LD)**: Rich `Person`, `ProfilePage`, and `WebSite` graph schema for Google Rich Snippets and Knowledge Graph.
+- **Search Engine Assets**: `robots.txt` and `sitemap.xml` generated with priority indexing.

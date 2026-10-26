@@ -1,6 +1,6 @@
 /**
  * Interactive DevOps Terminal Simulation for Akash Bora Portfolio
- * Enhanced with 2026 Agentic AI & Autonomous SRE commands
+ * Specializing in AWS Cloud, Enterprise Linux, Kubernetes & FinOps
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,50 +14,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const terminalCommands = {
     help: () => `
-<span class="terminal-highlight">Available Cloud &amp; AI Commands:</span>
-  <span class="terminal-success">about</span>          - View Akash's professional summary
-  <span class="terminal-success">skills</span>         - View core technical stack &amp; tools
-  <span class="terminal-success">experience</span>     - View work history (Groots, Hisan Labs, Tradetron)
-  <span class="terminal-success">cert</span>           - View AWS SAP &amp; Agentic AI Certifications
-  <span class="terminal-success">ai status</span>      - Check status of Autonomous AI SRE Agent
-  <span class="terminal-success">ai remediate</span>   - Simulate automated AI incident self-healing
-  <span class="terminal-success">ai ask &lt;query&gt;</span> - Query the AI Copilot on any topic
-  <span class="terminal-success">kubectl get nodes</span>- Inspect live Kubernetes cluster nodes
-  <span class="terminal-success">kubectl get pods</span> - View microservices running on EKS
-  <span class="terminal-success">terraform apply</span>  - Provision AWS Cloud Infrastructure
-  <span class="terminal-success">gitops sync</span>      - Trigger Argo CD declarative deployment
-  <span class="terminal-success">contact</span>        - Get direct phone, email &amp; LinkedIn
-  <span class="terminal-success">clear</span>          - Clear terminal screen
+<span class="terminal-highlight">Available Cloud &amp; Systems Commands:</span>
+  <span class="terminal-success">about</span>            - View Akash's professional summary
+  <span class="terminal-success">skills</span>           - View core technical stack &amp; tools
+  <span class="terminal-success">experience</span>       - View work history (Groots, Hisan Labs, Tradetron)
+  <span class="terminal-success">cert</span>             - View AWS SAP Certification details
+  <span class="terminal-success">kubectl get nodes</span> - Inspect live Kubernetes cluster nodes
+  <span class="terminal-success">kubectl get pods</span>  - View microservices running on EKS
+  <span class="terminal-success">terraform apply</span>   - Provision AWS Cloud Infrastructure
+  <span class="terminal-success">gitops sync</span>       - Trigger Argo CD declarative deployment
+  <span class="terminal-success">finops report</span>     - View AWS multi-account cost optimization metrics
+  <span class="terminal-success">linux diag</span>        - Run Linux production server health check
+  <span class="terminal-success">ai status</span>         - Check autonomous SRE controller status
+  <span class="terminal-success">ai remediate</span>      - Simulate automated incident self-healing
+  <span class="terminal-success">contact</span>           - Get direct phone, email &amp; LinkedIn
+  <span class="terminal-success">clear</span>             - Clear terminal screen
 `,
     about: () => `
-<span class="terminal-highlight">Akash Bora</span> - <span class="terminal-success">Cloud &amp; DevOps Engineer | Agentic AI Specialist</span> (2+ Years Exp)
-Location: Pune, Maharashtra | Current: Cloud Engineer @ Groots
-Focus: AWS Cloud Architecture, Kubernetes (EKS), GitOps, Terraform IaC, Agentic AI for SRE &amp; Observability.
+<span class="terminal-highlight">Akash Bora</span> - <span class="terminal-success">AWS Cloud &amp; DevOps Engineer | Linux Systems Specialist</span>
+Location: Pune, Maharashtra, India | Current: Cloud Engineer @ Groots Software Technologies
+Focus: AWS Multi-Account Cloud Architecture, Linux Production Operations, Kubernetes (EKS), Terraform IaC, FinOps &amp; GitOps.
 `,
     skills: () => `
-<span class="terminal-highlight">Agentic AI &amp; AIOps:</span> Autonomous SRE Remediation, Prometheus Anomaly Detection, LLMOps on K8s (EKS + Karpenter), Vector DBs (Qdrant), LangGraph
-<span class="terminal-highlight">Containers:</span> Docker, Kubernetes (EKS, GKE), Helm, HPA, AWS ECR, NGINX Ingress
-<span class="terminal-highlight">Cloud / IaC:</span> AWS (EKS, EC2, RDS, VPC, ALB, S3, IAM, KMS), GCP, Terraform, CloudFormation
-<span class="terminal-highlight">CI/CD &amp; GitOps:</span> Argo CD, Azure DevOps Server, Jenkins, GitHub Actions, GitLab CI/CD, Zero-Downtime
-<span class="terminal-highlight">Observability:</span> Prometheus, Grafana, Alertmanager, AWS CloudWatch (MTTR -70%)
-<span class="terminal-highlight">Security:</span> SonarQube SAST, Trivy Container Scanning, Kubernetes RBAC, IAM Least Privilege
-<span class="terminal-highlight">Scripting:</span> Python, Bash Shell Scripting, Ansible
+<span class="terminal-highlight">AWS Cloud:</span> Multi-AZ VPC, EKS, ECS, EC2, RDS Aurora, S3, IAM, Route 53, CloudWatch, CloudFormation
+<span class="terminal-highlight">Linux Systems:</span> Enterprise RHEL, Ubuntu, CentOS, Kernel Tuning, Systemd, Process &amp; Resource Triage
+<span class="terminal-highlight">DevOps &amp; IaC:</span> Terraform, Docker, Kubernetes, Helm, GitLab CI/CD, GitHub Actions, Jenkins, Argo CD
+<span class="terminal-highlight">Cloud FinOps:</span> Multi-Account AWS Onboarding, Cross-Account IAM, CUR &amp; FOCUS 1.2 Data Pipelines
+<span class="terminal-highlight">Observability:</span> Prometheus, Grafana, Alertmanager, AWS CloudWatch
+<span class="terminal-highlight">Scripting:</span> Bash Shell Scripting, Python Automation
 `,
     experience: () => `
-<span class="terminal-highlight">1. Groots Software Technologies Pvt Ltd</span> | Cloud Engineer (Jun 2026 - Present)
-   • AWS Infrastructure, Linux Administration, Azure DevOps Server &amp; Terraform
-<span class="terminal-highlight">2. Hisan Labs Pvt Ltd</span> | DevOps Engineer (May 2025 - May 2026 · 1 yr 1 mo)
-   • 5-10 microservices on Kubernetes (EKS/GKE), Jenkins, Argo CD GitOps, DevSecOps
-<span class="terminal-highlight">3. Tradetron</span> | Linux Engineer (Jan 2023 - Dec 2023 · 1 yr, Remote)
-   • Linux server administration (RHEL, Ubuntu), AWS &amp; Shell Scripting automation
+<span class="terminal-highlight">1. Groots Software Technologies Pvt Ltd</span> | Cloud Engineer (Jun 2024 - Present)
+   • AWS Cloud Infrastructure, Multi-Account Governance, CloudFormation, FinOps CUR/FOCUS 1.2, Linux Systems
+<span class="terminal-highlight">2. Hisan Labs Pvt Ltd</span> | DevOps Engineer (May 2023 - May 2024 · 1 yr 1 mo)
+   • AWS &amp; Linux infrastructure, Docker microservices packaging, CI/CD pipelines, production troubleshooting
+<span class="terminal-highlight">3. Tradetron</span> | Linux Engineer (Jan 2022 - Dec 2022 · 1 yr, Remote)
+   • Enterprise Linux system administration (RHEL, Ubuntu, CentOS), Bash automation, incident response runbooks
 `,
     cert: () => `
-<span class="terminal-warning">1. AWS Certified Solutions Architect – Professional (SAP)</span>
-   Status: Active &amp; Verified | Level: Professional | Amazon Web Services
-<span class="terminal-highlight">2. Agentic AI for DevOps - Masterclass</span>
-   Issued by: TrainWithShubham | Credential ID: 46XYO2NV (Issued May 2026)
+<span class="terminal-warning">AWS Certified Solutions Architect – Professional (SAP)</span>
+Status: Active &amp; Verified | Level: Professional | Amazon Web Services
+Validation: Hands-on mastery in complex multi-tier cloud architectures, security, and high availability.
 `,
     certifications: () => terminalCommands.cert(),
+    'finops report': () => `
+<span class="terminal-highlight">AWS Multi-Account FinOps Pipeline (CloudNetra):</span>
+• Accounts Onboarded: <span class="terminal-success">Multi-Account AWS via CloudFormation &amp; IAM Cross-Account Roles</span>
+• Data Ingestion: <span class="terminal-success">S3 CUR (Cost &amp; Usage Report) &amp; AWS FOCUS 1.2 Standard Ingestion</span>
+• Storage &amp; Database: <span class="terminal-success">PostgreSQL &amp; TimescaleDB Time-Series Operations</span>
+• Cost Anomaly Detection: <span class="terminal-highlight">Automated unattached EBS volume, idle compute &amp; snapshot sweeps</span>
+`,
+    'linux diag': () => `
+<span class="terminal-highlight">[root@prod-rhel-node ~]# ./linux_system_audit.sh</span>
+[00:01] Checking kernel parameters &amp; file descriptors: <span class="terminal-success">sysctl fs.file-max = 2097152 (OPTIMAL)</span>
+[00:02] Memory &amp; Swap diagnostics: <span class="terminal-success">MemAvailable: 78.4% | SwapUsed: 0% (HEALTHY)</span>
+[00:03] Disk I/O &amp; Inode consumption: <span class="terminal-success">/dev/nvme0n1p1: 42% used, Inodes: 18% used (CLEAN)</span>
+[00:04] Systemd active units: <span class="terminal-success">142 loaded, 0 failed, 0 degraded</span>
+<span class="terminal-success">✓ Linux Production Environment verified: 100% operational.</span>
+`,
     'ai status': () => `
 <span class="terminal-highlight">Agentic AI SRE Controller (v2.6)</span>
 • Framework: <span class="terminal-success">LangGraph ReAct Autonomous Agent</span>
@@ -158,24 +172,6 @@ Syncing app: <span class="terminal-success">microservices-prod</span> (Revision:
       return;
     }
 
-    // AI Ask Query
-    if (lower.startsWith('ai ask ') || (lower.startsWith('ai ') && lower !== 'ai status' && lower !== 'ai remediate')) {
-      const query = lower.replace(/^ai (ask )?/, '').trim();
-      if (window.AkashCopilot && typeof window.AkashCopilot.getResponse === 'function') {
-        const aiRes = window.AkashCopilot.getResponse(query);
-        let formatted = aiRes.response
-          .replace(/\*\*(.*?)\*\*/g, '<span class="terminal-highlight">$1</span>')
-          .replace(/\n/g, '<br>');
-        appendTerminalLine(`
-<span class="terminal-highlight">🤖 [AI Copilot]:</span>
-${formatted}
-`);
-      } else {
-        appendTerminalLine(`<span class="terminal-warning">AI Copilot module loading... Type 'ai status' for diagnostics.</span>`);
-      }
-      return;
-    }
-
     appendTerminalLine(`<span class="terminal-warning">command not found: "${escapeHtml(raw)}". Type <span class="terminal-highlight">'help'</span> for available commands.</span>`);
   }
 
@@ -217,9 +213,9 @@ ${formatted}
 
   // Initial welcome sequence
   appendTerminalLine(`
-<span class="terminal-success">✓ Connected to Akash Bora Cloud Control Shell (v2.6.0 - Agentic AI Active)</span>
-Type <span class="terminal-highlight">'help'</span>, <span class="terminal-highlight">'ai status'</span>, or <span class="terminal-highlight">'ai remediate'</span> to test autonomous self-healing.
+<span class="terminal-success">✓ Connected to Akash Bora Cloud Control Shell (Linux &amp; AWS Systems)</span>
+Type <span class="terminal-highlight">'help'</span>, <span class="terminal-highlight">'skills'</span>, <span class="terminal-highlight">'finops report'</span>, or <span class="terminal-highlight">'linux diag'</span>.
 `);
-  appendTerminalLine(`<span class="terminal-prompt">akash@cloud-shell</span>:<span class="terminal-path">~/infra</span>$ <span class="terminal-cmd">ai status</span>`);
-  appendTerminalLine(terminalCommands['ai status']());
+  appendTerminalLine(`<span class="terminal-prompt">akash@cloud-shell</span>:<span class="terminal-path">~/infra</span>$ <span class="terminal-cmd">linux diag</span>`);
+  appendTerminalLine(terminalCommands['linux diag']());
 });
