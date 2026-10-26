@@ -119,3 +119,24 @@ python3 -m http.server 8000
   - 1-Click "Clear DB" to wipe records.
   - 1-Click "Add Sample Lead" to test PostgreSQL writes.
   - 1-Click "Export CSV".
+
+---
+
+## 5. 2026 3D WebGL Topology & Smooth Hover System
+
+### 3D Three.js Topology Layout & Zero Overlap
+- **Desktop & Laptop (>= 992px)**: The 3D neural core and orbital rings are positioned dynamically at `(7.2, 0.2, 0)` behind the right-column Cloud Shell Terminal. This ensures **zero overlap** with the hero name ("Akash Bora"), typing headline, or subtitle.
+- **Tablet & Mobile (< 992px)**: The 3D cluster is dynamically repositioned behind the terminal window at the lower section (`y = -6.5` on tablet, `y = -9.0` on mobile) with scaled wireframe opacity (`0.45` core, `0.35` rings), keeping the text in the upper section 100% readable.
+- **3D Mode Selector Header**: Moved from the left column into a dedicated `3D INTERACTIVE TOPOLOGY` header directly above the Terminal Window, providing intuitive controls for `AI Core`, `Cloud`, and `K8s` modes.
+
+### Physics-Based Smooth Hover Engine (`assets/js/tilt-3d.js`)
+- **Fluid Damping Lerp**: Uses `requestAnimationFrame` with a 12% spring factor (`current += (target - current) * 0.12`), eliminating hover snapping or sudden jumps.
+- **Dynamic Specular Glare**: Real-time holographic glass specular reflection with `mix-blend-mode: screen`.
+- **Gentle Rest Settle**: On cursor exit, smoothly returns to flat rest state and automatically clears inline transforms.
+- **Touch Device Protection**: Automatically disabled on mobile/touch screens (`maxTouchPoints > 0` or width < 992px) to prevent touch scroll trapping or sticky hover states.
+
+### Multi-Device Responsive Testing
+- **Mobile (375px - 576px)**: Fluid single-column layout, pill navbar collapse, full-width CTA buttons, touch-friendly terminal.
+- **Tablet (768px - 991px)**: Vertical stack with centered topology behind terminal and full-width container margins.
+- **Laptop (992px - 1199px)**: Compact navbar with `white-space: nowrap` ensuring all 8 links fit on one line without "CI/CD Flow" wrapping.
+- **Desktop (1200px+)**: Full widescreen 2-column layout with 3D WebGL camera depth.

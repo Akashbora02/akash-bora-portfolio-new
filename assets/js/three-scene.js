@@ -7,7 +7,7 @@
   'use strict';
 
   let scene, camera, renderer;
-  let centralCore, coreWireframe, innerCore;
+  let topologyGroup, centralCore, coreWireframe, innerCore;
   let orbitGroup, particles, particleGeo, particleMat;
   let orbitalRings = [];
   let satelliteNodes = [];
@@ -46,6 +46,33 @@
     }
   };
 
+  function updateClusterLayout() {
+    if (!topologyGroup || !camera) return;
+    const w = window.innerWidth;
+
+    if (w >= 1200) {
+      // Large Desktop / Ultra-wide: anchor behind right column terminal
+      topologyGroup.position.set(7.2, 0.2, 0);
+      topologyGroup.scale.set(1.0, 1.0, 1.0);
+      camera.position.z = 28;
+    } else if (w >= 992) {
+      // Laptop (992px - 1199px): anchor behind right column with balanced scale
+      topologyGroup.position.set(6.0, 0.2, 0);
+      topologyGroup.scale.set(0.85, 0.85, 0.85);
+      camera.position.z = 28;
+    } else if (w >= 768) {
+      // Tablet: centered directly behind the terminal window
+      topologyGroup.position.set(0, -6.5, -2);
+      topologyGroup.scale.set(0.72, 0.72, 0.72);
+      camera.position.z = 26;
+    } else {
+      // Mobile (< 768px): centered directly behind the terminal window
+      topologyGroup.position.set(0, -9.0, -3);
+      topologyGroup.scale.set(0.58, 0.58, 0.58);
+      camera.position.z = 25;
+    }
+  }
+
   function init() {
     canvas = document.getElementById('hero-3d-canvas');
     if (!canvas) return;
@@ -62,7 +89,7 @@
     // 1. Scene & Camera
     scene = new THREE.Scene();
     camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.z = 24;
+    camera.position.z = 28;
 
     // 2. WebGL Renderer
     try {
@@ -80,6 +107,9 @@
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
+    // Top-level Group containing Core & Orbits
+    topologyGroup = new THREE.Group();
+
     // 3. Central 3D AI Neural Core
     centralCore = new THREE.Group();
 
@@ -90,8 +120,8 @@
       new THREE.LineBasicMaterial({
         color: THEMES.neural.coreColor,
         transparent: true,
-        opacity: 0.65,
-        linewidth: 1.5
+        opacity: 0.45,
+        linewidth: 1.2
       })
     );
     centralCore.add(coreWireframe);
@@ -104,7 +134,7 @@
         color: THEMES.neural.innerColor,
         wireframe: true,
         transparent: true,
-        opacity: 0.4
+        opacity: 0.25
       })
     );
     centralCore.add(innerCore);
@@ -121,15 +151,15 @@
     );
     centralCore.add(pointLightMesh);
 
-    scene.add(centralCore);
+    topologyGroup.add(centralCore);
 
     // 4. Multi-Region Orbital Rings & Satellite Nodes
     orbitGroup = new THREE.Group();
 
     const ringConfigs = [
-      { radius: 6.8, tube: 0.035, rotX: Math.PI / 3, rotY: Math.PI / 6, speed: 0.008, color: 0x00E5FF, region: 'AWS us-east-1' },
-      { radius: 9.0, tube: 0.030, rotX: -Math.PI / 4, rotY: Math.PI / 4, speed: -0.006, color: 0x8B5CF6, region: 'AWS eu-west-1' },
-      { radius: 11.2, tube: 0.025, rotX: Math.PI / 2.2, rotY: -Math.PI / 8, speed: 0.005, color: 0x38BDF8, region: 'AWS ap-south-1' }
+      { radius: 6.6, tube: 0.032, rotX: Math.PI / 3, rotY: Math.PI / 6, speed: 0.007, color: 0x00E5FF, region: 'AWS us-east-1' },
+      { radius: 8.8, tube: 0.028, rotX: -Math.PI / 4, rotY: Math.PI / 4, speed: -0.005, color: 0x8B5CF6, region: 'AWS eu-west-1' },
+      { radius: 10.8, tube: 0.024, rotX: Math.PI / 2.2, rotY: -Math.PI / 8, speed: 0.004, color: 0x38BDF8, region: 'AWS ap-south-1' }
     ];
 
     ringConfigs.forEach((cfg) => {
@@ -137,7 +167,7 @@
       const ringMat = new THREE.MeshBasicMaterial({
         color: cfg.color,
         transparent: true,
-        opacity: 0.45
+        opacity: 0.35
       });
       const ring = new THREE.Mesh(ringGeo, ringMat);
       ring.rotation.x = cfg.rotX;
@@ -151,7 +181,7 @@
       const satMat = new THREE.MeshBasicMaterial({
         color: cfg.color,
         transparent: true,
-        opacity: 0.95
+        opacity: 0.90
       });
       const sat = new THREE.Mesh(satGeo, satMat);
       sat.userData = {
@@ -166,10 +196,14 @@
       satelliteNodes.push(sat);
     });
 
-    scene.add(orbitGroup);
+    topologyGroup.add(orbitGroup);
+    scene.add(topologyGroup);
+
+    // Initial Layout Calculation
+    updateClusterLayout();
 
     // 5. 3D Particle Constellation Dust
-    const particleCount = window.innerWidth < 768 ? 160 : 380;
+    const particleCount = window.innerWidth < 768 ? 140 : 340;
     particleGeo = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const scales = new Float32Array(particleCount);
@@ -185,9 +219,9 @@
 
     particleMat = new THREE.PointsMaterial({
       color: THEMES.neural.particleColor,
-      size: 0.18,
+      size: 0.16,
       transparent: true,
-      opacity: 0.6,
+      opacity: 0.55,
       blending: THREE.AdditiveBlending
     });
 
@@ -207,17 +241,17 @@
   function setupInteractions() {
     window.addEventListener('resize', onWindowResize, { passive: true });
 
-    // Pointer move parallax
+    // Pointer move parallax (Silky-smooth sensitivity)
     window.addEventListener('mousemove', (e) => {
-      targetX = (e.clientX - window.innerWidth / 2) * 0.0018;
-      targetY = (e.clientY - window.innerHeight / 2) * 0.0018;
+      targetX = (e.clientX - window.innerWidth / 2) * 0.0016;
+      targetY = (e.clientY - window.innerHeight / 2) * 0.0016;
     }, { passive: true });
 
     // Touch move parallax
     window.addEventListener('touchmove', (e) => {
       if (e.touches.length > 0) {
-        targetX = (e.touches[0].clientX - window.innerWidth / 2) * 0.0015;
-        targetY = (e.touches[0].clientY - window.innerHeight / 2) * 0.0015;
+        targetX = (e.touches[0].clientX - window.innerWidth / 2) * 0.0012;
+        targetY = (e.touches[0].clientY - window.innerHeight / 2) * 0.0012;
       }
     }, { passive: true });
 
@@ -232,13 +266,12 @@
     });
 
     canvas.addEventListener('mousemove', (e) => {
-      if (!isDragging) return;
+      if (!isDragging || !topologyGroup) return;
       const deltaX = e.clientX - previousMousePosition.x;
       const deltaY = e.clientY - previousMousePosition.y;
 
-      centralCore.rotation.y += deltaX * 0.008;
-      centralCore.rotation.x += deltaY * 0.008;
-      orbitGroup.rotation.y += deltaX * 0.005;
+      topologyGroup.rotation.y += deltaX * 0.007;
+      topologyGroup.rotation.x += deltaY * 0.007;
 
       previousMousePosition = { x: e.clientX, y: e.clientY };
     });
@@ -256,13 +289,12 @@
     });
 
     canvas.addEventListener('touchmove', (e) => {
-      if (!isDragging || e.touches.length !== 1) return;
+      if (!isDragging || !topologyGroup || e.touches.length !== 1) return;
       const deltaX = e.touches[0].clientX - previousMousePosition.x;
       const deltaY = e.touches[0].clientY - previousMousePosition.y;
 
-      centralCore.rotation.y += deltaX * 0.008;
-      centralCore.rotation.x += deltaY * 0.008;
-      orbitGroup.rotation.y += deltaX * 0.005;
+      topologyGroup.rotation.y += deltaX * 0.007;
+      topologyGroup.rotation.x += deltaY * 0.007;
 
       previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
     }, { passive: true });
@@ -326,6 +358,7 @@
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
+    updateClusterLayout();
   }
 
   function animate(time) {
@@ -336,23 +369,25 @@
     const theme = THEMES[currentMode];
     const speed = theme ? theme.speed : 1.0;
 
-    // Smooth camera mouse follow (Parallax)
-    mouseX += (targetX - mouseX) * 0.04;
-    mouseY += (targetY - mouseY) * 0.04;
-    camera.position.x = mouseX * 8;
-    camera.position.y = -mouseY * 6;
-    camera.lookAt(scene.position);
+    // Smooth camera mouse follow (Parallax with fluid dampening)
+    mouseX += (targetX - mouseX) * 0.05;
+    mouseY += (targetY - mouseY) * 0.05;
+
+    camera.position.x = mouseX * 4.5;
+    camera.position.y = -mouseY * 3.5;
+    const isDesktop = window.innerWidth >= 992;
+    camera.lookAt(new THREE.Vector3(isDesktop ? 3.0 : 0, 0, 0));
 
     // 1. Rotate Central Core
     if (centralCore) {
-      centralCore.rotation.y += 0.006 * speed;
-      centralCore.rotation.x += 0.003 * speed;
+      centralCore.rotation.y += 0.005 * speed;
+      centralCore.rotation.x += 0.0025 * speed;
 
       // Inner Core Pulse (Breathing effect)
       if (innerCore) {
         const pulse = 1 + Math.sin(time * 0.003 * speed) * 0.12;
         innerCore.scale.set(pulse, pulse, pulse);
-        innerCore.rotation.y -= 0.008 * speed;
+        innerCore.rotation.y -= 0.007 * speed;
       }
     }
 
@@ -380,8 +415,8 @@
 
     // 4. Subtle Particle Drift
     if (particles) {
-      particles.rotation.y += 0.0008 * speed;
-      particles.rotation.x += 0.0004 * speed;
+      particles.rotation.y += 0.0006 * speed;
+      particles.rotation.x += 0.0003 * speed;
     }
 
     renderer.render(scene, camera);
@@ -397,7 +432,8 @@
   // Export globally for manual theme switching
   window.Akash3D = {
     switchTheme: switchTheme,
-    getMode: () => currentMode
+    getMode: () => currentMode,
+    updateClusterLayout: updateClusterLayout
   };
 
 })();

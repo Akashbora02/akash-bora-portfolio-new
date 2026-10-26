@@ -34,8 +34,8 @@
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
   --shadow-glow: 0 0 25px rgba(0, 229, 255, 0.2);
   --shadow-card: 0 10px 30px -10px rgba(2, 6, 23, 0.7);
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Base Styles */
@@ -188,14 +188,14 @@ a:hover {
 }
 
 .navbar-pill-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   background: rgba(13, 21, 39, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(56, 189, 248, 0.2);
   border-radius: 999px;
-  padding: 8px 24px;
+  padding: 6px 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   transition: all var(--transition-normal);
 }
@@ -235,23 +235,30 @@ a:hover {
 .nav-link {
   color: var(--text-secondary) !important;
   font-weight: 500;
-  font-size: 0.92rem;
-  padding: 8px 14px !important;
+  font-size: 0.88rem;
+  padding: 6px 11px !important;
   border-radius: 8px;
-  transition: all var(--transition-fast);
+  white-space: nowrap !important;
+  transition: color var(--transition-fast), transform var(--transition-fast);
   position: relative;
+  display: inline-block;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
+  color: var(--accent-cyan) !important;
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
   color: var(--accent-cyan) !important;
 }
 
 .nav-link.active::after {
   content: '';
   position: absolute;
-  bottom: 2px;
-  left: 14px;
-  right: 14px;
+  bottom: 0px;
+  left: 11px;
+  right: 11px;
   height: 2px;
   background: var(--accent-cyan);
   border-radius: 2px;
@@ -407,13 +414,13 @@ a:hover {
   align-items: center;
   gap: 10px;
   border: none;
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
   box-shadow: 0 4px 20px rgba(0, 229, 255, 0.35);
 }
 
 .btn-primary-glow:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 28px rgba(0, 229, 255, 0.55);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 229, 255, 0.55), 0 0 16px rgba(99, 102, 241, 0.35);
 }
 
 .btn-secondary-glass {
@@ -428,14 +435,16 @@ a:hover {
   align-items: center;
   gap: 10px;
   backdrop-filter: blur(8px);
-  transition: all var(--transition-fast);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
 }
 
 .btn-secondary-glass:hover {
   background: rgba(30, 41, 59, 0.9);
   border-color: var(--accent-cyan);
   color: var(--accent-cyan) !important;
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(0, 229, 255, 0.25);
 }
 
 .hero-social-links {
@@ -455,14 +464,15 @@ a:hover {
   justify-content: center;
   color: var(--text-secondary);
   font-size: 1.1rem;
-  transition: all var(--transition-fast);
+  transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+  text-decoration: none;
 }
 
 .social-icon-btn:hover {
   color: var(--accent-cyan);
   border-color: var(--accent-cyan);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 15px rgba(0, 229, 255, 0.3);
+  transform: translateY(-3px) scale(1.08);
+  box-shadow: 0 6px 18px rgba(0, 229, 255, 0.35);
 }
 
 /* Hero Terminal Box */
@@ -1469,6 +1479,21 @@ html, body {
   max-width: 100vw;
 }
 
+/* Laptop & Compact Desktop (992px to 1199.98px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .navbar-pill-container {
+    max-width: 100%;
+    padding: 6px 14px;
+  }
+  .nav-link {
+    font-size: 0.82rem;
+    padding: 6px 7px !important;
+  }
+  .navbar-nav {
+    gap: 0 !important;
+  }
+}
+
 /* Tablet & Medium Screens (< 992px) */
 @media (max-width: 991.98px) {
   .navbar-pill-container {
@@ -1503,8 +1528,13 @@ html, body {
     font-size: clamp(2.2rem, 5vw, 2.8rem);
   }
   
+  .terminal-3d-header {
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+
   .terminal-window {
-    margin-top: 35px;
+    margin-top: 10px;
   }
   
   .section-wrapper {
@@ -1523,6 +1553,21 @@ html, body {
 
 /* Portrait Tablets & Large Phones (< 768px) */
 @media (max-width: 767.98px) {
+  #hero-3d-canvas {
+    pointer-events: none;
+  }
+
+  .terminal-3d-header {
+    justify-content: center !important;
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+
+  .hero-3d-controls {
+    justify-content: center;
+  }
+
   .hero-section {
     padding-top: 100px;
     padding-bottom: 45px;
@@ -1574,7 +1619,7 @@ html, body {
   }
 
   .terminal-window {
-    margin-top: 25px;
+    margin-top: 10px;
   }
 
   .terminal-body {
@@ -1892,6 +1937,11 @@ html, body {
     font-size: 1.7rem;
   }
 
+  .btn-3d-mode {
+    font-size: 0.72rem;
+    padding: 3px 8px;
+  }
+
   .hero-stats-strip .col-6 {
     padding: 5px;
   }
@@ -1970,6 +2020,7 @@ html, body {
   z-index: 0;
   pointer-events: auto;
   cursor: grab;
+  touch-action: pan-y;
 }
 
 #hero-3d-canvas:active {
@@ -1987,22 +2038,27 @@ html, body {
 .hero-section > .container input,
 .hero-section > .container .terminal-window,
 .hero-section > .container .hero-status-badge,
+.hero-section > .container .terminal-3d-header,
 .hero-section > .container .hero-3d-controls {
   pointer-events: auto;
+}
+
+/* 3D Interactive Topology Header */
+.terminal-3d-header {
+  margin-bottom: 8px;
 }
 
 /* 3D Mode Selector Buttons */
 .hero-3d-controls {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   background: rgba(13, 21, 39, 0.85);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(56, 189, 248, 0.28);
   border-radius: 999px;
-  padding: 4px 8px;
-  margin-bottom: 20px;
+  padding: 3px 6px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
@@ -2010,22 +2066,28 @@ html, body {
   background: transparent;
   border: none;
   color: var(--text-secondary);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-family: var(--font-mono);
   font-weight: 600;
-  padding: 5px 14px;
+  padding: 4px 11px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
-.btn-3d-mode:hover, .btn-3d-mode.active {
-  background: rgba(0, 229, 255, 0.18);
+.btn-3d-mode:hover {
+  background: rgba(0, 229, 255, 0.12);
+  color: var(--accent-cyan);
+  transform: translateY(-1px);
+}
+
+.btn-3d-mode.active {
+  background: rgba(0, 229, 255, 0.22);
   color: #FFFFFF;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
 /* 3D Card Tilt Specular Highlight Glare */
@@ -2037,9 +2099,9 @@ html, body {
   bottom: 0;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.3s ease;
   border-radius: inherit;
   z-index: 2;
+  mix-blend-mode: screen;
 }
 
 /* Floating AI DevOps Copilot Trigger Button */

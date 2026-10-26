@@ -91,19 +91,9 @@
         
         <!-- Left: Hero Introduction -->
         <div class="col-lg-6">
-          <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-            <div class="hero-status-badge mb-0">
-              <span class="status-dot"></span>
-              <span>Available for Cloud, DevOps &amp; SRE Roles | Agentic AI</span>
-            </div>
-            
-            <!-- 3D Scene Mode Selector -->
-            <div class="hero-3d-controls mb-0">
-              <span class="text-secondary small fw-bold me-1 mono d-none d-sm-inline"><i class="fa-solid fa-cube text-cyan"></i> 3D:</span>
-              <button class="btn-3d-mode active" data-mode="neural" title="Switch to AI Neural Core 3D Mesh"><i class="fa-solid fa-brain"></i> AI Core</button>
-              <button class="btn-3d-mode" data-mode="cloud" title="Switch to Multi-Cloud Global Topology"><i class="fa-solid fa-cloud"></i> Cloud</button>
-              <button class="btn-3d-mode" data-mode="k8s" title="Switch to Kubernetes Mesh"><i class="fa-solid fa-dharmachakra"></i> K8s</button>
-            </div>
+          <div class="hero-status-badge mb-3">
+            <span class="status-dot"></span>
+            <span>Available for Cloud, DevOps &amp; SRE Roles | Agentic AI</span>
           </div>
 
           <h1 class="hero-title mb-2">
@@ -157,8 +147,22 @@
           </div>
         </div>
 
-        <!-- Right: Interactive Cloud Shell Terminal -->
+        <!-- Right: Interactive Cloud Shell Terminal & 3D Topology HUD -->
         <div class="col-lg-6">
+          <div class="terminal-3d-header d-flex flex-wrap align-items-center justify-content-between gap-2 mb-2">
+            <div class="d-flex align-items-center gap-2 text-cyan font-mono small fw-bold">
+              <i class="fa-solid fa-cube"></i>
+              <span class="d-none d-sm-inline">3D INTERACTIVE TOPOLOGY</span>
+            </div>
+            
+            <!-- 3D Scene Mode Selector -->
+            <div class="hero-3d-controls mb-0">
+              <button class="btn-3d-mode active" data-mode="neural" title="Switch to AI Neural Core 3D Mesh"><i class="fa-solid fa-brain"></i> AI Core</button>
+              <button class="btn-3d-mode" data-mode="cloud" title="Switch to Multi-Cloud Global Topology"><i class="fa-solid fa-cloud"></i> Cloud</button>
+              <button class="btn-3d-mode" data-mode="k8s" title="Switch to Kubernetes Mesh"><i class="fa-solid fa-dharmachakra"></i> K8s</button>
+            </div>
+          </div>
+
           <div class="terminal-window">
             <div class="terminal-header">
               <div class="terminal-buttons">
