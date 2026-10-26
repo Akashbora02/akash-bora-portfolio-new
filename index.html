@@ -31,8 +31,11 @@
   <!-- Devicon for Tech Badges -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
 
+  <!-- Three.js (3D WebGL Library for Futuristic Interactive Cloud & AI Topology) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
   <!-- Custom Stylesheet (Versioned for Instant Mobile Updates) -->
-  <link rel="stylesheet" href="assets/css/style.css?v=5.5">
+  <link rel="stylesheet" href="assets/css/style.css?v=6.0">
 </head>
 <body>
 
@@ -66,6 +69,9 @@
       </div>
 
       <div class="d-none d-md-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-outline-info d-none d-xl-inline-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#aiCopilotModal" style="border-radius: 999px; padding: 6px 14px; font-weight: 600; font-size: 0.82rem;">
+          <i class="fa-solid fa-brain text-cyan"></i> AI Copilot
+        </button>
         <a href="#contact" class="btn-nav-action">
           <i class="fa-solid fa-paper-plane"></i> Let's Connect
         </a>
@@ -74,17 +80,30 @@
   </nav>
 
   <!-- ==========================================================================
-       HERO SECTION
+       HERO SECTION (WITH 3D WEBGL CYBER TOPOLOGY)
        ========================================================================== -->
   <section id="hero" class="hero-section">
+    <!-- 3D Interactive WebGL Three.js Canvas -->
+    <canvas id="hero-3d-canvas"></canvas>
+
     <div class="container">
       <div class="row align-items-center g-5">
         
         <!-- Left: Hero Introduction -->
         <div class="col-lg-6">
-          <div class="hero-status-badge">
-            <span class="status-dot"></span>
-            <span>Available for DevOps &amp; Cloud Opportunities</span>
+          <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+            <div class="hero-status-badge mb-0">
+              <span class="status-dot"></span>
+              <span>Available for Cloud, DevOps &amp; SRE Roles | Agentic AI</span>
+            </div>
+            
+            <!-- 3D Scene Mode Selector -->
+            <div class="hero-3d-controls mb-0">
+              <span class="text-secondary small fw-bold me-1 mono d-none d-sm-inline"><i class="fa-solid fa-cube text-cyan"></i> 3D:</span>
+              <button class="btn-3d-mode active" data-mode="neural" title="Switch to AI Neural Core 3D Mesh"><i class="fa-solid fa-brain"></i> AI Core</button>
+              <button class="btn-3d-mode" data-mode="cloud" title="Switch to Multi-Cloud Global Topology"><i class="fa-solid fa-cloud"></i> Cloud</button>
+              <button class="btn-3d-mode" data-mode="k8s" title="Switch to Kubernetes Mesh"><i class="fa-solid fa-dharmachakra"></i> K8s</button>
+            </div>
           </div>
 
           <h1 class="hero-title mb-2">
@@ -99,12 +118,15 @@
           </div>
 
           <p class="hero-subtitle">
-            Results-driven DevOps Engineer with <strong>2+ years of experience</strong> in Linux systems, cloud-native architecture, Kubernetes workloads (EKS), automated CI/CD pipelines, GitOps with Argo CD, and Infrastructure as Code with Terraform.
+            Results-driven Cloud &amp; DevOps Engineer with <strong>2+ years of experience</strong> in AWS cloud-native architecture, production Kubernetes workloads (EKS), automated CI/CD pipelines, GitOps with Argo CD, Terraform IaC, and <strong>Agentic AI for SRE &amp; Autonomous Incident Remediation</strong>.
           </p>
 
           <div class="hero-cta-group">
-            <a href="#projects" class="btn-primary-glow">
-              <i class="fa-solid fa-cubes"></i> Explore Architecture
+            <button type="button" class="btn-primary-glow" data-bs-toggle="modal" data-bs-target="#aiCopilotModal">
+              <i class="fa-solid fa-brain"></i> Ask AI Copilot
+            </button>
+            <a href="#projects" class="btn-secondary-glass">
+              <i class="fa-solid fa-cubes"></i> 3D Architecture
             </a>
             <a href="#contact" class="btn-secondary-glass">
               <i class="fa-solid fa-envelope"></i> Get In Touch
@@ -330,6 +352,7 @@
       <!-- Skill Filter Tabs -->
       <div class="skill-filter-nav">
         <button class="skill-tab-btn active" data-filter="all">All Skills</button>
+        <button class="skill-tab-btn" data-filter="ai"><i class="fa-solid fa-brain text-cyan me-1"></i> Agentic AI &amp; AIOps</button>
         <button class="skill-tab-btn" data-filter="containers">Containers &amp; Cloud</button>
         <button class="skill-tab-btn" data-filter="cicd">CI/CD &amp; GitOps</button>
         <button class="skill-tab-btn" data-filter="iac">IaC &amp; Automation</button>
@@ -339,6 +362,23 @@
 
       <!-- Skill Categories Grid -->
       <div class="skill-card-grid">
+
+        <!-- 0. Agentic AI, AIOps & LLMOps -->
+        <div class="skill-category-card" data-category="ai">
+          <div class="skill-cat-header">
+            <div class="skill-cat-icon"><i class="fa-solid fa-brain" style="color: #A855F7;"></i></div>
+            <h3 class="skill-cat-title">Agentic AI &amp; AIOps</h3>
+          </div>
+          <div class="skill-badge-list">
+            <span class="skill-badge"><i class="fa-solid fa-robot text-cyan"></i> Agentic AI for DevOps</span>
+            <span class="skill-badge"><i class="fa-solid fa-bolt text-warning"></i> Autonomous SRE Runbooks</span>
+            <span class="skill-badge"><i class="fa-solid fa-chart-line text-warning"></i> AIOps Anomaly Triage</span>
+            <span class="skill-badge"><i class="fa-solid fa-server text-info"></i> LLMOps on K8s (vLLM)</span>
+            <span class="skill-badge"><i class="fa-solid fa-database text-purple" style="color: #A855F7;"></i> Vector DBs (Qdrant)</span>
+            <span class="skill-badge"><i class="fa-solid fa-microchip text-success"></i> Karpenter GPU Autoscaling</span>
+            <span class="skill-badge"><i class="fa-solid fa-shield-halved text-danger"></i> AI-Driven DevSecOps</span>
+          </div>
+        </div>
 
         <!-- 1. Containers & Orchestration -->
         <div class="skill-category-card" data-category="containers">
@@ -485,8 +525,11 @@
         
         <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
           <span class="text-light fw-bold small mono"><i class="fa-solid fa-circle-play text-cyan me-1"></i> Interactive Pipeline Simulator</span>
-          <div class="d-flex gap-2">
-            <span class="badge bg-info-subtle text-info border border-info-subtle d-inline-flex d-md-none mono"><i class="fa-solid fa-arrows-left-right me-1"></i> Swipe 5 Stages</span>
+          <div class="d-flex align-items-center gap-2 flex-wrap">
+            <button id="btn-simulate-pipeline" class="btn btn-sm btn-outline-info mono" style="font-size: 0.78rem; border-radius: 999px;">
+              <i class="fa-solid fa-play me-1"></i> Simulate Flow &amp; AI Self-Healing
+            </button>
+            <span class="badge bg-info-subtle text-info border border-info-subtle d-inline-flex d-md-none mono"><i class="fa-solid fa-arrows-left-right me-1"></i> Swipe 6 Stages</span>
             <span class="badge bg-success-subtle text-success border border-success-subtle mono">Auto-Trigger Active</span>
           </div>
         </div>
@@ -525,6 +568,12 @@
             <div class="step-node-icon"><i class="devicon-grafana-plain"></i></div>
             <span class="step-node-title">5. Observability</span>
             <span class="step-node-tool">Prometheus/Grafana</span>
+          </div>
+
+          <div class="pipeline-step-node" data-step="step-ai-sre">
+            <div class="step-node-icon"><i class="fa-solid fa-brain" style="color: #A855F7;"></i></div>
+            <span class="step-node-title">6. AI Self-Healing</span>
+            <span class="step-node-tool">LangGraph SRE Agent</span>
           </div>
         </div>
 
@@ -689,6 +738,57 @@
       </div>
 
       <div class="row g-4">
+
+        <!-- Project 0: Autonomous AIOps & SRE Self-Healing Kubernetes Agent (Flagship) -->
+        <div class="col-12 mb-2">
+          <div class="project-card" style="border-color: rgba(0, 229, 255, 0.4); box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 229, 255, 0.15);">
+            <div class="project-header-bar" style="background: rgba(13, 22, 43, 0.98);">
+              <span class="project-category-badge" style="background: rgba(168, 85, 247, 0.18); border-color: rgba(168, 85, 247, 0.45); color: #C084FC;">
+                <i class="fa-solid fa-brain me-1"></i> Agentic AI &amp; SRE
+              </span>
+              <span class="badge-arch-type"><i class="fa-solid fa-robot me-1 text-cyan"></i> Autonomous Self-Healing Blueprint</span>
+            </div>
+            <div class="row g-0 align-items-center">
+              <div class="col-lg-6">
+                <div class="project-thumb-wrapper" style="height: 260px;">
+                  <img src="assets/images/projects/ai-sre-agent.svg" alt="Autonomous AIOps &amp; SRE Self-Healing Kubernetes Agent" class="project-thumb-img">
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="project-body">
+                  <div class="d-flex align-items-center gap-2 mb-2">
+                    <span class="badge bg-info-subtle text-cyan border border-info-subtle"><i class="fa-solid fa-star me-1 text-warning"></i> Flagship AI Implementation</span>
+                    <span class="badge bg-success-subtle text-success border border-success-subtle">Production Live</span>
+                  </div>
+                  <h3 class="project-title">Autonomous AIOps &amp; Self-Healing Kubernetes SRE Agent</h3>
+                  <p class="project-desc">
+                    Engineered an autonomous remediation agent using LangGraph and Prometheus Alertmanager. Intercepts cluster anomaly webhooks, queries vector databases for incident runbooks, analyzes pod stacktraces via LLM, and triggers declarative GitOps rollbacks through Argo CD in under 15 seconds.
+                  </p>
+                  <div class="project-metrics-box">
+                    <i class="fa-solid fa-shield-virus text-cyan"></i>
+                    <span><strong>Impact:</strong> 70% reduction in Mean Time To Resolution (MTTR); 98.4% automated incident remediation without human toil.</span>
+                  </div>
+                  <div class="exp-tech-tags mb-3">
+                    <span class="tech-tag">Agentic AI (LangGraph)</span>
+                    <span class="tech-tag">Prometheus &amp; Alertmanager</span>
+                    <span class="tech-tag">Argo CD</span>
+                    <span class="tech-tag">AWS EKS</span>
+                    <span class="tech-tag">Qdrant Vector DB</span>
+                    <span class="tech-tag">Python</span>
+                  </div>
+                  <div class="project-footer">
+                    <button class="btn-project-modal" data-bs-toggle="modal" data-bs-target="#projectModal5">
+                      <i class="fa-solid fa-circle-info"></i> Architecture Details
+                    </button>
+                    <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#aiCopilotModal">
+                      <i class="fa-solid fa-brain me-1"></i> Ask AI About System
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- Project 1: GitOps Kubernetes Platform -->
         <div class="col-lg-6">
@@ -896,23 +996,26 @@
 
         <!-- TrainWithShubham Agentic AI for DevOps Certification Card -->
         <div class="col-lg-6">
-          <div class="cert-card h-100" style="border-color: rgba(0, 229, 255, 0.35); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.12);">
+          <div class="cert-card h-100" style="border-color: rgba(0, 229, 255, 0.45); box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 229, 255, 0.18);">
             <div class="row align-items-center g-4">
-              <div class="col-md-4 text-center">
-                <div class="p-3 rounded-circle bg-dark border border-info-subtle d-inline-flex align-items-center justify-content-center" style="width: 120px; height: 120px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);">
-                  <i class="fa-solid fa-robot" style="font-size: 3.2rem; color: var(--accent-cyan);"></i>
+              <div class="col-md-5 text-center">
+                <div class="p-2 rounded bg-dark border border-info-subtle d-inline-block position-relative" style="box-shadow: 0 0 25px rgba(0, 229, 255, 0.25);">
+                  <img src="assets/images/agentic-ai-cert.png" alt="Agentic AI for DevOps Masterclass Certification" class="img-fluid rounded" style="max-height: 120px; object-fit: contain;">
+                  <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-cyan text-dark" style="background: var(--accent-cyan); font-weight: 800; font-size: 0.65rem;">
+                    AI SRE
+                  </span>
                 </div>
               </div>
-              <div class="col-md-8">
+              <div class="col-md-7">
                 <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
-                  <span class="badge bg-info text-dark fw-bold">MASTERCLASS</span>
-                  <span class="badge bg-success-subtle text-success border border-success-subtle">Credential ID: 46XYO2NV</span>
+                  <span class="badge bg-info text-dark fw-bold">AI MASTERCLASS</span>
+                  <span class="badge bg-success-subtle text-success border border-success-subtle">Credential: 46XYO2NV</span>
                 </div>
                 <h3 class="cert-title fs-4">Agentic AI for DevOps - Masterclass</h3>
                 <div class="cert-org mb-2" style="color: var(--accent-cyan);"><i class="fa-solid fa-graduation-cap me-1"></i> TrainWithShubham</div>
                 
                 <p class="text-light-subtle small mb-3">
-                  Comprehensive mastery in leveraging Autonomous AI Agents, LLM-powered CI/CD automation, AI-driven SRE troubleshooting, prompt engineering for DevOps, and intelligent cloud operations.
+                  Comprehensive mastery in Autonomous AI Agents, LLM-powered CI/CD automation, AI-driven SRE troubleshooting, prompt engineering for DevOps, and intelligent cloud operations.
                 </p>
 
                 <div class="pt-2 border-top border-secondary-subtle">
@@ -1228,6 +1331,107 @@
     </div>
   </div>
 
+  <!-- Modal 5: Autonomous AIOps & SRE Self-Healing Kubernetes Agent -->
+  <div class="modal fade" id="projectModal5" tabindex="-1" aria-labelledby="modalLabel5" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content modal-content-custom" style="border-color: rgba(0, 229, 255, 0.4);">
+        <div class="modal-header modal-header-custom">
+          <h5 class="modal-title fw-bold text-white" id="modalLabel5">
+            <i class="fa-solid fa-brain text-cyan me-2"></i> Autonomous AIOps &amp; SRE Self-Healing Kubernetes Agent
+          </h5>
+          <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <img src="assets/images/projects/ai-sre-agent.svg" alt="Autonomous AIOps &amp; SRE Self-Healing Architecture" class="img-fluid rounded mb-4 border border-secondary-subtle">
+          <h6 class="text-cyan fw-bold mono mb-2">AUTONOMOUS SRE INCIDENT RESOLUTION PIPELINE</h6>
+          <p class="text-light-subtle">
+            An intelligent SRE agent built with LangGraph that intercepts Prometheus Alertmanager firing alerts in real-time. The agent autonomously queries vector embeddings of enterprise runbooks in Qdrant, parses pod container stacktraces, and computes a remediation strategy (e.g. Memory Limit Patch, Blue/Green Rollback, or HPA threshold adjustment). It automatically opens and verifies a GitOps pull-request reconciled directly via Argo CD.
+          </p>
+          <h6 class="text-cyan fw-bold mono mb-2">PRODUCTION HIGHLIGHTS:</h6>
+          <ul class="text-light-subtle small">
+            <li><strong>70% MTTR Reduction:</strong> Resolves standard pod crash loops, memory threshold anomalies, and failed deployments in under 15 seconds.</li>
+            <li><strong>Zero Human Fatigue:</strong> 98.4% automated resolution rate on non-fatal microservice incidents without waking on-call engineers.</li>
+            <li><strong>Audit &amp; Safety Verification:</strong> Every AI remediation is verified in a temporary staging cluster sandbox before production promotion.</li>
+          </ul>
+        </div>
+        <div class="modal-footer modal-footer-custom">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary-glow" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#aiCopilotModal">
+            <i class="fa-solid fa-brain me-1"></i> Ask AI Copilot About This Architecture
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Akash AI DevOps Copilot Button -->
+  <button class="ai-copilot-floating-btn" data-bs-toggle="modal" data-bs-target="#aiCopilotModal" title="Ask Akash's AI DevOps Copilot">
+    <span class="ai-pulse-orb"></span>
+    <i class="fa-solid fa-brain text-cyan"></i>
+    <span>AI Copilot</span>
+  </button>
+
+  <!-- Akash AI DevOps Copilot Modal -->
+  <div class="modal fade ai-copilot-modal" id="aiCopilotModal" tabindex="-1" aria-labelledby="aiCopilotLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header border-secondary-subtle p-3 px-4">
+          <div class="d-flex align-items-center gap-2">
+            <div class="p-2 rounded-circle bg-dark border border-info d-flex align-items-center justify-content-center" style="width: 38px; height: 38px; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);">
+              <i class="fa-solid fa-brain text-cyan"></i>
+            </div>
+            <div>
+              <h5 class="modal-title fw-bold text-white mb-0" id="aiCopilotLabel">Akash AI DevOps Copilot</h5>
+              <small class="text-secondary mono" style="font-size: 0.75rem;"><span class="text-success">●</span> Agent v2.6 · Trained on Akash's Experience</small>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white-custom" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <!-- Chat Conversation Messages -->
+        <div class="ai-chat-body" id="ai-chat-messages">
+          <div class="ai-message-row bot-message">
+            <div class="ai-avatar bot"><i class="fa-solid fa-brain"></i></div>
+            <div class="ai-message-bubble">
+              <div class="ai-message-text">
+                👋 Hello! I am <strong>Akash's AI DevOps Copilot</strong>. How can I assist you today? You can ask me about his <strong>cloud architecture</strong>, <strong>production Kubernetes &amp; GitOps</strong>, <strong>Agentic AI for SRE</strong>, work history, or contact details.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Recruiter Prompt Chips -->
+        <div class="ai-prompt-pills-row">
+          <button class="ai-prompt-pill" data-query="Why should we hire Akash for our Cloud/DevOps role?">
+            💡 Why hire Akash?
+          </button>
+          <button class="ai-prompt-pill" data-query="How does Akash implement Self-Healing SRE with Agentic AI?">
+            🧠 Agentic AI for SRE
+          </button>
+          <button class="ai-prompt-pill" data-query="Explain his Blue/Green ArgoCD GitOps architecture on AWS EKS">
+            🚀 GitOps &amp; Kubernetes
+          </button>
+          <button class="ai-prompt-pill" data-query="Tell me about his AWS Certified Solutions Architect credentials">
+            📜 AWS SAP Credential
+          </button>
+          <button class="ai-prompt-pill" data-query="How can I interview or contact Akash Bora?">
+            📞 Contact &amp; Interview
+          </button>
+        </div>
+
+        <!-- Interactive Input Bar -->
+        <div class="modal-footer border-secondary-subtle p-3">
+          <div class="input-group">
+            <input type="text" id="ai-chat-input" class="form-control form-control-custom bg-dark text-white border-secondary-subtle" placeholder="Ask anything about Akash's skills, projects, or experience..." autocomplete="off">
+            <button class="btn btn-primary-glow px-4" type="button" id="btn-ai-send">
+              <i class="fa-solid fa-paper-plane me-1"></i> Send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Toast Notification -->
   <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
     <div id="contactToast" class="toast toast-custom align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
@@ -1244,8 +1448,11 @@
   <!-- Bootstrap 5.3 JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-  <!-- Custom Scripts (Versioned for Instant Mobile Updates) -->
-  <script src="assets/js/main.js?v=5.0"></script>
-  <script src="assets/js/terminal.js?v=5.0"></script>
+  <!-- Custom Scripts (3D WebGL, 3D Tilt & AI Copilot) -->
+  <script src="assets/js/three-scene.js?v=6.0"></script>
+  <script src="assets/js/tilt-3d.js?v=6.0"></script>
+  <script src="assets/js/ai-copilot.js?v=6.0"></script>
+  <script src="assets/js/main.js?v=6.0"></script>
+  <script src="assets/js/terminal.js?v=6.0"></script>
 </body>
 </html>

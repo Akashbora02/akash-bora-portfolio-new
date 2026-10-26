@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="aiBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c1a"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="aiCoreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <filter id="aiGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#aiBgGrad)" rx="16"/>
+  <rect width="798" height="448" x="1" y="1" fill="none" stroke="#1E293B" stroke-width="1.5" rx="16"/>
+
+  <!-- Cyber Grid -->
+  <g opacity="0.12">
+    <path d="M0 50 H800 M0 100 H800 M0 150 H800 M0 200 H800 M0 250 H800 M0 300 H800 M0 350 H800 M0 400 H800" stroke="#00E5FF" stroke-width="1"/>
+    <path d="M50 0 V450 M100 0 V450 M150 0 V450 M200 0 V450 M250 0 V450 M300 0 V450 M350 0 V450 M400 0 V450 M450 0 V450 M500 0 V450 M550 0 V450 M600 0 V450 M650 0 V450 M700 0 V450 M750 0 V450" stroke="#00E5FF" stroke-width="1"/>
+  </g>
+
+  <!-- Header Banner -->
+  <rect x="25" y="18" width="750" height="38" rx="8" fill="#0D1527" stroke="#334155" stroke-width="1"/>
+  <circle cx="45" cy="37" r="6" fill="#10B981" filter="url(#aiGlow)"/>
+  <text x="62" y="42" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">AUTONOMOUS AIOps &amp; SRE SELF-HEALING ARCHITECTURE</text>
+  <rect x="640" y="24" width="120" height="24" rx="12" fill="rgba(0, 229, 255, 0.15)" stroke="#00E5FF" stroke-width="1"/>
+  <text x="700" y="40" fill="#00E5FF" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">LIVE AGENT V2.6</text>
+
+  <!-- Connecting Conduits -->
+  <path d="M160 220 H250 M410 220 H500 M650 220 H700" stroke="#00E5FF" stroke-width="2.5" stroke-dasharray="6,6" opacity="0.8"/>
+  <path d="M575 140 V90 H330 V140" stroke="#A855F7" stroke-width="2" stroke-dasharray="4,4" fill="none" opacity="0.7"/>
+  <text x="450" y="82" fill="#A855F7" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">Automated GitOps Remediation Feedback Loop</text>
+
+  <!-- Flow Particle Pulses -->
+  <circle cx="205" cy="220" r="5" fill="#00E5FF" filter="url(#aiGlow)"/>
+  <circle cx="455" cy="220" r="5" fill="#A855F7" filter="url(#aiGlow)"/>
+
+  <!-- Node 1: Telemetry & Alertmanager -->
+  <g transform="translate(40, 140)">
+    <rect width="120" height="160" rx="12" fill="#0D1527" stroke="#F59E0B" stroke-width="2"/>
+    <circle cx="60" cy="40" r="22" fill="#F59E0B" opacity="0.2"/>
+    <path d="M50 48 L60 28 L70 48 Z" fill="#F59E0B"/>
+    <circle cx="60" cy="43" r="2" fill="#0D1527"/>
+    <text x="60" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Prometheus</text>
+    <text x="60" y="98" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">&amp; Alertmanager</text>
+    <rect x="15" y="116" width="90" height="24" rx="6" fill="#F59E0B" opacity="0.2"/>
+    <text x="60" y="132" fill="#FCD34D" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="600" text-anchor="middle">Anomaly Trigger</text>
+  </g>
+
+  <!-- Node 2: Central AI SRE Agent Engine (Brain) -->
+  <g transform="translate(250, 120)">
+    <rect width="160" height="200" rx="14" fill="#0D1527" stroke="url(#aiCoreGrad)" stroke-width="2.5" filter="url(#aiGlow)" opacity="0.25"/>
+    <rect width="160" height="200" rx="14" fill="#0D1527" stroke="url(#aiCoreGrad)" stroke-width="2"/>
+    <circle cx="80" cy="48" r="26" fill="url(#aiCoreGrad)" opacity="0.25"/>
+    
+    <!-- Robot / Brain Icon -->
+    <circle cx="80" cy="48" r="14" fill="none" stroke="#00E5FF" stroke-width="2.5"/>
+    <circle cx="75" cy="46" r="2" fill="#00E5FF"/>
+    <circle cx="85" cy="46" r="2" fill="#00E5FF"/>
+    <path d="M74 54 Q80 58 86 54" stroke="#00E5FF" stroke-width="1.8" fill="none"/>
+    <path d="M80 34 V28 M73 28 H87" stroke="#00E5FF" stroke-width="2" stroke-linecap="round"/>
+
+    <text x="80" y="96" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="15" font-weight="800" text-anchor="middle">AI SRE Agent</text>
+    <text x="80" y="114" fill="#38BDF8" font-family="'JetBrains Mono', monospace" font-size="10" text-anchor="middle">LangGraph ReAct</text>
+    
+    <!-- Mini Diagnostic Tags -->
+    <rect x="15" y="128" width="130" height="20" rx="5" fill="rgba(0, 229, 255, 0.12)"/>
+    <text x="80" y="142" fill="#00E5FF" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">1. OTel Log Analysis</text>
+    <rect x="15" y="152" width="130" height="20" rx="5" fill="rgba(168, 85, 247, 0.12)"/>
+    <text x="80" y="166" fill="#C084FC" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">2. Vector RCA Query</text>
+    <rect x="15" y="176" width="130" height="20" rx="5" fill="rgba(16, 185, 129, 0.12)"/>
+    <text x="80" y="190" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="9" text-anchor="middle">3. GitOps PR / Patch</text>
+  </g>
+
+  <!-- Node 3: GitOps Argo CD Controller -->
+  <g transform="translate(500, 140)">
+    <rect width="150" height="160" rx="12" fill="#0D1527" stroke="#EF7B4D" stroke-width="2"/>
+    <circle cx="75" cy="40" r="22" fill="#EF7B4D" opacity="0.2"/>
+    <polygon points="75,25 90,40 75,55 60,40" fill="none" stroke="#EF7B4D" stroke-width="2.5"/>
+    <circle cx="75" cy="40" r="4" fill="#EF7B4D"/>
+    
+    <text x="75" y="80" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="14" font-weight="700" text-anchor="middle">Argo CD</text>
+    <text x="75" y="98" fill="#CBD5E1" font-family="system-ui, sans-serif" font-size="11" text-anchor="middle">GitOps Engine</text>
+    <rect x="15" y="116" width="120" height="24" rx="6" fill="#10B981" opacity="0.2"/>
+    <text x="75" y="132" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" text-anchor="middle">Self-Heal Synced</text>
+  </g>
+
+  <!-- Node 4: AWS EKS Self-Healed Cluster -->
+  <g transform="translate(680, 150)">
+    <rect width="95" height="140" rx="12" fill="#0D1527" stroke="#326CE5" stroke-width="2"/>
+    <circle cx="47" cy="38" r="20" fill="#326CE5" opacity="0.2"/>
+    <polygon points="47,26 59,33 59,47 47,54 35,47 35,33" fill="none" stroke="#326CE5" stroke-width="2"/>
+    <text x="47" y="78" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="12" font-weight="700" text-anchor="middle">AWS EKS</text>
+    <text x="47" y="95" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10" text-anchor="middle">K8s Pods</text>
+    <rect x="10" y="108" width="75" height="20" rx="4" fill="#10B981" opacity="0.2"/>
+    <text x="47" y="122" fill="#34D399" font-family="'JetBrains Mono', monospace" font-size="9" font-weight="700" text-anchor="middle">0 Downtime</text>
+  </g>
+
+  <!-- Bottom Metric Box -->
+  <g transform="translate(140, 360)">
+    <rect width="520" height="60" rx="10" fill="#0D1527" stroke="#334155" stroke-width="1"/>
+    <text x="30" y="36" fill="#00E5FF" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="800">70%</text>
+    <text x="75" y="28" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">MTTR REDUCTION</text>
+    <text x="75" y="44" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Autonomous Incident Resolution</text>
+    
+    <line x1="260" y1="12" x2="260" y2="48" stroke="#334155" stroke-width="1"/>
+    
+    <text x="290" y="36" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="18" font-weight="800">&lt; 15s</text>
+    <text x="350" y="28" fill="#94A3B8" font-family="system-ui, sans-serif" font-size="10">TRIAGE TIME</text>
+    <text x="350" y="44" fill="#F8FAFC" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Zero Human Intervention</text>
+  </g>
+</svg>

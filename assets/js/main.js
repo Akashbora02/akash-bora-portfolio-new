@@ -1,5 +1,6 @@
 /**
  * Main JavaScript for Akash Bora Portfolio Website
+ * Updated with 2026 AI + Cloud + DevOps + SRE Features
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -54,7 +55,7 @@ function initNavbarScroll() {
 }
 
 /* ==========================================================================
-   2. INTERACTIVE PARTICLE & CLOUD MESH CANVAS
+   2. INTERACTIVE PARTICLE & CLOUD MESH CANVAS (Ambient Background)
    ========================================================================== */
 function initParticleNetwork() {
   const canvas = document.getElementById('particle-canvas');
@@ -70,15 +71,15 @@ function initParticleNetwork() {
   });
 
   const particles = [];
-  const particleCount = Math.min(Math.floor(window.innerWidth / 22), 65);
+  const particleCount = Math.min(Math.floor(window.innerWidth / 30), 45);
 
   for (let i = 0; i < particleCount; i++) {
     particles.push({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: (Math.random() - 0.5) * 0.6,
-      radius: Math.random() * 2 + 1,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      radius: Math.random() * 1.8 + 0.8,
       color: Math.random() > 0.4 ? 'rgba(0, 229, 255, ' : 'rgba(99, 102, 241, '
     });
   }
@@ -93,12 +94,12 @@ function initParticleNetwork() {
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist < 130) {
+        if (dist < 120) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(56, 189, 248, ${0.18 * (1 - dist / 130)})`;
-          ctx.lineWidth = 0.75;
+          ctx.strokeStyle = `rgba(56, 189, 248, ${0.12 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.6;
           ctx.stroke();
         }
       }
@@ -114,7 +115,7 @@ function initParticleNetwork() {
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fillStyle = p.color + '0.7)';
+      ctx.fillStyle = p.color + '0.5)';
       ctx.fill();
     });
 
@@ -125,24 +126,24 @@ function initParticleNetwork() {
 }
 
 /* ==========================================================================
-   3. DYNAMIC TYPING ROTATOR
+   3. DYNAMIC TYPING ROTATOR (Enhanced with AI & Cloud Focus)
    ========================================================================== */
 function initDynamicTyping() {
   const typingElement = document.getElementById('typing-text');
   if (!typingElement) return;
 
   const roles = [
-    'Cloud Engineer @ Groots',
-    'AWS Solutions Architect (Pro)',
-    'DevOps & GitOps Specialist',
-    'Kubernetes & SRE Engineer',
-    'Agentic AI for DevOps'
+    'Cloud Engineer @ Groots Software',
+    'AWS Solutions Architect (Professional)',
+    'Agentic AI for DevOps & SRE Self-Healing',
+    'Kubernetes (EKS) & GitOps (Argo CD) Specialist',
+    'AIOps & Terraform Infrastructure as Code'
   ];
 
   let roleIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
-  let typingSpeed = 90;
+  let typingSpeed = 85;
 
   function type() {
     const currentRole = roles[roleIndex];
@@ -150,15 +151,15 @@ function initDynamicTyping() {
     if (isDeleting) {
       typingElement.textContent = currentRole.substring(0, charIndex - 1);
       charIndex--;
-      typingSpeed = 40;
+      typingSpeed = 35;
     } else {
       typingElement.textContent = currentRole.substring(0, charIndex + 1);
       charIndex++;
-      typingSpeed = 90;
+      typingSpeed = 85;
     }
 
     if (!isDeleting && charIndex === currentRole.length) {
-      typingSpeed = 1800; // Pause at end of word
+      typingSpeed = 2000; // Pause at end of word
       isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
       isDeleting = false;
@@ -186,6 +187,7 @@ function initStatsCounter() {
       if (entry.isIntersecting && !counted) {
         counted = true;
         const counters = document.querySelectorAll('.stat-number');
+
         counters.forEach(counter => {
           const target = parseFloat(counter.getAttribute('data-target'));
           const suffix = counter.getAttribute('data-suffix') || '';
@@ -239,45 +241,53 @@ function initSkillFilter() {
 }
 
 /* ==========================================================================
-   6. INTERACTIVE CI/CD & GITOPS PIPELINE VISUALIZER
+   6. INTERACTIVE CI/CD & GITOPS PIPELINE VISUALIZER (With AIOps Stage 6)
    ========================================================================== */
 function initPipelineVisualizer() {
   const nodes = document.querySelectorAll('.pipeline-step-node');
   const consoleOutput = document.getElementById('pipeline-console-output');
   const progressBar = document.querySelector('.pipeline-connector-progress');
+  const btnSimulate = document.getElementById('btn-simulate-pipeline');
 
   const stepDetails = {
     'step-code': {
-      progress: '15%',
+      progress: '16%',
       log: `[00:01] <span style="color:#3B82F6">GIT REPO:</span> Commit triggered by Akash Bora on branch <span style="color:#00E5FF">main</span>
 [00:03] Webhook dispatched to GitHub Actions / GitLab CI
 [00:04] Syntax checking &amp; YAML linter completed: <span style="color:#10B981">PASSED (0 errors)</span>`
     },
     'step-sast': {
-      progress: '38%',
+      progress: '33%',
       log: `[00:08] <span style="color:#8B5CF6">SONARQUBE SAST:</span> Executing static code analysis...
 [00:14] Code Smells: 0 | Vulnerabilities: 0 | Bugs: 0
 [00:15] <span style="color:#10B981">Quality Gate Status: PASSED</span> (A-grade maintainability &amp; reliability)`
     },
     'step-build': {
-      progress: '62%',
+      progress: '50%',
       log: `[00:19] <span style="color:#EC4899">DOCKER MULTI-STAGE BUILD:</span> Building microservice container...
 [00:27] Stripping development dependencies, base image size reduced to 42MB
 [00:30] <span style="color:#10B981">TRIVY SCAN:</span> 0 Critical, 0 High vulnerabilities found.
 [00:32] Pushing sanitized image to <span style="color:#FF9900">AWS ECR</span> (SHA256: 9e4f21a8...)`
     },
     'step-gitops': {
-      progress: '85%',
+      progress: '68%',
       log: `[00:35] <span style="color:#FF9900">ARGO CD GITOPS ENGINE:</span> Detected manifest update in Git repository.
 [00:37] Reconciling desired state with live AWS EKS Kubernetes cluster...
 [00:40] Rolling out deployment with zero downtime (HPA target: 2-4 nodes).
 [00:42] <span style="color:#10B981">Application Status: SYNCED &amp; HEALTHY</span> 🚀`
     },
     'step-monitor': {
-      progress: '100%',
+      progress: '84%',
       log: `[00:45] <span style="color:#00E5FF">OBSERVABILITY:</span> Prometheus scraping metrics from /metrics endpoint.
 [00:46] Grafana Dashboard updated: CPU: 12%, Memory: 24%, 0 Pod restarts.
 [00:47] <span style="color:#10B981">All health checks &amp; synthetic probes responding 200 OK (Latency: 18ms).</span>`
+    },
+    'step-ai-sre': {
+      progress: '100%',
+      log: `[00:49] <span style="color:#A855F7">AIOps SRE AGENT:</span> Alertmanager anomaly webhook intercepted in 0.8s.
+[00:51] <span style="color:#38BDF8">LangGraph ReAct Agent:</span> Parsing OpenTelemetry traces and container stderr logs.
+[00:53] <span style="color:#FBBF24">Vector DB Root-Cause:</span> Matched mitigation runbook #18 (Instant Blue/Green rollback).
+[00:55] <span style="color:#10B981">AUTONOMOUS REMEDIATION COMPLETE:</span> Argo CD synced healthy revision. MTTR: 14s. Zero Downtime! 🛡️`
     }
   };
 
@@ -288,11 +298,39 @@ function initPipelineVisualizer() {
 
       const stepId = node.getAttribute('data-step');
       if (stepDetails[stepId]) {
-        progressBar.style.width = stepDetails[stepId].progress;
-        consoleOutput.innerHTML = stepDetails[stepId].log;
+        if (progressBar) progressBar.style.width = stepDetails[stepId].progress;
+        if (consoleOutput) consoleOutput.innerHTML = stepDetails[stepId].log;
       }
     });
   });
+
+  // Automated Simulation Loop when user clicks "Simulate Flow"
+  if (btnSimulate) {
+    btnSimulate.addEventListener('click', () => {
+      const stepKeys = ['step-code', 'step-sast', 'step-build', 'step-gitops', 'step-monitor', 'step-ai-sre'];
+      let currentIdx = 0;
+      btnSimulate.disabled = true;
+      btnSimulate.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i> Running Pipeline &amp; AI Self-Healing...';
+
+      const interval = setInterval(() => {
+        if (currentIdx < stepKeys.length) {
+          const key = stepKeys[currentIdx];
+          const targetNode = document.querySelector(`.pipeline-step-node[data-step="${key}"]`);
+          if (targetNode) {
+            nodes.forEach(n => n.classList.remove('active'));
+            targetNode.classList.add('active');
+            if (progressBar) progressBar.style.width = stepDetails[key].progress;
+            if (consoleOutput) consoleOutput.innerHTML = stepDetails[key].log;
+          }
+          currentIdx++;
+        } else {
+          clearInterval(interval);
+          btnSimulate.disabled = false;
+          btnSimulate.innerHTML = '<i class="fa-solid fa-rotate-right me-1"></i> Re-Run Simulation';
+        }
+      }, 1200);
+    });
+  }
 }
 
 /* ==========================================================================
@@ -319,14 +357,12 @@ function initContactForm() {
       return;
     }
 
-    // Email regex check
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailPattern.test(email)) {
       alert('Please enter a valid email address.');
       return;
     }
 
-    // Submit state animation
     const originalBtnText = submitBtn.innerHTML;
     submitBtn.disabled = true;
     submitBtn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Sending Message...`;
@@ -342,7 +378,6 @@ function initContactForm() {
       status: 'unread'
     };
 
-    // Store in browser database (localStorage for Admin Dashboard)
     try {
       const STORAGE_KEY = 'akash_portfolio_messages';
       const existing = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
@@ -352,7 +387,6 @@ function initContactForm() {
       console.warn('Storage sync warning:', e);
     }
 
-    // Dispatch to Vercel Serverless /api/contact if available
     fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -361,14 +395,12 @@ function initContactForm() {
       console.log('Serverless API info (offline/static mode fallback active):', err);
     });
 
-    // Simulated network feedback & toast trigger
     setTimeout(() => {
       submitBtn.disabled = false;
       submitBtn.innerHTML = `<i class="fa-solid fa-check me-2"></i> Message Sent!`;
       submitBtn.classList.remove('btn-primary-glow');
       submitBtn.classList.add('btn-success');
 
-      // Show Bootstrap Toast
       if (toastEl && window.bootstrap) {
         const toast = new bootstrap.Toast(toastEl, { delay: 5000 });
         toast.show();
@@ -400,13 +432,11 @@ function initSmoothScroll() {
       if (targetEl) {
         e.preventDefault();
         
-        // Immediately highlight clicked nav item
         if (this.classList.contains('nav-link')) {
           navLinks.forEach(link => link.classList.remove('active'));
           this.classList.add('active');
         }
 
-        // Auto-close mobile navbar collapse if open
         const navCollapseEl = document.getElementById('navbarContent');
         if (navCollapseEl && navCollapseEl.classList.contains('show')) {
           if (window.bootstrap && bootstrap.Collapse) {

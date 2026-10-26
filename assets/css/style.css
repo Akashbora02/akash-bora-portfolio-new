@@ -1955,3 +1955,275 @@ html, body {
     padding: 9px 12px;
   }
 }
+
+/* ==========================================================================
+   2026 CUTTING-EDGE 3D WEBGL & AGENTIC AI STYLING
+   ========================================================================== */
+
+/* 3D WebGL Canvas in Hero Section */
+#hero-3d-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: auto;
+  cursor: grab;
+}
+
+#hero-3d-canvas:active {
+  cursor: grabbing;
+}
+
+.hero-section > .container {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hero-section > .container a,
+.hero-section > .container button,
+.hero-section > .container input,
+.hero-section > .container .terminal-window,
+.hero-section > .container .hero-status-badge,
+.hero-section > .container .hero-3d-controls {
+  pointer-events: auto;
+}
+
+/* 3D Mode Selector Buttons */
+.hero-3d-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(13, 21, 39, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 999px;
+  padding: 4px 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-3d-mode {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 5px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-3d-mode:hover, .btn-3d-mode.active {
+  background: rgba(0, 229, 255, 0.18);
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.35);
+}
+
+/* 3D Card Tilt Specular Highlight Glare */
+.card-specular-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+/* Floating AI DevOps Copilot Trigger Button */
+.ai-copilot-floating-btn {
+  position: fixed;
+  bottom: 26px;
+  right: 26px;
+  z-index: 1040;
+  background: linear-gradient(135deg, rgba(6, 11, 22, 0.95) 0%, rgba(13, 21, 39, 0.95) 100%);
+  border: 1.5px solid rgba(0, 229, 255, 0.6);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 229, 255, 0.4);
+  border-radius: 999px;
+  padding: 10px 20px;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: aiPulseGlow 3s infinite alternate;
+}
+
+@keyframes aiPulseGlow {
+  0% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 15px rgba(0, 229, 255, 0.3); }
+  100% { box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7), 0 0 35px rgba(99, 102, 241, 0.6); }
+}
+
+.ai-copilot-floating-btn:hover {
+  transform: translateY(-4px) scale(1.04);
+  border-color: #00E5FF;
+  color: #FFFFFF;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 229, 255, 0.6);
+}
+
+.ai-pulse-orb {
+  width: 10px;
+  height: 10px;
+  background: #00E5FF;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00E5FF;
+  animation: aiOrbBlink 1.4s infinite;
+}
+
+@keyframes aiOrbBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* AI Copilot Modal Window */
+.ai-copilot-modal .modal-content {
+  background: rgba(10, 16, 32, 0.95);
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  border-radius: 20px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 229, 255, 0.2);
+}
+
+.ai-chat-body {
+  max-height: 440px;
+  min-height: 300px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.ai-message-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.ai-message-row.user-message {
+  flex-direction: row-reverse;
+}
+
+.ai-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.ai-avatar.bot {
+  background: rgba(0, 229, 255, 0.15);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: var(--accent-cyan);
+}
+
+.ai-avatar.user {
+  background: rgba(99, 102, 241, 0.2);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  color: #A5B4FC;
+}
+
+.ai-message-bubble {
+  max-width: 82%;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  line-height: 1.55;
+}
+
+.bot-message .ai-message-bubble {
+  background: rgba(19, 30, 56, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #F8FAFC;
+}
+
+.user-message .ai-message-bubble {
+  background: rgba(0, 229, 255, 0.18);
+  border: 1px solid rgba(0, 229, 255, 0.4);
+  color: #FFFFFF;
+}
+
+.ai-prompt-pills-row {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 12px 20px;
+  border-top: 1px solid rgba(56, 189, 248, 0.12);
+  scrollbar-width: none;
+}
+
+.ai-prompt-pills-row::-webkit-scrollbar {
+  display: none;
+}
+
+.ai-prompt-pill {
+  white-space: nowrap;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 999px;
+  color: #E2E8F0;
+  font-size: 0.78rem;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ai-prompt-pill:hover {
+  background: rgba(0, 229, 255, 0.15);
+  border-color: var(--accent-cyan);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.ai-typing-indicator .ai-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  margin: 0 2px;
+  animation: aiBlinkDot 1.4s infinite;
+}
+
+.ai-typing-indicator .ai-dot:nth-child(2) { animation-delay: 0.2s; }
+.ai-typing-indicator .ai-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes aiBlinkDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+@media (max-width: 767.98px) {
+  .ai-copilot-floating-btn {
+    bottom: 18px;
+    right: 18px;
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+  .ai-chat-body {
+    max-height: 360px;
+    padding: 14px;
+  }
+}

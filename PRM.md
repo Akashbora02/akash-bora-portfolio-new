@@ -46,7 +46,10 @@ akash-bora-portfolio/
     │   └── style.css            # Responsive styles, dark glassmorphism, animations
     ├── js/
     │   ├── main.js              # Particles, typing effect, mobile nav, form submission
-    │   └── terminal.js          # Interactive DevOps terminal shell simulator
+    │   ├── terminal.js          # Interactive DevOps terminal shell simulator with AI commands
+    │   ├── three-scene.js       # 3D WebGL Three.js interactive cloud & AI topology engine
+    │   ├── tilt-3d.js           # 3D holographic card tilt & specular reflection engine
+    │   └── ai-copilot.js        # Akash AI DevOps Copilot conversational agent for interviewers
     └── images/
         ├── logo-banner.png      # Full logo banner (transparent dark-mode optimized)
         ├── logo-icon.png        # Square icon badge for favicon & mobile header
@@ -54,6 +57,7 @@ akash-bora-portfolio/
         ├── aws-sap-cert.png     # AWS Solutions Architect Professional Badge
         ├── agentic-ai-cert.png  # TrainWithShubham Agentic AI Masterclass Badge
         └── projects/            # Clean SVG architecture diagrams
+            ├── ai-sre-agent.svg # Autonomous AIOps & SRE Self-Healing Kubernetes Agent
             ├── gitops-arch.svg
             ├── devsecops-pipeline.svg
             ├── observability-stack.svg
